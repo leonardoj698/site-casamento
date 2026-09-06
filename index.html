@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Fontes do Google: Playfair Display (Elegante) e Great Vibes (Cursiva) -->
+  <!-- Fontes do Google: Playfair Display e Great Vibes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,14 +21,15 @@
       color: #4a4a4a;
       text-align: center;
       padding-bottom: 60px;
-      font-family: 'Montserrat', sans-serif; /* Fonte limpa para textos normais */
+      font-family: 'Montserrat', sans-serif;
     }
-header {
-  padding: 90px 20px 50px;
-  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('Foto_site.jpg') center/cover;
-}
+    header {
+      padding: 60px 20px 30px;
+      background-color: #f7f3ed;
+      border-bottom: 1px solid #eae2d6;
+    }
     
-    /* TÍTULO DO CASAL (Estilo Cursivo Elegante) */
+    /* TÍTULO DO CASAL */
     h1 {
       font-family: 'Great Vibes', cursive !important;
       font-size: 4.5rem !important;
@@ -47,9 +48,26 @@ header {
       padding: 0 20px;
     }
 
+    /* ÁREA DA FOTO DO CASAL (Sempre visível por inteiro) */
+    .foto-casal-container {
+      margin: 30px auto 10px;
+      max-width: 700px;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+    .foto-casal-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      object-fit: contain; /* Garante que a foto não seja cortada */
+    }
+
     /* Regressiva */
     .timer-container {
-      margin: 40px 0;
+      margin: 30px 0 40px;
       padding: 25px;
       background: #ffffff;
       border-radius: 12px;
@@ -63,7 +81,7 @@ header {
       font-family: 'Playfair Display', serif;
     }
 
-    /* TÍTULOS DAS SEÇÕES (Serifado Elegante) */
+    /* TÍTULOS DAS SEÇÕES */
     section {
       margin: 50px 0;
     }
@@ -147,20 +165,6 @@ header {
       cursor: pointer;
       color: #aaa;
     }
-
-    /* Responsive iframe */
-    .iframe-container {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      padding-top: 100%;
-    }
-    .iframe-container iframe {
-      position: absolute;
-      top: 0; left: 0; bottom: 0; right: 0;
-      width: 100%; height: 100%;
-      border: none;
-    }
   </style>
 </head>
 <body>
@@ -171,6 +175,11 @@ header {
   </header>
 
   <div class="container">
+
+    <!-- FOTO DO CASAL EM DESTAQUE -->
+    <div class="foto-casal-container">
+      <img src="Foto_site.jpg" alt="Foto de Thamires e Leonardo">
+    </div>
 
     <!-- Contagem Regressiva -->
     <div class="timer-container">
