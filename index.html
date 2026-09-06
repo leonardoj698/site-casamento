@@ -2,8 +2,12 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fontes do Google: Playfair Display (Elegante) e Great Vibes (Cursiva) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  
   <title>Casamento de Thamires & Leonardo</title>
   <style>
     /* Estilos Visuais Gerais */
@@ -11,28 +15,31 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
       background-color: #fdfbf7;
       color: #4a4a4a;
       text-align: center;
       padding-bottom: 60px;
+      font-family: 'Montserrat', sans-serif; /* Fonte limpa para textos normais */
     }
     header {
-      padding: 80px 20px 40px;
-      background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80') center/cover;
+      padding: 90px 20px 50px;
+      background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80') center/cover;
     }
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  color: #8b7355;
-  margin-bottom: 10px;
-  font-weight: 300;
-}
+    
+    /* TÍTULO DO CASAL (Estilo Cursivo Elegante) */
+    h1 {
+      font-family: 'Great Vibes', cursive !important;
+      font-size: 4.5rem !important;
+      color: #8b7355;
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
     p.subhead {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #777;
+      letter-spacing: 1px;
     }
     .container {
       max-width: 800px;
@@ -43,31 +50,33 @@ h1 {
     /* Regressiva */
     .timer-container {
       margin: 40px 0;
-      padding: 20px;
+      padding: 25px;
       background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
     #contador {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: bold;
       color: #8b7355;
       margin-top: 10px;
+      font-family: 'Playfair Display', serif;
     }
 
-    /* Seções */
+    /* TÍTULOS DAS SEÇÕES (Serifado Elegante) */
     section {
       margin: 50px 0;
     }
-h2 {
-  font-family: 'Playfair Display', serif;
-  color: #8b7355;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  border-bottom: 2px solid #f0e6d2;
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    h2 {
+      font-family: 'Playfair Display', serif !important;
+      color: #8b7355;
+      margin-bottom: 20px;
+      font-size: 2.2rem !important;
+      border-bottom: 2px solid #f0e6d2;
+      display: inline-block;
+      padding-bottom: 5px;
+      font-weight: 500;
+    }
 
     /* Lista de Presentes (Grid) */
     .grid-presentes {
@@ -88,7 +97,8 @@ h2 {
       transform: translateY(-4px);
     }
     .card h3 {
-      font-size: 1.1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
       margin-bottom: 8px;
     }
     .card .preco {
@@ -105,6 +115,8 @@ h2 {
       cursor: pointer;
       font-size: 0.9rem;
       transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
     }
     .btn:hover {
       background-color: #6d5940;
@@ -141,7 +153,7 @@ h2 {
       position: relative;
       overflow: hidden;
       width: 100%;
-      padding-top: 100%; /* Proporção do Google Form */
+      padding-top: 100%;
     }
     .iframe-container iframe {
       position: absolute;
@@ -169,8 +181,8 @@ h2 {
     <!-- Informações do Evento -->
     <section>
       <h2>Cerimônia</h2>
-      <p><strong>Data:</strong> 16 de Janeiro de 2027</p>
-      <p><strong>Horário:</strong> 10:30h</p>
+      <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
+      <p style="margin-bottom: 8px;"><strong>Horário:</strong> 10:30h</p>
       <p><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
     </section>
 
@@ -203,7 +215,6 @@ h2 {
       <h2>Confirme sua Presença</h2>
       <p>Por favor, informe até dia 01/10 se você poderá comparecer.</p>
       <br>
-      <!-- Substitua a URL abaixo pelo link de incorporação do seu Google Forms -->
       <p><a href="https://forms.google.com" target="_blank" class="btn">Clique aqui para confirmar presença</a></p>
     </section>
 
@@ -213,9 +224,9 @@ h2 {
   <div id="pixModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModal()">&times;</span>
-      <h3>Chave PIX</h3>
+      <h3 style="font-family: 'Playfair Display', serif;">Chave PIX</h3>
       <p style="margin: 15px 0;">Use a chave PIX abaixo para realizar o presente diretamente:</p>
-      <input type="text" id="pixKeyInput" value="sua-chave-pix-aqui@email.com" readonly style="width: 100%; padding: 8px; text-align: center; margin-bottom: 10px;">
+      <input type="text" id="pixKeyInput" value="leonardoj698@gmail.com" readonly style="width: 100%; padding: 8px; text-align: center; margin-bottom: 10px;">
       <button class="btn" onclick="copiarPix()">Copiar Chave PIX</button>
     </div>
   </div>
