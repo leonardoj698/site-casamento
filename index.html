@@ -18,29 +18,27 @@
     }
     html, body {
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
       background-color: #f4f7f9;
       color: #3b4a5a;
       text-align: center;
       font-family: 'Montserrat', sans-serif;
-      overflow-x: hidden;
     }
 
     /* =========================================================
-       1. ENVELOPE TELA CHEIA (TONS AZUIS & ESTILO DA FOTO)
+       1. ENVELOPE TELA CHEIA LUXUOSO (TONS AZUIS REFINADOS)
        ========================================================= */
     #envelopeOverlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; 
       height: 100vh;
-      background-color: #bcd0c7; /* Fundo em tom suave inspirando a foto */
-      background: radial-gradient(circle, #d0e0e3 0%, #a4becc 100%);
-      z-index: 9999;
+      background: linear-gradient(135deg, #cbdce6 0%, #a2bccb 100%);
+      z-index: 99999;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: opacity 1.2s ease, visibility 1.2s ease;
+      transition: opacity 1s ease, visibility 1s ease;
       cursor: pointer;
       overflow: hidden;
     }
@@ -50,31 +48,30 @@
       pointer-events: none;
     }
 
-    /* ESTRUTURA DO ENVELOPE QUE OCUPA A TELA INTEIRA */
+    /* ESTRUTURA DO ENVELOPE EM TELA CHEIA */
     .full-envelope {
       position: relative;
       width: 100%;
       height: 100%;
-      background: #c3d5de; /* Cor base azul sereno */
-      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.08);
+      background: #b1c7d4;
+      box-shadow: inset 0 0 120px rgba(25, 45, 65, 0.2);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
-    /* DOBRAS SUPERIORES E INFERIORES DO ENVELOPE */
+    /* DOBRAS SUPERIORES E LATERAIS */
     .fold-top {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
       height: 52vh;
-      background: #b5cad5;
+      background: #c2d5e0;
       clip-path: polygon(0 0, 100% 0, 50% 100%);
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+      filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.12));
       transition: transform 0.8s ease-in-out;
       transform-origin: top;
-      z-index: 2;
+      z-index: 3;
     }
     .full-envelope.open .fold-top {
       transform: rotateX(180deg);
@@ -84,7 +81,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 52vw; height: 100%;
-      background: #bbcfda;
+      background: #a9bfcd;
       clip-path: polygon(0 0, 100% 50%, 0 100%);
       z-index: 1;
     }
@@ -93,7 +90,7 @@
       position: absolute;
       top: 0; right: 0;
       width: 52vw; height: 100%;
-      background: #b2c7d2;
+      background: #a1b8c6;
       clip-path: polygon(100% 0, 0 50%, 100% 100%);
       z-index: 1;
     }
@@ -101,16 +98,16 @@
     .fold-bottom {
       position: absolute;
       bottom: 0; left: 0;
-      width: 100%; height: 52vh;
-      background: #a9bfc8;
+      width: 100%; height: 53vh;
+      background: #b8ccda;
       clip-path: polygon(0 100%, 100% 100%, 50% 0);
-      z-index: 1;
+      z-index: 2;
     }
 
-    /* SELO CENTRAL REDONDO COM FLORES */
+    /* SELO CENTRAL E RUPTURA BOTÂNICA */
     .seal-container {
       position: relative;
-      z-index: 4;
+      z-index: 5;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -118,56 +115,52 @@
       transition: transform 0.3s ease;
     }
     .seal-container:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
-    /* RAMOS BOTÂNICOS ATRÁS DO SELO */
     .botanical-decor {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       margin-bottom: -22px;
-      z-index: 5;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+      z-index: 6;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
       user-select: none;
     }
 
-    /* CERA BEGE CLARA COM RELEVO BOTÂNICO */
     .seal-wax {
-      width: 110px;
-      height: 110px;
-      background: radial-gradient(circle, #f7f3e8 0%, #ebdcc8 100%);
+      width: 115px;
+      height: 115px;
+      background: radial-gradient(circle, #f9f6f0 0%, #e8decb 100%);
       border-radius: 50%;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.8);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 0 12px rgba(255,255,255,0.9);
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 3px solid #fdfbf7;
+      border: 3px solid #ffffff;
     }
 
     .seal-inner-icon {
-      font-size: 2.5rem;
-      color: #928373;
-      opacity: 0.85;
+      font-size: 2.8rem;
+      color: #8c7d6b;
+      opacity: 0.9;
     }
 
     .click-hint {
       margin-top: 25px;
-      font-family: 'Alex Brush', cursive, serif;
-      font-size: 1.8rem;
-      color: #3b5063;
+      font-family: 'Alex Brush', cursive;
+      font-size: 2rem;
+      color: #2c4356;
       letter-spacing: 1px;
-      opacity: 0.85;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.6);
     }
 
     /* =========================================================
        2. CONTEÚDO PRINCIPAL DO SITE
        ========================================================= */
     #mainContent {
-      opacity: 0;
-      transition: opacity 1.5s ease;
+      width: 100%;
+      min-height: 100vh;
       padding-bottom: 60px;
-    }
-    #mainContent.visible {
-      opacity: 1;
+      display: block;
     }
 
     .hero-container {
@@ -180,7 +173,7 @@
       align-items: center;
       padding: 60px 20px;
       background: 
-        linear-gradient(to bottom, rgba(244, 247, 249, 0.3) 60%, #f4f7f9 100%),
+        linear-gradient(to bottom, rgba(244, 247, 249, 0.1) 50%, #f4f7f9 100%),
         url('Foto_site.jpg') center/cover no-repeat;
     }
 
@@ -325,7 +318,7 @@
       background: rgba(20, 35, 55, 0.6);
       justify-content: center;
       align-items: center;
-      z-index: 10000;
+      z-index: 100000;
     }
     .modal-content {
       background: #fff;
@@ -343,9 +336,10 @@
       color: #aaa;
     }
 
+    /* ANIMAÇÃO REVEAL */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     .reveal.active {
@@ -356,7 +350,7 @@
 </head>
 <body>
 
-  <!-- ✉️ TELA DO ENVELOPE (TELA CHEIA E TONS AZUIS) -->
+  <!-- ✉️ TELA DO ENVELOPE (TELA CHEIA) -->
   <div id="envelopeOverlay" onclick="abrirConvite()">
     <div class="full-envelope" id="envelopeBox">
       <div class="fold-top"></div>
@@ -377,7 +371,7 @@
   <!-- BOTÃO FLUTUANTE DE MÚSICA -->
   <button id="musicToggle" class="music-btn" title="Tocar/Pausar Música" onclick="toggleMusic()">🎵</button>
   
-  <!-- ÁUDIO DA AVE MARIA (BACH/GOUNOD) NO PIANO (ARQUIVO MP3 DIRETO) -->
+  <!-- ÁUDIO DA AVE MARIA (BACH/GOUNOD) EM PIANO (MP3 DIRETO CONFIÁVEL) -->
   <audio id="bgMusic" loop preload="auto">
     <source src="https://www.orangefreesounds.com/wp-content/uploads/2018/04/Ave-maria-bach-gounod-piano-and-cello-music.mp3" type="audio/mpeg">
   </audio>
@@ -458,13 +452,13 @@
     const audio = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicToggle');
 
-    // TENTA TOCAR A MÚSICA
+    // TOCAR ÁUDIO
     function playAudio() {
       audio.play().then(() => {
         musicBtn.classList.add('playing');
         musicBtn.innerHTML = '🔊';
       }).catch(err => {
-        console.log("Aguardando ação direta do usuário...", err);
+        console.log("Aguardando interação...", err);
       });
     }
 
@@ -472,18 +466,12 @@
     function abrirConvite() {
       const envelopeBox = document.getElementById('envelopeBox');
       const envelopeOverlay = document.getElementById('envelopeOverlay');
-      const mainContent = document.getElementById('mainContent');
 
-      // Dispara a música
       playAudio();
-
-      // Animação da aba
       envelopeBox.classList.add('open');
 
-      // Transição para revelar o site
       setTimeout(() => {
         envelopeOverlay.classList.add('opened');
-        mainContent.classList.add('visible');
         revealOnScroll();
       }, 700);
     }
@@ -530,20 +518,21 @@
       alert("Chave PIX copiada!");
     }
 
-    // ANIMAÇÃO DE SCROLL REVEAL
+    // ANIMAÇÃO AO ROLAR
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.reveal');
       const windowHeight = window.innerHeight;
 
       reveals.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
+        if (elementTop < windowHeight - 50) {
           element.classList.add('active');
         }
       });
     }
 
     window.addEventListener('scroll', revealOnScroll);
+    document.addEventListener('DOMContentLoaded', revealOnScroll);
   </script>
 </body>
 </html>
