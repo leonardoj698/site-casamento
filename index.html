@@ -28,6 +28,99 @@
       overflow-x: hidden;
     }
 
+    /* TELA DO ENVELOPE (OVERLAY INTERATIVO) */
+    #envelopeOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: #eaf0f6;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+    }
+    #envelopeOverlay.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* DESENHO DO ENVELOPE */
+    .envelope-wrapper {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(42, 75, 124, 0.15);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s;
+    }
+    .envelope-wrapper:hover {
+      transform: scale(1.03);
+    }
+    /* Aba superior do envelope */
+    .envelope-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-top: 115px solid #dce5ef;
+      transform-origin: top;
+      transition: transform 0.6s ease;
+      z-index: 2;
+    }
+    .envelope-wrapper.open::before {
+      transform: rotateX(180deg);
+    }
+
+    /* SELO DOURADO DE ABERTURA */
+    .seal {
+      width: 65px;
+      height: 65px;
+      background: linear-gradient(135deg, #d4af37, #f9e076, #aa7c11);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 3;
+      user-select: none;
+    }
+    .envelope-hint {
+      margin-top: 25px;
+      font-family: 'Playfair Display', serif;
+      color: #2a4b7c;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* CONTEÚDO PRINCIPAL DO SITE (INICIALMENTE OCULTO/BLOQUEADO) */
+    #mainContent {
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    #mainContent.visible {
+      opacity: 1;
+    }
+
     /* TOPO: FOTO DE CAPA COM ESMAECIMENTO NA PARTE INFERIOR */
     .hero-container {
       position: relative;
@@ -38,7 +131,6 @@
       justify-content: center;
       align-items: center;
       padding: 60px 20px;
-      /* Imagem Foto_site com degradê esmaecido na cor azul do fundo */
       background: 
         linear-gradient(to bottom, rgba(244, 247, 249, 0.2) 60%, #f4f7f9 100%),
         url('Foto_site.jpg') center/cover no-repeat;
@@ -95,7 +187,6 @@
       width: 100%;
       height: auto;
       display: block;
-      /* Máscara de gradiente suave para esmaecer topo e base */
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
       mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     }
@@ -187,6 +278,37 @@
       color: #aaa;
     }
 
+    /* BOTÃO FLUTUANTE DE MÚSICA */
+    .music-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
+      background-color: #2a4b7c;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .music-btn:hover {
+      transform: scale(1.1);
+      background-color: #3a5f94;
+    }
+    .music-btn.playing {
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
     /* CLASSE PARA EFEITO DE APARIÇÃO AO ROLAR */
     .reveal {
       opacity: 0;
@@ -201,64 +323,84 @@
 </head>
 <body>
 
-  <!-- CAPA PRINCIPAL (Foto_site) -->
-  <div class="hero-container">
-    <h1>Thamires & Leonardo</h1>
-    <p class="subhead">Vamos nos casar!</p>
+  <!-- ✉️ TELA DO ENVELOPE (ENTRADA DO CONVITE) -->
+  <div id="envelopeOverlay">
+    <div class="envelope-wrapper" id="envelopeBtn" onclick="abrirConvite()">
+      <div class="seal">T&L</div>
+    </div>
+    <p class="envelope-hint">Clique para abrir o convite</p>
   </div>
 
-  <div class="container">
+  <!-- BOTÃO FLUTUANTE DE MÚSICA -->
+  <button id="musicToggle" class="music-btn" title="Pausar/Tocar Ave Maria" onclick="toggleMusic()">🎵</button>
+  <audio id="bgMusic" loop>
+    <source src="https://upload.wikimedia.org/wikipedia/commons/2/22/Gounod%27s_Ave_Maria_for_Chorus.ogg" type="audio/ogg">
+    <source src="https://archive.org/download/AveMaria_201309/AveMaria.mp3" type="audio/mpeg">
+  </audio>
 
-    <!-- CONTAGEM REGRESSIVA (REVEAL) -->
-    <div class="timer-container reveal">
-      <h3>Faltam poucos dias:</h3>
-      <div id="contador">Carregando...</div>
+  <!-- CONTEÚDO PRINCIPAL DO SITE -->
+  <div id="mainContent">
+
+    <!-- CAPA PRINCIPAL (Foto_site) -->
+    <div class="hero-container">
+      <h1>Thamires & Leonardo</h1>
+      <p class="subhead">Vamos nos casar!</p>
     </div>
 
-    <!-- IMAGEM FOTO_FUNDO (NOSSA SENHORA COM BORDAS ESMAECIDAS) -->
-    <div class="imagem-fundo-container reveal">
-      <img src="Foto_fundo2.jpg" alt="Nossa Senhora">
-    </div>
+    <div class="container">
 
-    <!-- INFORMAÇÕES DA CERIMÔNIA (REVEAL) -->
-    <section class="reveal">
-      <h2>Cerimônia</h2>
-      <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
-      <p style="margin-bottom: 8px;"><strong>Horário:</strong> 10:30h</p>
-      <p><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
-    </section>
-
-    <!-- LISTA DE PRESENTES (REVEAL) -->
-    <section class="reveal">
-      <h2>Lista de Presentes (Cotas PIX)</h2>
-      <p>Sua presença é o nosso maior presente! Caso queira nos presentear com uma cota de apoio, escolha um item abaixo:</p>
-      
-      <div class="grid-presentes">
-        <div class="card">
-          <h3>Café da manhã no hotel</h3>
-          <p class="preco">R$ 50,00</p>
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Presentear</button>
-        </div>
-        <div class="card">
-          <h3>Jantar Romântico</h3>
-          <p class="preco">R$ 150,00</p>
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Presentear</button>
-        </div>
-        <div class="card">
-          <h3>Passeio na Lua de Mel</h3>
-          <p class="preco">R$ 300,00</p>
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Presentear</button>
-        </div>
+      <!-- CONTAGEM REGRESSIVA (REVEAL) -->
+      <div class="timer-container reveal">
+        <h3>Faltam poucos dias:</h3>
+        <div id="contador">Carregando...</div>
       </div>
-    </section>
 
-    <!-- CONFIRMAÇÃO DE PRESENÇA (REVEAL) -->
-    <section class="reveal">
-      <h2>Confirme sua Presença</h2>
-      <p>Por favor, informe até dia 01/10 se você poderá comparecer.</p>
-      <br>
-      <p><a href="https://forms.google.com" target="_blank" class="btn">Clique aqui para confirmar presença</a></p>
-    </section>
+      <!-- IMAGEM FOTO_FUNDO (NOSSA SENHORA COM BORDAS ESMAECIDAS) -->
+      <div class="imagem-fundo-container reveal">
+        <img src="Foto_fundo2.jpg" alt="Nossa Senhora">
+      </div>
+
+      <!-- INFORMAÇÕES DA CERIMÔNIA (REVEAL) -->
+      <section class="reveal">
+        <h2>Cerimônia</h2>
+        <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
+        <p style="margin-bottom: 8px;"><strong>Horário:</strong> 10:30h</p>
+        <p><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
+      </section>
+
+      <!-- LISTA DE PRESENTES (REVEAL) -->
+      <section class="reveal">
+        <h2>Lista de Presentes (Cotas PIX)</h2>
+        <p>Sua presença é o nosso maior presente! Caso queira nos presentear com uma cota de apoio, escolha um item abaixo:</p>
+        
+        <div class="grid-presentes">
+          <div class="card">
+            <h3>Café da manhã no hotel</h3>
+            <p class="preco">R$ 50,00</p>
+            <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Presentear</button>
+          </div>
+          <div class="card">
+            <h3>Jantar Romântico</h3>
+            <p class="preco">R$ 150,00</p>
+            <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Presentear</button>
+          </div>
+          <div class="card">
+            <h3>Passeio na Lua de Mel</h3>
+            <p class="preco">R$ 300,00</p>
+            <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Presentear</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONFIRMAÇÃO DE PRESENÇA (REVEAL) -->
+      <section class="reveal">
+        <h2>Confirme sua Presença</h2>
+        <p>Por favor, informe até dia 01/10 se você poderá comparecer.</p>
+        <br>
+        <p><a href="https://forms.google.com" target="_blank" class="btn">Clique aqui para confirmar presença</a></p>
+      </section>
+
+    </div>
 
   </div>
 
@@ -275,7 +417,33 @@
 
   <!-- LÓGICA JAVASCRIPT -->
   <script>
-    // 1. CONTAGEM REGRESSIVA
+    const audio = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicToggle');
+
+    // 1. ABRIR ENVELOPE E INICIAR ÁUDIO
+    function abrirConvite() {
+      const envelopeBtn = document.getElementById('envelopeBtn');
+      const envelopeOverlay = document.getElementById('envelopeOverlay');
+      const mainContent = document.getElementById('mainContent');
+
+      // Animação de abertura do envelope
+      envelopeBtn.classList.add('open');
+
+      // Toca a música Ave Maria
+      audio.play().then(() => {
+        musicBtn.classList.add('playing');
+        musicBtn.innerHTML = '🔊';
+      }).catch(err => console.log("Áudio bloqueado:", err));
+
+      // Transição suave para o conteúdo do site
+      setTimeout(() => {
+        envelopeOverlay.classList.add('opened');
+        mainContent.classList.add('visible');
+        revealOnScroll(); // Ativa os elementos visíveis
+      }, 600);
+    }
+
+    // 2. CONTAGEM REGRESSIVA
     const dataCasamento = new Date("2027-01-16T10:30:00").getTime();
     
     setInterval(() => {
@@ -290,7 +458,7 @@
       document.getElementById("contador").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
     }, 1000);
 
-    // 2. MODAL PIX
+    // 3. MODAL PIX
     function abrirModal(chavePix) {
       document.getElementById("pixKeyInput").value = chavePix;
       document.getElementById("pixModal").style.display = "flex";
@@ -307,7 +475,7 @@
       alert("Chave PIX copiada para a área de transferência!");
     }
 
-    // 3. ANIMAÇÃO AO ROLAR A PÁGINA (SCROLL REVEAL)
+    // 4. ANIMAÇÃO AO ROLAR A PÁGINA (SCROLL REVEAL)
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.reveal');
       const windowHeight = window.innerHeight;
@@ -323,7 +491,19 @@
     }
 
     window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
+
+    // 5. BOTÃO DE PAUSAR / TOCAR MÚSICA
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        musicBtn.classList.add('playing');
+        musicBtn.innerHTML = '🔊';
+      } else {
+        audio.pause();
+        musicBtn.classList.remove('playing');
+        musicBtn.innerHTML = '🎵';
+      }
+    }
   </script>
 </body>
 </html>
