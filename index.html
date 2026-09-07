@@ -10,14 +10,15 @@
   
   <title>Casamento de Thamires & Leonardo</title>
   <style>
-    /* Estilos Visuais Gerais - Tons de Azul Nossa Senhora */
+    /* RESET E BASE */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    html {
-      scroll-behavior: smooth;
+    html, body {
+      width: 100%;
+      height: 100%;
     }
     body {
       background-color: #f4f7f9;
@@ -28,18 +29,22 @@
       overflow-x: hidden;
     }
 
-    /* TELA DO ENVELOPE (OVERLAY INTERATIVO) */
+    /* =========================================================
+       1. TELA CHEIA DO ENVELOPE INTERATIVO DE LUXO
+       ========================================================= */
     #envelopeOverlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background-color: #eaf0f6;
+      background: radial-gradient(circle, #eaf0f6 0%, #d2deeb 100%);
       z-index: 9999;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 20px;
       transition: opacity 1.2s ease, visibility 1.2s ease;
+      perspective: 1000px;
     }
     #envelopeOverlay.opened {
       opacity: 0;
@@ -47,64 +52,93 @@
       pointer-events: none;
     }
 
-    /* DESENHO DO ENVELOPE */
-    .envelope-wrapper {
+    /* O ENVELOPE (GRANDE E CENTRALIZADO) */
+    .envelope-box {
       position: relative;
-      width: 320px;
-      height: 220px;
+      width: 90%;
+      max-width: 580px;
+      height: 380px;
       background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 15px 35px rgba(42, 75, 124, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(42, 75, 124, 0.25);
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: transform 0.3s;
+      overflow: hidden;
+      transition: transform 0.4s ease;
     }
-    .envelope-wrapper:hover {
-      transform: scale(1.03);
+    .envelope-box:hover {
+      transform: translateY(-5px) scale(1.02);
     }
-    /* Aba superior do envelope */
-    .envelope-wrapper::before {
-      content: '';
+
+    /* DBRAS LATERAIS E INFERIOR DO ENVELOPE (CSS TRIÂNGULOS) */
+    .env-fold-bottom {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 160px solid transparent;
-      border-right: 160px solid transparent;
-      border-top: 115px solid #dce5ef;
-      transform-origin: top;
-      transition: transform 0.6s ease;
+      bottom: 0; left: 0;
+      width: 0; height: 0;
+      border-left: 290px solid #f0f4f8;
+      border-right: 290px solid #f0f4f8;
+      border-top: 190px solid transparent;
       z-index: 2;
     }
-    .envelope-wrapper.open::before {
+    @media (max-width: 600px) {
+      .envelope-box { height: 300px; }
+      .env-fold-bottom {
+        border-left-width: 50vw;
+        border-right-width: 50vw;
+        border-top-width: 150px;
+      }
+    }
+
+    /* ABA SUPERIOR DO ENVELOPE (DOBRA DE ABERTURA) */
+    .env-fold-top {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 0;
+      border-left: 290px solid transparent;
+      border-right: 290px solid transparent;
+      border-top: 200px solid #d0deec;
+      transform-origin: top;
+      transition: transform 0.8s ease-in-out;
+      z-index: 3;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+    .envelope-box.open .env-fold-top {
       transform: rotateX(180deg);
     }
 
-    /* SELO DOURADO DE ABERTURA */
-    .seal {
-      width: 65px;
-      height: 65px;
-      background: linear-gradient(135deg, #d4af37, #f9e076, #aa7c11);
+    /* SELO DOURADO DE CERA COM MONOGRAMA */
+    .seal-gold {
+      position: absolute;
+      width: 85px;
+      height: 85px;
+      background: radial-gradient(circle, #f5d77f 0%, #d4af37 60%, #997415 100%);
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #ffffff;
       font-family: 'Great Vibes', cursive;
-      font-size: 1.8rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 3;
+      font-size: 2.3rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3), inset 0 0 8px rgba(255,255,255,0.5);
+      z-index: 4;
       user-select: none;
+      border: 2px solid #fbe396;
+      transition: transform 0.3s;
     }
+    .envelope-box:hover .seal-gold {
+      transform: scale(1.08);
+    }
+
     .envelope-hint {
-      margin-top: 25px;
+      margin-top: 35px;
       font-family: 'Playfair Display', serif;
       color: #2a4b7c;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
@@ -112,7 +146,7 @@
       50% { opacity: 1; }
     }
 
-    /* CONTEÚDO PRINCIPAL DO SITE (INICIALMENTE OCULTO/BLOQUEADO) */
+    /* CONTEÚDO PRINCIPAL DO SITE */
     #mainContent {
       opacity: 0;
       transition: opacity 1.5s ease;
@@ -121,7 +155,7 @@
       opacity: 1;
     }
 
-    /* TOPO: FOTO DE CAPA COM ESMAECIMENTO NA PARTE INFERIOR */
+    /* CAPA PRINCIPAL (Foto_site) */
     .hero-container {
       position: relative;
       width: 100%;
@@ -323,19 +357,22 @@
 </head>
 <body>
 
-  <!-- ✉️ TELA DO ENVELOPE (ENTRADA DO CONVITE) -->
+  <!-- ✉️ TELA DO ENVELOPE EM TELA CHEIA -->
   <div id="envelopeOverlay">
-    <div class="envelope-wrapper" id="envelopeBtn" onclick="abrirConvite()">
-      <div class="seal">T&L</div>
+    <div class="envelope-box" id="envelopeBox" onclick="abrirConvite()">
+      <div class="env-fold-top"></div>
+      <div class="env-fold-bottom"></div>
+      <div class="seal-gold">T&L</div>
     </div>
-    <p class="envelope-hint">Clique para abrir o convite</p>
+    <p class="envelope-hint">Clique no envelope para abrir</p>
   </div>
 
   <!-- BOTÃO FLUTUANTE DE MÚSICA -->
   <button id="musicToggle" class="music-btn" title="Pausar/Tocar Ave Maria" onclick="toggleMusic()">🎵</button>
-  <audio id="bgMusic" loop>
-    <source src="https://upload.wikimedia.org/wikipedia/commons/2/22/Gounod%27s_Ave_Maria_for_Chorus.ogg" type="audio/ogg">
-    <source src="https://archive.org/download/AveMaria_201309/AveMaria.mp3" type="audio/mpeg">
+  
+  <!-- ÁUDIO DA AVE MARIA (SCHUBERT) - FONTE MP3 DIRETA -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://ia800200.us.archive.org/27/items/AveMaria_201309/AveMaria.mp3" type="audio/mpeg">
   </audio>
 
   <!-- CONTEÚDO PRINCIPAL DO SITE -->
@@ -420,30 +457,37 @@
     const audio = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicToggle');
 
-    // 1. ABRIR ENVELOPE E INICIAR ÁUDIO
-    function abrirConvite() {
-      const envelopeBtn = document.getElementById('envelopeBtn');
-      const envelopeOverlay = document.getElementById('envelopeOverlay');
-      const mainContent = document.getElementById('mainContent');
-
-      // Animação de abertura do envelope
-      envelopeBtn.classList.add('open');
-
-      // Toca a música Ave Maria
+    // 1. TENTATIVA DE TOCAR MÚSICA COM TRATAMENTO DE ERRO
+    function playAudio() {
       audio.play().then(() => {
         musicBtn.classList.add('playing');
         musicBtn.innerHTML = '🔊';
-      }).catch(err => console.log("Áudio bloqueado:", err));
+      }).catch(error => {
+        console.log("Não foi possível tocar o áudio automaticamente:", error);
+      });
+    }
 
-      // Transição suave para o conteúdo do site
+    // 2. ABRIR ENVELOPE E TOCAR MÚSICA
+    function abrirConvite() {
+      const envelopeBox = document.getElementById('envelopeBox');
+      const envelopeOverlay = document.getElementById('envelopeOverlay');
+      const mainContent = document.getElementById('mainContent');
+
+      // Toca a música no momento exato do clique
+      playAudio();
+
+      // Animação de dobrar a aba para cima
+      envelopeBox.classList.add('open');
+
+      // Transição para revelar o site
       setTimeout(() => {
         envelopeOverlay.classList.add('opened');
         mainContent.classList.add('visible');
-        revealOnScroll(); // Ativa os elementos visíveis
-      }, 600);
+        revealOnScroll();
+      }, 700);
     }
 
-    // 2. CONTAGEM REGRESSIVA
+    // 3. CONTAGEM REGRESSIVA
     const dataCasamento = new Date("2027-01-16T10:30:00").getTime();
     
     setInterval(() => {
@@ -458,7 +502,7 @@
       document.getElementById("contador").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
     }, 1000);
 
-    // 3. MODAL PIX
+    // 4. MODAL PIX
     function abrirModal(chavePix) {
       document.getElementById("pixKeyInput").value = chavePix;
       document.getElementById("pixModal").style.display = "flex";
@@ -475,7 +519,7 @@
       alert("Chave PIX copiada para a área de transferência!");
     }
 
-    // 4. ANIMAÇÃO AO ROLAR A PÁGINA (SCROLL REVEAL)
+    // 5. ANIMAÇÃO AO ROLAR A PÁGINA (SCROLL REVEAL)
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.reveal');
       const windowHeight = window.innerHeight;
@@ -492,12 +536,10 @@
 
     window.addEventListener('scroll', revealOnScroll);
 
-    // 5. BOTÃO DE PAUSAR / TOCAR MÚSICA
+    // 6. BOTÃO MANUAL DE MÚSICA
     function toggleMusic() {
       if (audio.paused) {
-        audio.play();
-        musicBtn.classList.add('playing');
-        musicBtn.innerHTML = '🔊';
+        playAudio();
       } else {
         audio.pause();
         musicBtn.classList.remove('playing');
