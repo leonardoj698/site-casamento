@@ -6,11 +6,11 @@
   <!-- Fontes do Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   
   <title>Casamento de Thamires & Leonardo</title>
   <style>
-    /* RESET E BASE */
+    /* RESET BASE */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -19,32 +19,30 @@
     html, body {
       width: 100%;
       height: 100%;
-    }
-    body {
       background-color: #f4f7f9;
       color: #3b4a5a;
       text-align: center;
-      padding-bottom: 60px;
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
     }
 
     /* =========================================================
-       1. TELA CHEIA DO ENVELOPE INTERATIVO DE LUXO
+       1. ENVELOPE TELA CHEIA (TONS AZUIS & ESTILO DA FOTO)
        ========================================================= */
     #envelopeOverlay {
       position: fixed;
       top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: radial-gradient(circle, #eaf0f6 0%, #d2deeb 100%);
+      width: 100vw; 
+      height: 100vh;
+      background-color: #bcd0c7; /* Fundo em tom suave inspirando a foto */
+      background: radial-gradient(circle, #d0e0e3 0%, #a4becc 100%);
       z-index: 9999;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
       transition: opacity 1.2s ease, visibility 1.2s ease;
-      perspective: 1000px;
+      cursor: pointer;
+      overflow: hidden;
     }
     #envelopeOverlay.opened {
       opacity: 0;
@@ -52,125 +50,140 @@
       pointer-events: none;
     }
 
-    /* O ENVELOPE (GRANDE E CENTRALIZADO) */
-    .envelope-box {
+    /* ESTRUTURA DO ENVELOPE QUE OCUPA A TELA INTEIRA */
+    .full-envelope {
       position: relative;
-      width: 90%;
-      max-width: 580px;
-      height: 380px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 20px 50px rgba(42, 75, 124, 0.25);
-      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      background: #c3d5de; /* Cor base azul sereno */
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.08);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      transition: transform 0.4s ease;
-    }
-    .envelope-box:hover {
-      transform: translateY(-5px) scale(1.02);
     }
 
-    /* DBRAS LATERAIS E INFERIOR DO ENVELOPE (CSS TRIÂNGULOS) */
-    .env-fold-bottom {
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 0;
-      border-left: 290px solid #f0f4f8;
-      border-right: 290px solid #f0f4f8;
-      border-top: 190px solid transparent;
-      z-index: 2;
-    }
-    @media (max-width: 600px) {
-      .envelope-box { height: 300px; }
-      .env-fold-bottom {
-        border-left-width: 50vw;
-        border-right-width: 50vw;
-        border-top-width: 150px;
-      }
-    }
-
-    /* ABA SUPERIOR DO ENVELOPE (DOBRA DE ABERTURA) */
-    .env-fold-top {
+    /* DOBRAS SUPERIORES E INFERIORES DO ENVELOPE */
+    .fold-top {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
-      height: 0;
-      border-left: 290px solid transparent;
-      border-right: 290px solid transparent;
-      border-top: 200px solid #d0deec;
-      transform-origin: top;
+      height: 52vh;
+      background: #b5cad5;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
       transition: transform 0.8s ease-in-out;
-      z-index: 3;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      transform-origin: top;
+      z-index: 2;
     }
-    .envelope-box.open .env-fold-top {
+    .full-envelope.open .fold-top {
       transform: rotateX(180deg);
     }
 
-    /* SELO DOURADO DE CERA COM MONOGRAMA */
-    .seal-gold {
+    .fold-left {
       position: absolute;
-      width: 85px;
-      height: 85px;
-      background: radial-gradient(circle, #f5d77f 0%, #d4af37 60%, #997415 100%);
+      top: 0; left: 0;
+      width: 52vw; height: 100%;
+      background: #bbcfda;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      z-index: 1;
+    }
+
+    .fold-right {
+      position: absolute;
+      top: 0; right: 0;
+      width: 52vw; height: 100%;
+      background: #b2c7d2;
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+      z-index: 1;
+    }
+
+    .fold-bottom {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 52vh;
+      background: #a9bfc8;
+      clip-path: polygon(0 100%, 100% 100%, 50% 0);
+      z-index: 1;
+    }
+
+    /* SELO CENTRAL REDONDO COM FLORES */
+    .seal-container {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .seal-container:hover {
+      transform: scale(1.05);
+    }
+
+    /* RAMOS BOTÂNICOS ATRÁS DO SELO */
+    .botanical-decor {
+      font-size: 2.2rem;
+      margin-bottom: -22px;
+      z-index: 5;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+      user-select: none;
+    }
+
+    /* CERA BEGE CLARA COM RELEVO BOTÂNICO */
+    .seal-wax {
+      width: 110px;
+      height: 110px;
+      background: radial-gradient(circle, #f7f3e8 0%, #ebdcc8 100%);
       border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.8);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #ffffff;
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.3rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3), inset 0 0 8px rgba(255,255,255,0.5);
-      z-index: 4;
-      user-select: none;
-      border: 2px solid #fbe396;
-      transition: transform 0.3s;
-    }
-    .envelope-box:hover .seal-gold {
-      transform: scale(1.08);
+      border: 3px solid #fdfbf7;
     }
 
-    .envelope-hint {
-      margin-top: 35px;
-      font-family: 'Playfair Display', serif;
-      color: #2a4b7c;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
+    .seal-inner-icon {
+      font-size: 2.5rem;
+      color: #928373;
+      opacity: 0.85;
     }
 
-    /* CONTEÚDO PRINCIPAL DO SITE */
+    .click-hint {
+      margin-top: 25px;
+      font-family: 'Alex Brush', cursive, serif;
+      font-size: 1.8rem;
+      color: #3b5063;
+      letter-spacing: 1px;
+      opacity: 0.85;
+    }
+
+    /* =========================================================
+       2. CONTEÚDO PRINCIPAL DO SITE
+       ========================================================= */
     #mainContent {
       opacity: 0;
       transition: opacity 1.5s ease;
+      padding-bottom: 60px;
     }
     #mainContent.visible {
       opacity: 1;
     }
 
-    /* CAPA PRINCIPAL (Foto_site) */
     .hero-container {
       position: relative;
       width: 100%;
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 60px 20px;
       background: 
-        linear-gradient(to bottom, rgba(244, 247, 249, 0.2) 60%, #f4f7f9 100%),
+        linear-gradient(to bottom, rgba(244, 247, 249, 0.3) 60%, #f4f7f9 100%),
         url('Foto_site.jpg') center/cover no-repeat;
     }
 
-    /* TÍTULO DO CASAL */
     h1 {
       font-family: 'Great Vibes', cursive !important;
       font-size: 5rem !important;
@@ -211,7 +224,7 @@
       font-family: 'Playfair Display', serif;
     }
 
-    /* FOTO_FUNDO (NOSSA SENHORA) - ESMAECIDA EM CIMA E EM BAIXO */
+    /* FOTO FUNDO NOSSA SENHORA */
     .imagem-fundo-container {
       margin: 40px auto;
       max-width: 800px;
@@ -225,10 +238,8 @@
       mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     }
 
-    /* SEÇÕES E ANIMAÇÃO REVEAL */
-    section {
-      margin: 60px 0;
-    }
+    /* SEÇÕES */
+    section { margin: 60px 0; }
     h2 {
       font-family: 'Playfair Display', serif !important;
       color: #2a4b7c;
@@ -282,11 +293,31 @@
       text-decoration: none;
       display: inline-block;
     }
-    .btn:hover {
-      background-color: #325573;
-    }
+    .btn:hover { background-color: #325573; }
 
-    /* MODAL DO PIX */
+    /* BOTÃO DE MÚSICA FLUTUANTE */
+    .music-btn {
+      position: fixed;
+      bottom: 25px; right: 25px;
+      width: 52px; height: 52px;
+      background-color: #2a4b7c;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .music-btn:hover { transform: scale(1.1); background-color: #3a5f94; }
+    .music-btn.playing { animation: spin 4s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* MODAL PIX */
     .modal {
       display: none;
       position: fixed;
@@ -294,7 +325,7 @@
       background: rgba(20, 35, 55, 0.6);
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      z-index: 10000;
     }
     .modal-content {
       background: #fff;
@@ -312,38 +343,6 @@
       color: #aaa;
     }
 
-    /* BOTÃO FLUTUANTE DE MÚSICA */
-    .music-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 50px;
-      height: 50px;
-      background-color: #2a4b7c;
-      color: #ffffff;
-      border: none;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      cursor: pointer;
-      z-index: 999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.3rem;
-      transition: transform 0.2s, background-color 0.2s;
-    }
-    .music-btn:hover {
-      transform: scale(1.1);
-      background-color: #3a5f94;
-    }
-    .music-btn.playing {
-      animation: spin 4s linear infinite;
-    }
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-
-    /* CLASSE PARA EFEITO DE APARIÇÃO AO ROLAR */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -357,28 +356,35 @@
 </head>
 <body>
 
-  <!-- ✉️ TELA DO ENVELOPE EM TELA CHEIA -->
-  <div id="envelopeOverlay">
-    <div class="envelope-box" id="envelopeBox" onclick="abrirConvite()">
-      <div class="env-fold-top"></div>
-      <div class="env-fold-bottom"></div>
-      <div class="seal-gold">T&L</div>
+  <!-- ✉️ TELA DO ENVELOPE (TELA CHEIA E TONS AZUIS) -->
+  <div id="envelopeOverlay" onclick="abrirConvite()">
+    <div class="full-envelope" id="envelopeBox">
+      <div class="fold-top"></div>
+      <div class="fold-left"></div>
+      <div class="fold-right"></div>
+      <div class="fold-bottom"></div>
+
+      <div class="seal-container">
+        <div class="botanical-decor">🌿🪻</div>
+        <div class="seal-wax">
+          <span class="seal-inner-icon">🌿</span>
+        </div>
+        <p class="click-hint">clique para abrir</p>
+      </div>
     </div>
-    <p class="envelope-hint">Clique no envelope para abrir</p>
   </div>
 
   <!-- BOTÃO FLUTUANTE DE MÚSICA -->
-  <button id="musicToggle" class="music-btn" title="Pausar/Tocar Ave Maria" onclick="toggleMusic()">🎵</button>
+  <button id="musicToggle" class="music-btn" title="Tocar/Pausar Música" onclick="toggleMusic()">🎵</button>
   
-  <!-- ÁUDIO DA AVE MARIA (SCHUBERT) - FONTE MP3 DIRETA -->
+  <!-- ÁUDIO DA AVE MARIA (BACH/GOUNOD) NO PIANO (ARQUIVO MP3 DIRETO) -->
   <audio id="bgMusic" loop preload="auto">
-    <source src="https://ia800200.us.archive.org/27/items/AveMaria_201309/AveMaria.mp3" type="audio/mpeg">
+    <source src="https://www.orangefreesounds.com/wp-content/uploads/2018/04/Ave-maria-bach-gounod-piano-and-cello-music.mp3" type="audio/mpeg">
   </audio>
 
   <!-- CONTEÚDO PRINCIPAL DO SITE -->
   <div id="mainContent">
 
-    <!-- CAPA PRINCIPAL (Foto_site) -->
     <div class="hero-container">
       <h1>Thamires & Leonardo</h1>
       <p class="subhead">Vamos nos casar!</p>
@@ -386,18 +392,15 @@
 
     <div class="container">
 
-      <!-- CONTAGEM REGRESSIVA (REVEAL) -->
       <div class="timer-container reveal">
         <h3>Faltam poucos dias:</h3>
         <div id="contador">Carregando...</div>
       </div>
 
-      <!-- IMAGEM FOTO_FUNDO (NOSSA SENHORA COM BORDAS ESMAECIDAS) -->
       <div class="imagem-fundo-container reveal">
         <img src="Foto_fundo2.jpg" alt="Nossa Senhora">
       </div>
 
-      <!-- INFORMAÇÕES DA CERIMÔNIA (REVEAL) -->
       <section class="reveal">
         <h2>Cerimônia</h2>
         <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
@@ -405,7 +408,6 @@
         <p><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
       </section>
 
-      <!-- LISTA DE PRESENTES (REVEAL) -->
       <section class="reveal">
         <h2>Lista de Presentes (Cotas PIX)</h2>
         <p>Sua presença é o nosso maior presente! Caso queira nos presentear com uma cota de apoio, escolha um item abaixo:</p>
@@ -429,7 +431,6 @@
         </div>
       </section>
 
-      <!-- CONFIRMAÇÃO DE PRESENÇA (REVEAL) -->
       <section class="reveal">
         <h2>Confirme sua Presença</h2>
         <p>Por favor, informe até dia 01/10 se você poderá comparecer.</p>
@@ -452,31 +453,31 @@
     </div>
   </div>
 
-  <!-- LÓGICA JAVASCRIPT -->
+  <!-- JAVASCRIPT -->
   <script>
     const audio = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicToggle');
 
-    // 1. TENTATIVA DE TOCAR MÚSICA COM TRATAMENTO DE ERRO
+    // TENTA TOCAR A MÚSICA
     function playAudio() {
       audio.play().then(() => {
         musicBtn.classList.add('playing');
         musicBtn.innerHTML = '🔊';
-      }).catch(error => {
-        console.log("Não foi possível tocar o áudio automaticamente:", error);
+      }).catch(err => {
+        console.log("Aguardando ação direta do usuário...", err);
       });
     }
 
-    // 2. ABRIR ENVELOPE E TOCAR MÚSICA
+    // ABRIR CONVITE
     function abrirConvite() {
       const envelopeBox = document.getElementById('envelopeBox');
       const envelopeOverlay = document.getElementById('envelopeOverlay');
       const mainContent = document.getElementById('mainContent');
 
-      // Toca a música no momento exato do clique
+      // Dispara a música
       playAudio();
 
-      // Animação de dobrar a aba para cima
+      // Animação da aba
       envelopeBox.classList.add('open');
 
       // Transição para revelar o site
@@ -487,9 +488,19 @@
       }, 700);
     }
 
-    // 3. CONTAGEM REGRESSIVA
+    // BOTÃO MANUAL DE MÚSICA
+    function toggleMusic() {
+      if (audio.paused) {
+        playAudio();
+      } else {
+        audio.pause();
+        musicBtn.classList.remove('playing');
+        musicBtn.innerHTML = '🎵';
+      }
+    }
+
+    // CONTAGEM REGRESSIVA
     const dataCasamento = new Date("2027-01-16T10:30:00").getTime();
-    
     setInterval(() => {
       const agora = new Date().getTime();
       const diferenca = dataCasamento - agora;
@@ -502,7 +513,7 @@
       document.getElementById("contador").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
     }, 1000);
 
-    // 4. MODAL PIX
+    // MODAL PIX
     function abrirModal(chavePix) {
       document.getElementById("pixKeyInput").value = chavePix;
       document.getElementById("pixModal").style.display = "flex";
@@ -516,36 +527,23 @@
       const input = document.getElementById("pixKeyInput");
       input.select();
       navigator.clipboard.writeText(input.value);
-      alert("Chave PIX copiada para a área de transferência!");
+      alert("Chave PIX copiada!");
     }
 
-    // 5. ANIMAÇÃO AO ROLAR A PÁGINA (SCROLL REVEAL)
+    // ANIMAÇÃO DE SCROLL REVEAL
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.reveal');
       const windowHeight = window.innerHeight;
 
       reveals.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 100;
-
-        if (elementTop < windowHeight - revealPoint) {
+        if (elementTop < windowHeight - 100) {
           element.classList.add('active');
         }
       });
     }
 
     window.addEventListener('scroll', revealOnScroll);
-
-    // 6. BOTÃO MANUAL DE MÚSICA
-    function toggleMusic() {
-      if (audio.paused) {
-        playAudio();
-      } else {
-        audio.pause();
-        musicBtn.classList.remove('playing');
-        musicBtn.innerHTML = '🎵';
-      }
-    }
   </script>
 </body>
 </html>
