@@ -34,10 +34,16 @@
     .hero-container { position: relative; width: 100%; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 20px; background: linear-gradient(to bottom, rgba(244, 247, 249, 0.1) 50%, #f4f7f9 100%), url('Foto_site.jpg') center/cover no-repeat; }
     h1 { font-family: 'Great Vibes', cursive !important; font-size: 5rem !important; color: #2a4b7c; margin-bottom: 10px; font-weight: normal; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9); }
     p.subhead { font-size: 1.2rem; color: #4a627a; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; text-shadow: 0 1px 5px rgba(255, 255, 255, 0.9); }
-    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+    
+    /* LARGURA MÁXIMA AUMENTADA PARA 1200PX AQUI */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
     .timer-container { margin: 40px 0 50px; padding: 30px; background: #ffffff; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.05); }
     #contador { font-size: 2.2rem; font-weight: bold; color: #3a5f94; margin-top: 10px; font-family: 'Playfair Display', serif; }
-    .imagem-fundo-container { margin: 40px auto; max-width: 800px; width: 100%; }
+    
+    /* LARGURA MÁXIMA AUMENTADA PARA 1200PX AQUI TAMBÉM */
+    .imagem-fundo-container { margin: 40px auto; max-width: 1200px; width: 100%; }
+    
     .imagem-fundo-container img { width: 100%; height: auto; display: block; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); }
     section { margin: 60px 0; }
     h2 { font-family: 'Playfair Display', serif !important; color: #2a4b7c; margin-bottom: 20px; font-size: 2.2rem !important; border-bottom: 2px solid #d0deec; display: inline-block; padding-bottom: 5px; font-weight: 500; }
@@ -56,11 +62,11 @@
     .close-lista:hover { background: #eaf0f6; }
     
     /* BARRA DE FILTROS E BUSCA */
-    .filtros-container { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px auto 40px; max-width: 1100px; justify-content: center; }
+    .filtros-container { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px auto 40px; max-width: 1200px; justify-content: center; }
     .filtro-input, .filtro-select { padding: 12px 18px; border: 1px solid #c0d1e0; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #3b4a5a; outline: none; flex: 1 1 250px; max-width: 350px; background: #fff; transition: box-shadow 0.2s, border-color 0.2s; }
     .filtro-input:focus, .filtro-select:focus { border-color: #4b779a; box-shadow: 0 0 8px rgba(75, 119, 154, 0.3); }
 
-    .grid-presentes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+    .grid-presentes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin-left: auto; margin-right: auto; }
     
     /* CARTÃO E LÓGICA DE PRESENTE RESERVADO/ESGOTADO */
     .card { position: relative; background: #fff; border: 1px solid #dbe4ed; border-radius: 12px; padding: 25px 20px; box-shadow: 0 4px 12px rgba(42, 75, 124, 0.04); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
@@ -126,7 +132,8 @@
       </div>
 
       <div class="imagem-fundo-container reveal">
-        <img src="Foto_fundo2.jpg" alt="Nossa Senhora">
+        <!-- O "?v=2" FOI ADICIONADO AQUI PARA FORÇAR A ATUALIZAÇÃO DA IMAGEM -->
+        <img src="Foto_fundo2.jpg?v=2" alt="Nossa Senhora">
       </div>
 
       <section class="reveal">
