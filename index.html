@@ -34,16 +34,10 @@
     .hero-container { position: relative; width: 100%; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 20px; background: linear-gradient(to bottom, rgba(244, 247, 249, 0.1) 50%, #f4f7f9 100%), url('Foto_site.jpg') center/cover no-repeat; }
     h1 { font-family: 'Great Vibes', cursive !important; font-size: 5rem !important; color: #2a4b7c; margin-bottom: 10px; font-weight: normal; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9); }
     p.subhead { font-size: 1.2rem; color: #4a627a; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; text-shadow: 0 1px 5px rgba(255, 255, 255, 0.9); }
-    
-    /* LARGURA MÁXIMA AUMENTADA PARA 1200PX AQUI */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    
     .timer-container { margin: 40px 0 50px; padding: 30px; background: #ffffff; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.05); }
     #contador { font-size: 2.2rem; font-weight: bold; color: #3a5f94; margin-top: 10px; font-family: 'Playfair Display', serif; }
-    
-    /* LARGURA MÁXIMA AUMENTADA PARA 1200PX AQUI TAMBÉM */
     .imagem-fundo-container { margin: 40px auto; max-width: 1200px; width: 100%; }
-    
     .imagem-fundo-container img { width: 100%; height: auto; display: block; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); }
     section { margin: 60px 0; }
     h2 { font-family: 'Playfair Display', serif !important; color: #2a4b7c; margin-bottom: 20px; font-size: 2.2rem !important; border-bottom: 2px solid #d0deec; display: inline-block; padding-bottom: 5px; font-weight: 500; }
@@ -132,7 +126,6 @@
       </div>
 
       <div class="imagem-fundo-container reveal">
-        <!-- O "?v=2" FOI ADICIONADO AQUI PARA FORÇAR A ATUALIZAÇÃO DA IMAGEM -->
         <img src="Foto_fundo2.jpg?v=2" alt="Nossa Senhora">
       </div>
 
@@ -140,7 +133,8 @@
         <h2>Cerimônia</h2>
         <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
         <p style="margin-bottom: 8px;"><strong>Horário:</strong> 10:30h</p>
-        <p><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
+        <p style="margin-bottom: 15px;"><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Silvio+Modesto+de+Souza,+240,+Lavras,+Minas+Gerais" target="_blank" class="btn" style="margin-top: 5px;">📍 Ver no Google Maps</a>
       </section>
 
       <!-- BOTÃO PARA ABRIR A LISTA COMPLETA -->
@@ -150,13 +144,6 @@
           Montamos nossa casa com muito carinho. Você pode nos abençoar contribuindo com uma cota via PIX, comprando o presente nos nossos links ou marcando o item que já escolheu.
         </p>
         <button class="btn btn-large" onclick="abrirListaCompleta()">🎁 Ver Lista Completa de Presentes</button>
-      </section>
-
-      <section class="reveal">
-        <h2>Confirme sua Presença</h2>
-        <p>Por favor, informe até dia 01/10 se você poderá comparecer.</p>
-        <br>
-        <p><a href="https://forms.google.com" target="_blank" class="btn">Clique aqui para confirmar presença</a></p>
       </section>
     </div>
   </div>
