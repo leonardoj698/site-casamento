@@ -50,19 +50,29 @@
     .music-btn.playing { animation: spin 4s linear infinite; }
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    /* LISTA COMPLETA OVERLAY */
+    /* LISTA COMPLETA OVERLAY E FILTROS */
     #listaCompletaOverlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #f4f7f9; z-index: 100000; overflow-y: auto; padding: 40px 20px 80px; }
     .close-lista { position: fixed; top: 20px; right: 30px; font-size: 1.2rem; cursor: pointer; color: #2a4b7c; font-weight: bold; background: #fff; padding: 10px 20px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 100001; border: 1px solid #dbe4ed; }
     .close-lista:hover { background: #eaf0f6; }
-    .grid-presentes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+    
+    /* BARRA DE FILTROS E BUSCA */
+    .filtros-container { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px auto 40px; max-width: 1100px; justify-content: center; }
+    .filtro-input, .filtro-select { padding: 12px 18px; border: 1px solid #c0d1e0; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #3b4a5a; outline: none; flex: 1 1 250px; max-width: 350px; background: #fff; transition: box-shadow 0.2s, border-color 0.2s; }
+    .filtro-input:focus, .filtro-select:focus { border-color: #4b779a; box-shadow: 0 0 8px rgba(75, 119, 154, 0.3); }
+
+    .grid-presentes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin-left: auto; margin-right: auto; }
     
     /* CARTÃO E LÓGICA DE PRESENTE RESERVADO/ESGOTADO */
     .card { position: relative; background: #fff; border: 1px solid #dbe4ed; border-radius: 12px; padding: 25px 20px; box-shadow: 0 4px 12px rgba(42, 75, 124, 0.04); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(42, 75, 124, 0.1); }
+    
+    /* IMAGEM DO PRODUTO */
+    .foto-presente { width: 100%; height: 180px; object-fit: contain; border-bottom: 1px solid #eef2f5; margin-bottom: 15px; padding-bottom: 15px; }
+
     .card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #2a4b7c; margin-bottom: 8px; line-height: 1.3;}
     .card .preco { color: #3a5f94; font-weight: bold; margin-bottom: 15px; font-size: 1.1rem; }
     .botoes-acao { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-    .btn-loja { background-color: #f7f3e8; color: #8c7d6b; border: 1px solid #e8decb; }
+    .btn-loja { background-color: #f7f3e8; color: #8c7d6b; border: 1px solid #e8decb; text-align: center; }
     .btn-loja:hover { background-color: #e8decb; color: #5a4f41; }
     .btn-reservar { background-color: #eaf0f6; color: #3a5f94; border: 1px solid #c0d1e0; font-weight: 600; }
     .btn-reservar:hover { background-color: #d0deec; }
@@ -149,13 +159,35 @@
     <span class="close-lista" onclick="fecharListaCompleta()">✖ Voltar ao Convite</span>
     
     <h2 style="margin-top: 20px;">Nossa Lista de Presentes</h2>
-    <p>Escolha a melhor forma de nos presentear:</p>
+    <p style="margin-bottom: 10px;">Escolha a melhor forma de nos presentear:</p>
 
-    <div class="grid-presentes">
+    <!-- BARRA DE FILTROS E BUSCA -->
+    <div class="filtros-container">
+      <input type="text" id="buscaPresente" class="filtro-input" placeholder="🔍 Buscar presente pelo nome..." onkeyup="filtrarEOrdenar()">
       
-      <!-- ITENS GRANDES E ELETRODOMÉSTICOS -->
-      <div class="card">
+      <select id="filtroCategoria" class="filtro-select" onchange="filtrarEOrdenar()">
+        <option value="todas">✨ Todas as Categorias</option>
+        <option value="eletro">🔌 Eletrodomésticos & Eletroportáteis</option>
+        <option value="fe">🙏 Fé & Oratório</option>
+        <option value="cozinha">🍳 Cozinha & Mesa Posta</option>
+        <option value="cama-mesa-banho">🛏️ Cama, Mesa & Banho</option>
+        <option value="utilidades">🧹 Limpeza & Utilidades</option>
+      </select>
+
+      <select id="ordenarPreco" class="filtro-select" onchange="filtrarEOrdenar()">
+        <option value="padrao">⭐ Ordenar: Sugestões</option>
+        <option value="menor">⬇️ Menor Preço</option>
+        <option value="maior">⬆️ Maior Preço</option>
+      </select>
+    </div>
+
+    <!-- GRID DE PRESENTES -->
+    <div class="grid-presentes" id="gridPresentes">
+      
+      <!-- ITENS -->
+      <div class="card" data-id="1" data-categoria="eletro" data-preco="2200.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Máquina de Lavar Roupas 15kg" class="foto-presente">
         <h3>Máquina de Lavar Roupas 15kg</h3>
         <p class="preco">Cota: R$ 2.200,00</p>
         <div class="botoes-acao">
@@ -165,8 +197,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="2" data-categoria="eletro" data-preco="400.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Forno Elétrico" class="foto-presente">
         <h3>Forno Elétrico (36L a 46L)</h3>
         <p class="preco">Cota: R$ 400,00</p>
         <div class="botoes-acao">
@@ -176,8 +209,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="3" data-categoria="eletro" data-preco="450.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Fritadeira Airfryer" class="foto-presente">
         <h3>Fritadeira Airfryer (4L a 5L)</h3>
         <p class="preco">Cota: R$ 450,00</p>
         <div class="botoes-acao">
@@ -187,9 +221,9 @@
         </div>
       </div>
 
-      <!-- FÉ E ORATÓRIO -->
-      <div class="card">
+      <div class="card" data-id="4" data-categoria="fe" data-preco="650.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Imagem Santa Rita de Cássia" class="foto-presente">
         <h3>Imagem Santa Rita de Cássia 60cm</h3>
         <p class="preco">Cota: R$ 650,00</p>
         <div class="botoes-acao">
@@ -199,8 +233,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="5" data-categoria="fe" data-preco="250.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Quadro da Santa Ceia" class="foto-presente">
         <h3>Quadro da Santa Ceia</h3>
         <p class="preco">Cota: R$ 250,00</p>
         <div class="botoes-acao">
@@ -210,8 +245,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="6" data-categoria="fe" data-preco="120.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Nicho de Parede para Oratório" class="foto-presente">
         <h3>Nicho de Parede para Oratório</h3>
         <p class="preco">Cota: R$ 120,00</p>
         <div class="botoes-acao">
@@ -221,8 +257,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="7" data-categoria="fe" data-preco="160.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Bíblia de Estudos Ave-Maria" class="foto-presente">
         <h3>Bíblia de Estudos Ave-Maria</h3>
         <p class="preco">Cota: R$ 160,00</p>
         <div class="botoes-acao">
@@ -232,9 +269,9 @@
         </div>
       </div>
 
-      <!-- COZINHA E ELETROPORTÁTEIS -->
-      <div class="card">
+      <div class="card" data-id="8" data-categoria="eletro" data-preco="550.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Purificador de Água Colormaq" class="foto-presente">
         <h3>Purificador de Água Colormaq</h3>
         <p class="preco">Cota: R$ 550,00</p>
         <div class="botoes-acao">
@@ -244,8 +281,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="9" data-categoria="cozinha" data-preco="450.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Panelas Cerâmica" class="foto-presente">
         <h3>Jogo de Panelas Cerâmica</h3>
         <p class="preco">Cota: R$ 450,00</p>
         <div class="botoes-acao">
@@ -255,8 +293,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="10" data-categoria="eletro" data-preco="150.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Panela de Arroz Elétrica" class="foto-presente">
         <h3>Panela de Arroz Elétrica</h3>
         <p class="preco">Cota: R$ 150,00</p>
         <div class="botoes-acao">
@@ -266,8 +305,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="11" data-categoria="eletro" data-preco="90.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Sanduicheira e Grill" class="foto-presente">
         <h3>Sanduicheira e Grill</h3>
         <p class="preco">Cota: R$ 90,00</p>
         <div class="botoes-acao">
@@ -277,8 +317,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="12" data-categoria="eletro" data-preco="120.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Liquidificador Turbo" class="foto-presente">
         <h3>Liquidificador Turbo</h3>
         <p class="preco">Cota: R$ 120,00</p>
         <div class="botoes-acao">
@@ -288,8 +329,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="13" data-categoria="eletro" data-preco="280.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Liquidificador Clássico Jarra de Vidro" class="foto-presente">
         <h3>Liquidificador Clássico Jarra de Vidro</h3>
         <p class="preco">Cota: R$ 280,00</p>
         <div class="botoes-acao">
@@ -299,8 +341,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="14" data-categoria="eletro" data-preco="75.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Espremedor de Frutas Elétrico" class="foto-presente">
         <h3>Espremedor de Frutas Elétrico</h3>
         <p class="preco">Cota: R$ 75,00</p>
         <div class="botoes-acao">
@@ -310,8 +353,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="15" data-categoria="eletro" data-preco="95.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Mixer de Mão" class="foto-presente">
         <h3>Mixer de Mão</h3>
         <p class="preco">Cota: R$ 95,00</p>
         <div class="botoes-acao">
@@ -321,9 +365,9 @@
         </div>
       </div>
 
-      <!-- MESA POSTA E UTENSÍLIOS -->
-      <div class="card">
+      <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Aparelho de Jantar e Chá" class="foto-presente">
         <h3>Aparelho de Jantar e Chá (20 Peças)</h3>
         <p class="preco">Cota: R$ 350,00</p>
         <div class="botoes-acao">
@@ -333,8 +377,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="17" data-categoria="cozinha" data-preco="180.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Prato Giratório de Mesa" class="foto-presente">
         <h3>Prato Giratório de Mesa</h3>
         <p class="preco">Cota: R$ 180,00</p>
         <div class="botoes-acao">
@@ -344,8 +389,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="18" data-categoria="cozinha" data-preco="130.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Faqueiro Inox" class="foto-presente">
         <h3>Faqueiro Inox (24 a 36 Peças)</h3>
         <p class="preco">Cota: R$ 130,00</p>
         <div class="botoes-acao">
@@ -355,8 +401,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="19" data-categoria="cozinha" data-preco="140.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Kit de Frigideiras Antiaderentes" class="foto-presente">
         <h3>Kit de Frigideiras Antiaderentes</h3>
         <p class="preco">Cota: R$ 140,00</p>
         <div class="botoes-acao">
@@ -366,8 +413,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="20" data-categoria="cozinha" data-preco="95.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Assadeiras de Vidro" class="foto-presente">
         <h3>Conjunto de Assadeiras de Vidro</h3>
         <p class="preco">Cota: R$ 95,00</p>
         <div class="botoes-acao">
@@ -377,8 +425,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="21" data-categoria="cozinha" data-preco="150.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Potes de Vidro Herméticos" class="foto-presente">
         <h3>Potes de Vidro Herméticos (Bambu)</h3>
         <p class="preco">Cota: R$ 150,00</p>
         <div class="botoes-acao">
@@ -388,8 +437,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="22" data-categoria="cozinha" data-preco="120.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Xícaras de Porcelana" class="foto-presente">
         <h3>Conjunto de Xícaras de Porcelana</h3>
         <p class="preco">Cota: R$ 120,00</p>
         <div class="botoes-acao">
@@ -399,8 +449,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="23" data-categoria="cozinha" data-preco="40.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Copos de Vidro" class="foto-presente">
         <h3>Conjunto de Copos de Vidro (6 Peças)</h3>
         <p class="preco">Cota: R$ 40,00</p>
         <div class="botoes-acao">
@@ -410,8 +461,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="24" data-categoria="cozinha" data-preco="70.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Taças para Água/Vinho" class="foto-presente">
         <h3>Jogo de Taças para Água/Vinho</h3>
         <p class="preco">Cota: R$ 70,00</p>
         <div class="botoes-acao">
@@ -421,8 +473,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="25" data-categoria="cozinha" data-preco="50.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jarra de Vidro para Suco" class="foto-presente">
         <h3>Jarra de Vidro para Suco</h3>
         <p class="preco">Cota: R$ 50,00</p>
         <div class="botoes-acao">
@@ -432,8 +485,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="26" data-categoria="cozinha" data-preco="90.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto Pratos de Vidro Marinex" class="foto-presente">
         <h3>Conjunto Pratos de Vidro Marinex</h3>
         <p class="preco">Cota: R$ 90,00</p>
         <div class="botoes-acao">
@@ -443,8 +497,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="27" data-categoria="cama-mesa-banho" data-preco="70.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo Americano" class="foto-presente">
         <h3>Jogo Americano (6 peças)</h3>
         <p class="preco">Cota: R$ 70,00</p>
         <div class="botoes-acao">
@@ -454,8 +509,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="28" data-categoria="cama-mesa-banho" data-preco="90.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Toalha de Mesa" class="foto-presente">
         <h3>Toalha de Mesa</h3>
         <p class="preco">Cota: R$ 90,00</p>
         <div class="botoes-acao">
@@ -465,8 +521,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="29" data-categoria="cozinha" data-preco="60.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Potes de Vidro para Biscoitos" class="foto-presente">
         <h3>Potes de Vidro para Biscoitos</h3>
         <p class="preco">Cota: R$ 60,00</p>
         <div class="botoes-acao">
@@ -476,8 +533,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="30" data-categoria="cozinha" data-preco="60.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Potes de Sobremesa" class="foto-presente">
         <h3>Conjunto de Potes de Sobremesa</h3>
         <p class="preco">Cota: R$ 60,00</p>
         <div class="botoes-acao">
@@ -487,8 +545,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="31" data-categoria="cozinha" data-preco="90.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Leiteiras" class="foto-presente">
         <h3>Conjunto de Leiteiras</h3>
         <p class="preco">Cota: R$ 90,00</p>
         <div class="botoes-acao">
@@ -498,8 +557,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="32" data-categoria="cozinha" data-preco="45.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Tábua de Corte de Vidro" class="foto-presente">
         <h3>Tábua de Corte de Vidro</h3>
         <p class="preco">Cota: R$ 45,00</p>
         <div class="botoes-acao">
@@ -509,8 +569,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="33" data-categoria="cozinha" data-preco="75.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Garrafa Térmica" class="foto-presente">
         <h3>Garrafa Térmica (1 Litro)</h3>
         <p class="preco">Cota: R$ 75,00</p>
         <div class="botoes-acao">
@@ -520,8 +581,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="34" data-categoria="cozinha" data-preco="65.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto Utensílios de Silicone" class="foto-presente">
         <h3>Conjunto Utensílios de Silicone</h3>
         <p class="preco">Cota: R$ 65,00</p>
         <div class="botoes-acao">
@@ -531,8 +593,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="35" data-categoria="cozinha" data-preco="55.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Forma de Bolo/Pudim" class="foto-presente">
         <h3>Forma de Bolo/Pudim Antiaderente</h3>
         <p class="preco">Cota: R$ 55,00</p>
         <div class="botoes-acao">
@@ -542,9 +605,9 @@
         </div>
       </div>
 
-      <!-- LIMPEZA E UTILIDADES -->
-      <div class="card">
+      <div class="card" data-id="36" data-categoria="utilidades" data-preco="420.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Lavadora de Alta Pressão WAP" class="foto-presente">
         <h3>Lavadora de Alta Pressão WAP</h3>
         <p class="preco">Cota: R$ 420,00</p>
         <div class="botoes-acao">
@@ -554,8 +617,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="37" data-categoria="eletro" data-preco="220.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Aspirador de Pó Vertical" class="foto-presente">
         <h3>Aspirador de Pó Vertical</h3>
         <p class="preco">Cota: R$ 220,00</p>
         <div class="botoes-acao">
@@ -565,8 +629,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="38" data-categoria="utilidades" data-preco="90.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Mop Giratório Fit" class="foto-presente">
         <h3>Mop Giratório Fit</h3>
         <p class="preco">Cota: R$ 90,00</p>
         <div class="botoes-acao">
@@ -576,8 +641,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="39" data-categoria="utilidades" data-preco="110.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Varal de Chão com Abas" class="foto-presente">
         <h3>Varal de Chão com Abas</h3>
         <p class="preco">Cota: R$ 110,00</p>
         <div class="botoes-acao">
@@ -587,8 +653,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="40" data-categoria="utilidades" data-preco="60.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Varal Retrátil de Carretel" class="foto-presente">
         <h3>Varal Retrátil de Carretel</h3>
         <p class="preco">Cota: R$ 60,00</p>
         <div class="botoes-acao">
@@ -598,8 +665,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="41" data-categoria="utilidades" data-preco="45.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Kit Baldes Plásticos" class="foto-presente">
         <h3>Kit Baldes Plásticos Reforçados</h3>
         <p class="preco">Cota: R$ 45,00</p>
         <div class="botoes-acao">
@@ -609,8 +677,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="42" data-categoria="eletro" data-preco="85.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Ferro de Passar a Vapor" class="foto-presente">
         <h3>Ferro de Passar a Vapor</h3>
         <p class="preco">Cota: R$ 85,00</p>
         <div class="botoes-acao">
@@ -620,8 +689,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="43" data-categoria="utilidades" data-preco="65.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Lixeira Inox com Pedal" class="foto-presente">
         <h3>Lixeira Inox com Pedal (5L)</h3>
         <p class="preco">Cota: R$ 65,00</p>
         <div class="botoes-acao">
@@ -631,9 +701,9 @@
         </div>
       </div>
       
-      <!-- CAMA, MESA E BANHO -->
-      <div class="card">
+      <div class="card" data-id="44" data-categoria="cama-mesa-banho" data-preco="320.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Cama Queen" class="foto-presente">
         <h3>Jogo de Cama Queen 200 Fios</h3>
         <p class="preco">Cota: R$ 320,00</p>
         <div class="botoes-acao">
@@ -643,8 +713,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="45" data-categoria="cama-mesa-banho" data-preco="140.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Toalhas de Banho" class="foto-presente">
         <h3>Jogo de Toalhas de Banho</h3>
         <p class="preco">Cota: R$ 140,00</p>
         <div class="botoes-acao">
@@ -654,8 +725,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="46" data-categoria="cama-mesa-banho" data-preco="80.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Manta de Microfibra" class="foto-presente">
         <h3>Manta de Microfibra Casal/Queen</h3>
         <p class="preco">Cota: R$ 80,00</p>
         <div class="botoes-acao">
@@ -665,8 +737,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="47" data-categoria="cama-mesa-banho" data-preco="70.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Protetor de Colchão Impermeável" class="foto-presente">
         <h3>Protetor de Colchão Impermeável</h3>
         <p class="preco">Cota: R$ 70,00</p>
         <div class="botoes-acao">
@@ -676,8 +749,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="48" data-categoria="cama-mesa-banho" data-preco="70.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Tapete de Banho" class="foto-presente">
         <h3>Conjunto de Tapete de Banho</h3>
         <p class="preco">Cota: R$ 70,00</p>
         <div class="botoes-acao">
@@ -687,8 +761,9 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-id="49" data-categoria="utilidades" data-preco="65.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto Passadeira de Cozinha" class="foto-presente">
         <h3>Conjunto Passadeira de Cozinha</h3>
         <p class="preco">Cota: R$ 65,00</p>
         <div class="botoes-acao">
@@ -698,8 +773,9 @@
         </div>
       </div>
       
-      <div class="card">
+      <div class="card" data-id="50" data-categoria="utilidades" data-preco="60.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Relógio de Parede Silencioso" class="foto-presente">
         <h3>Relógio de Parede Silencioso</h3>
         <p class="preco">Cota: R$ 60,00</p>
         <div class="botoes-acao">
@@ -766,11 +842,54 @@
       document.getElementById('listaCompletaOverlay').style.display = 'none';
     }
 
+    // FUNÇÃO DE BUSCA E FILTRO
+    function filtrarEOrdenar() {
+      const termoBusca = document.getElementById('buscaPresente').value.toLowerCase();
+      const categoria = document.getElementById('filtroCategoria').value;
+      const ordenacao = document.getElementById('ordenarPreco').value;
+      const container = document.getElementById('gridPresentes');
+      
+      // Transforma a NodeList de cartões num Array de Javascript para facilitar a ordenação
+      const cards = Array.from(container.querySelectorAll('.card'));
+
+      // FILTRAR POR NOME E CATEGORIA
+      cards.forEach(card => {
+        const nomePresente = card.querySelector('h3').textContent.toLowerCase();
+        const categoriaPresente = card.getAttribute('data-categoria');
+        
+        const passouNaBusca = nomePresente.includes(termoBusca);
+        const passouNaCategoria = (categoria === 'todas' || categoria === categoriaPresente);
+        
+        if (passouNaBusca && passouNaCategoria) {
+          card.style.display = 'flex'; // Mantém o flexbox para os botões alinharem em baixo
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // ORDENAR OS CARTÕES
+      cards.sort((a, b) => {
+        if (ordenacao === 'padrao') {
+          // Ordena pela ordem original (data-id)
+          return parseInt(a.getAttribute('data-id')) - parseInt(b.getAttribute('data-id'));
+        }
+        
+        const precoA = parseFloat(a.getAttribute('data-preco'));
+        const precoB = parseFloat(b.getAttribute('data-preco'));
+        
+        if (ordenacao === 'menor') return precoA - precoB;
+        if (ordenacao === 'maior') return precoB - precoA;
+      });
+
+      // REINSERIR OS CARTÕES NO HTML (Esta ação reordena-os visualmente)
+      cards.forEach(card => container.appendChild(card));
+    }
+
     // AVISAR NOIVOS NO WHATSAPP
     function avisarNoivos(nomePresente) {
       const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
       if (nome) {
-        const telefone = "5535988715369"; // IMPORTANTE: Substitua pelos seus números (o 35 é do seu DDD)
+        const telefone = "5535900000000"; // IMPORTANTE: Substitua pelos seus números (o 35 é do seu DDD)
         const texto = `Olá! O meu nome é *${nome}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
         const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
         window.open(url, '_blank');
