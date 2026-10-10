@@ -59,7 +59,7 @@
     /* CARTÃO E LÓGICA DE PRESENTE RESERVADO/ESGOTADO */
     .card { position: relative; background: #fff; border: 1px solid #dbe4ed; border-radius: 12px; padding: 25px 20px; box-shadow: 0 4px 12px rgba(42, 75, 124, 0.04); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(42, 75, 124, 0.1); }
-    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #2a4b7c; margin-bottom: 8px; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #2a4b7c; margin-bottom: 8px; line-height: 1.3;}
     .card .preco { color: #3a5f94; font-weight: bold; margin-bottom: 15px; font-size: 1.1rem; }
     .botoes-acao { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
     .btn-loja { background-color: #f7f3e8; color: #8c7d6b; border: 1px solid #e8decb; }
@@ -153,7 +153,7 @@
 
     <div class="grid-presentes">
       
-      <!-- ITEM 1 -->
+      <!-- ITENS GRANDES E ELETRODOMÉSTICOS -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Máquina de Lavar Roupas 15kg</h3>
@@ -165,7 +165,6 @@
         </div>
       </div>
 
-      <!-- ITEM 2 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Forno Elétrico (36L a 46L)</h3>
@@ -176,8 +175,19 @@
           <button class="btn btn-reservar" onclick="avisarNoivos('Forno Elétrico')">✅ Já comprei / Reservar</button>
         </div>
       </div>
+      
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Fritadeira Airfryer (4L a 5L)</h3>
+        <p class="preco">Cota: R$ 450,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Fritadeira Airfryer')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
 
-      <!-- ITEM 3 -->
+      <!-- FÉ E ORATÓRIO -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Imagem Santa Rita de Cássia 60cm</h3>
@@ -189,7 +199,6 @@
         </div>
       </div>
 
-      <!-- ITEM 4 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Quadro da Santa Ceia</h3>
@@ -201,7 +210,6 @@
         </div>
       </div>
 
-      <!-- ITEM 5 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Nicho de Parede para Oratório</h3>
@@ -213,7 +221,6 @@
         </div>
       </div>
 
-      <!-- ITEM 6 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Bíblia de Estudos Ave-Maria</h3>
@@ -225,7 +232,7 @@
         </div>
       </div>
 
-      <!-- ITEM 7 -->
+      <!-- COZINHA E ELETROPORTÁTEIS -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Purificador de Água Colormaq</h3>
@@ -237,7 +244,6 @@
         </div>
       </div>
 
-      <!-- ITEM 8 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Jogo de Panelas Cerâmica</h3>
@@ -249,7 +255,6 @@
         </div>
       </div>
 
-      <!-- ITEM 9 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Panela de Arroz Elétrica</h3>
@@ -261,7 +266,6 @@
         </div>
       </div>
 
-      <!-- ITEM 10 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Sanduicheira e Grill</h3>
@@ -273,7 +277,6 @@
         </div>
       </div>
 
-      <!-- ITEM 11 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Liquidificador Turbo</h3>
@@ -284,236 +287,18 @@
           <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Turbo')">✅ Já comprei / Reservar</button>
         </div>
       </div>
-
-      <!-- ITEM 12 -->
+      
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Prato Giratório de Mesa</h3>
-        <p class="preco">Cota: R$ 180,00</p>
+        <h3>Liquidificador Clássico Jarra de Vidro</h3>
+        <p class="preco">Cota: R$ 280,00</p>
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Prato Giratório de Mesa')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Jarra Vidro')">✅ Já comprei / Reservar</button>
         </div>
       </div>
-
-      <!-- ITEM 13 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Lavadora de Alta Pressão WAP</h3>
-        <p class="preco">Cota: R$ 420,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Lavadora de Alta Pressão WAP')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 14 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Kit de Frigideiras Antiaderentes</h3>
-        <p class="preco">Cota: R$ 140,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Kit de Frigideiras')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 15 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Potes de Vidro Herméticos (Bambu)</h3>
-        <p class="preco">Cota: R$ 150,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Vidro Herméticos')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 16 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Conjunto de Xícaras de Porcelana</h3>
-        <p class="preco">Cota: R$ 120,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Xícaras de Porcelana')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 17 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Jarra de Vidro para Suco</h3>
-        <p class="preco">Cota: R$ 50,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jarra de Vidro para Suco')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 18 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Conjunto Pratos de Vidro Marinex</h3>
-        <p class="preco">Cota: R$ 90,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Pratos de Vidro Marinex')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 19 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Jogo Americano (6 peças)</h3>
-        <p class="preco">Cota: R$ 70,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo Americano')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 20 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Toalha de Mesa</h3>
-        <p class="preco">Cota: R$ 90,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Toalha de Mesa')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 21 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Potes de Vidro para Biscoitos</h3>
-        <p class="preco">Cota: R$ 60,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Potes para Biscoitos')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 22 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Relógio de Parede Silencioso</h3>
-        <p class="preco">Cota: R$ 60,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Relógio de Parede')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 23 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Conjunto de Tapete de Banho</h3>
-        <p class="preco">Cota: R$ 70,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Tapete de Banho')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 24 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Varal Retrátil de Carretel</h3>
-        <p class="preco">Cota: R$ 60,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Varal Retrátil')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 25 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Conjunto Passadeira de Cozinha</h3>
-        <p class="preco">Cota: R$ 65,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Passadeira de Cozinha')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 26 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Kit Baldes Plásticos Reforçados</h3>
-        <p class="preco">Cota: R$ 45,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Kit Baldes')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 27 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Conjunto de Potes de Sobremesa</h3>
-        <p class="preco">Cota: R$ 60,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Sobremesa')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 28 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Conjunto de Leiteiras</h3>
-        <p class="preco">Cota: R$ 90,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Leiteiras')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 29 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Tábua de Corte de Vidro</h3>
-        <p class="preco">Cota: R$ 45,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Tábua de Corte de Vidro')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 30 -->
-      <div class="card">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <h3>Ferro de Passar a Vapor</h3>
-        <p class="preco">Cota: R$ 85,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Ferro de Passar a Vapor')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <!-- ITEM 31 -->
+      
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Espremedor de Frutas Elétrico</h3>
@@ -525,7 +310,6 @@
         </div>
       </div>
 
-      <!-- ITEM 32 -->
       <div class="card">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <h3>Mixer de Mão</h3>
@@ -534,6 +318,394 @@
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
           <button class="btn btn-reservar" onclick="avisarNoivos('Mixer de Mão')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- MESA POSTA E UTENSÍLIOS -->
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Aparelho de Jantar e Chá (20 Peças)</h3>
+        <p class="preco">Cota: R$ 350,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Aparelho de Jantar')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Prato Giratório de Mesa</h3>
+        <p class="preco">Cota: R$ 180,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Prato Giratório de Mesa')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Faqueiro Inox (24 a 36 Peças)</h3>
+        <p class="preco">Cota: R$ 130,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Faqueiro Inox')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Kit de Frigideiras Antiaderentes</h3>
+        <p class="preco">Cota: R$ 140,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Kit de Frigideiras')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto de Assadeiras de Vidro</h3>
+        <p class="preco">Cota: R$ 95,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Assadeiras de Vidro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Potes de Vidro Herméticos (Bambu)</h3>
+        <p class="preco">Cota: R$ 150,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Vidro Herméticos')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto de Xícaras de Porcelana</h3>
+        <p class="preco">Cota: R$ 120,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Xícaras de Porcelana')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto de Copos de Vidro (6 Peças)</h3>
+        <p class="preco">Cota: R$ 40,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Copos de Vidro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Jogo de Taças para Água/Vinho</h3>
+        <p class="preco">Cota: R$ 70,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Taças')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Jarra de Vidro para Suco</h3>
+        <p class="preco">Cota: R$ 50,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jarra de Vidro para Suco')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto Pratos de Vidro Marinex</h3>
+        <p class="preco">Cota: R$ 90,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Pratos de Vidro Marinex')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Jogo Americano (6 peças)</h3>
+        <p class="preco">Cota: R$ 70,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo Americano')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Toalha de Mesa</h3>
+        <p class="preco">Cota: R$ 90,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Toalha de Mesa')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Potes de Vidro para Biscoitos</h3>
+        <p class="preco">Cota: R$ 60,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Potes para Biscoitos')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto de Potes de Sobremesa</h3>
+        <p class="preco">Cota: R$ 60,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Sobremesa')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto de Leiteiras</h3>
+        <p class="preco">Cota: R$ 90,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Leiteiras')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Tábua de Corte de Vidro</h3>
+        <p class="preco">Cota: R$ 45,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Tábua de Corte de Vidro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Garrafa Térmica (1 Litro)</h3>
+        <p class="preco">Cota: R$ 75,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Garrafa Térmica')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto Utensílios de Silicone</h3>
+        <p class="preco">Cota: R$ 65,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Utensílios de Silicone')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Forma de Bolo/Pudim Antiaderente</h3>
+        <p class="preco">Cota: R$ 55,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Forma de Bolo')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LIMPEZA E UTILIDADES -->
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Lavadora de Alta Pressão WAP</h3>
+        <p class="preco">Cota: R$ 420,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Lavadora de Alta Pressão WAP')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Aspirador de Pó Vertical</h3>
+        <p class="preco">Cota: R$ 220,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Aspirador de Pó Vertical')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Mop Giratório Fit</h3>
+        <p class="preco">Cota: R$ 90,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Mop Giratório Fit')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Varal de Chão com Abas</h3>
+        <p class="preco">Cota: R$ 110,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Varal de Chão')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Varal Retrátil de Carretel</h3>
+        <p class="preco">Cota: R$ 60,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Varal Retrátil')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Kit Baldes Plásticos Reforçados</h3>
+        <p class="preco">Cota: R$ 45,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Kit Baldes')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Ferro de Passar a Vapor</h3>
+        <p class="preco">Cota: R$ 85,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Ferro de Passar a Vapor')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Lixeira Inox com Pedal (5L)</h3>
+        <p class="preco">Cota: R$ 65,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Lixeira Inox')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+      
+      <!-- CAMA, MESA E BANHO -->
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Jogo de Cama Queen 200 Fios</h3>
+        <p class="preco">Cota: R$ 320,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Cama Queen')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Jogo de Toalhas de Banho</h3>
+        <p class="preco">Cota: R$ 140,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Toalhas')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Manta de Microfibra Casal/Queen</h3>
+        <p class="preco">Cota: R$ 80,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Manta de Microfibra')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Protetor de Colchão Impermeável</h3>
+        <p class="preco">Cota: R$ 70,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Protetor de Colchão')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto de Tapete de Banho</h3>
+        <p class="preco">Cota: R$ 70,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Tapete de Banho')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Conjunto Passadeira de Cozinha</h3>
+        <p class="preco">Cota: R$ 65,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Passadeira de Cozinha')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <h3>Relógio de Parede Silencioso</h3>
+        <p class="preco">Cota: R$ 60,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Relógio de Parede')">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -594,12 +766,11 @@
       document.getElementById('listaCompletaOverlay').style.display = 'none';
     }
 
-    // AVISAR NOIVOS NO WHATSAPP SOBRE A RESERVA DO PRESENTE
+    // AVISAR NOIVOS NO WHATSAPP
     function avisarNoivos(nomePresente) {
       const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
       if (nome) {
-        // O número já tem o indicativo de país (55) e o DDD 35
-        const telefone = "5535988715369"; // IMPORTANTE: Substitua os zeros pelo seu número de WhatsApp
+        const telefone = "5535988715369"; // IMPORTANTE: Substitua pelos seus números (o 35 é do seu DDD)
         const texto = `Olá! O meu nome é *${nome}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
         const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
         window.open(url, '_blank');
