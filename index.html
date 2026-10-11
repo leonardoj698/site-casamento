@@ -35,12 +35,27 @@
     h1 { font-family: 'Great Vibes', cursive !important; font-size: 5rem !important; color: #2a4b7c; margin-bottom: 10px; font-weight: normal; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9); }
     p.subhead { font-size: 1.2rem; color: #4a627a; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; text-shadow: 0 1px 5px rgba(255, 255, 255, 0.9); }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
     .timer-container { margin: 40px 0 50px; padding: 30px; background: #ffffff; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.05); }
     #contador { font-size: 2.2rem; font-weight: bold; color: #3a5f94; margin-top: 10px; font-family: 'Playfair Display', serif; }
+    
+    /* NOVAS SECÇÕES: HISTÓRIA, FÉ E MENSAGEM */
+    .mensagem-convidados { max-width: 800px; margin: 0 auto 60px; font-size: 1.15rem; line-height: 1.8; color: #4a627a; }
+    .historia-fe-container { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1000px; margin: 0 auto 60px; text-align: left; }
+    
+    .box-texto { flex: 1 1 400px; background: #ffffff; padding: 40px; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.04); }
+    .box-texto h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #2a4b7c; margin-bottom: 20px; border-bottom: 2px solid #eef2f5; padding-bottom: 10px; }
+    .box-texto p { font-size: 1.05rem; line-height: 1.8; color: #5a6f84; margin-bottom: 15px; }
+    
+    .versiculo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.25rem; color: #3a5f94; text-align: center; margin: 20px 0; line-height: 1.6; }
+    .versiculo span { display: block; font-size: 1rem; color: #8c7d6b; margin-top: 10px; font-style: normal; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+
     .imagem-fundo-container { margin: 40px auto; max-width: 1200px; width: 100%; }
     .imagem-fundo-container img { width: 100%; height: auto; display: block; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); }
+    
     section { margin: 60px 0; }
     h2 { font-family: 'Playfair Display', serif !important; color: #2a4b7c; margin-bottom: 20px; font-size: 2.2rem !important; border-bottom: 2px solid #d0deec; display: inline-block; padding-bottom: 5px; font-weight: 500; }
+    
     .btn { background-color: #4b779a; color: #fff; border: none; padding: 12px 22px; border-radius: 25px; cursor: pointer; font-size: 0.95rem; transition: background 0.2s; text-decoration: none; display: inline-block; font-family: 'Montserrat', sans-serif; }
     .btn:hover { background-color: #325573; }
     .btn-large { padding: 18px 40px; font-size: 1.2rem; font-weight: 600; box-shadow: 0 4px 15px rgba(42, 75, 124, 0.2); }
@@ -55,18 +70,14 @@
     .close-lista { position: fixed; top: 20px; right: 30px; font-size: 1.2rem; cursor: pointer; color: #2a4b7c; font-weight: bold; background: #fff; padding: 10px 20px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 100001; border: 1px solid #dbe4ed; }
     .close-lista:hover { background: #eaf0f6; }
     
-    /* BARRA DE FILTROS E BUSCA */
     .filtros-container { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px auto 40px; max-width: 1200px; justify-content: center; }
     .filtro-input, .filtro-select { padding: 12px 18px; border: 1px solid #c0d1e0; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #3b4a5a; outline: none; flex: 1 1 250px; max-width: 350px; background: #fff; transition: box-shadow 0.2s, border-color 0.2s; }
     .filtro-input:focus, .filtro-select:focus { border-color: #4b779a; box-shadow: 0 0 8px rgba(75, 119, 154, 0.3); }
 
     .grid-presentes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin-left: auto; margin-right: auto; }
     
-    /* CARTÃO E LÓGICA DE PRESENTE RESERVADO/ESGOTADO */
     .card { position: relative; background: #fff; border: 1px solid #dbe4ed; border-radius: 12px; padding: 25px 20px; box-shadow: 0 4px 12px rgba(42, 75, 124, 0.04); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(42, 75, 124, 0.1); }
-    
-    /* IMAGEM DO PRODUTO */
     .foto-presente { width: 100%; height: 180px; object-fit: contain; border-bottom: 1px solid #eef2f5; margin-bottom: 15px; padding-bottom: 15px; }
 
     .card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #2a4b7c; margin-bottom: 8px; line-height: 1.3;}
@@ -77,12 +88,10 @@
     .btn-reservar { background-color: #eaf0f6; color: #3a5f94; border: 1px solid #c0d1e0; font-weight: 600; }
     .btn-reservar:hover { background-color: #d0deec; }
 
-    /* ESTILO APLICADO QUANDO O PRESENTE É MARCADO COMO COMPRADO */
     .selo-presenteado { display: none; }
     .card.presenteado { opacity: 0.55; pointer-events: none; }
     .card.presenteado .selo-presenteado { display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); justify-content: center; align-items: center; z-index: 10; font-size: 1.4rem; font-weight: bold; color: #2a4b7c; font-family: 'Playfair Display', serif; text-align: center; padding: 20px; border-radius: 12px; }
 
-    /* MODAL PIX */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20, 35, 55, 0.7); justify-content: center; align-items: center; z-index: 100002; }
     .modal-content { background: #fff; padding: 30px; border-radius: 16px; max-width: 400px; width: 90%; position: relative; }
     .close-btn { position: absolute; top: 12px; right: 18px; font-size: 1.5rem; cursor: pointer; color: #aaa; }
@@ -120,15 +129,48 @@
     </div>
 
     <div class="container">
+      
+      <!-- CONTADOR DE DIAS -->
       <div class="timer-container reveal">
         <h3>Faltam poucos dias:</h3>
         <div id="contador">Carregando...</div>
       </div>
 
+      <!-- MENSAGEM AOS CONVIDADOS -->
+      <section class="reveal mensagem-convidados">
+        <h2>Bem-vindos ao nosso sonho!</h2>
+        <p>A contagem regressiva começou e a emoção de ver este dia chegar é inexplicável. Não poderíamos dar este passo tão importante sem ter ao nosso lado as pessoas que acompanharam o nosso amadurecimento e que sempre torceram pela nossa felicidade. Cada detalhe deste site e do nosso casamento foi pensado com muito amor e carinho. A presença de vocês é, sem dúvida, o nosso maior e melhor presente!</p>
+      </section>
+
+      <!-- HISTÓRIA E FÉ (LADO A LADO) -->
+      <section class="reveal historia-fe-container">
+        <!-- Caixa de Fé -->
+        <div class="box-texto">
+          <h3>O Nosso Propósito</h3>
+          <p>A nossa fé sempre foi o alicerce que nos manteve de pé, e Nossa Senhora de Fátima teceu a nossa história com o mais puro cuidado. Ela esteve presente desde o início da caminhada de conversão da Thamires. Na vida do Leonardo, a intercessão da Virgem foi literal: ao nascer, ele engoliu água no parto e enfrentou um momento muito delicado de saúde, recebendo alta do hospital são e salvo justamente no dia 13 de maio — Dia de Nossa Senhora de Fátima. Curiosamente, ele só descobriu esse fato anos mais tarde, após ter escolhido, por conta própria, fazer a sua consagração a Nossa Senhora nessa mesma data.</p>
+          <p>Com uma ligação tão forte com o céu, o pedido de casamento precisava ser especial. O Leonardo sabia que o grande desejo do coração da Thamires era ser pedida em casamento diante do Santíssimo Sacramento. Assim, no dia 10 de janeiro, em uma viagem a São Lourenço (MG), ele planejou realizar esse sonho na igreja matriz da cidade.</p>
+          <p>Porém, ao chegar lá, a Santa Missa estava sendo celebrada. Sem querer interromper, ele precisou buscar outra igreja nas proximidades. E a resposta de Deus veio de forma poética: a capela mais próxima era justamente a Paróquia de Nossa Senhora de Fátima. Depois de caminharem bastante — com o Leonardo sentindo a mesma ansiedade e o "frio na barriga" do primeiro encontro —, chegaram à capela do Santíssimo. Ali, na presença de Jesus Eucarístico e sob o manto protetor de Maria, dissemos o "Sim" que nos guiará até o altar.</p>
+          <p class="versiculo">
+            "Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe."
+            <span>— Mateus 19:6</span>
+          </p>
+        </div>
+
+        <!-- Caixa da História -->
+        <div class="box-texto">
+          <h3>A Nossa História</h3>
+          <p>Tudo começou no dia 27 de outubro de 2019, na volta do DNJ em São João del Rei. Uma simples conversa no ônibus foi o ponto de partida para a nossa aproximação. A partir dali, começamos a nos encontrar nos mesmos ambientes na Igreja, no Grupo de Jovens, e logo passamos a servir juntos como acólitos.</p>
+          <p>Nessa época, o Leonardo vivia cheio de provocações na tentativa de chamar a atenção, enquanto a Thamires comentava com a mãe sobre "aquele menino chato da igreja". Contudo, entre as orações compartilhadas em ligações com nossos amigos e as conversas durante a pandemia, o "menino chato" acabou conquistando o coração dela.</p>
+          <p>O pedido de namoro oficial aconteceu no dia 7 de setembro de 2021, na roça do avô do Leonardo — um cenário que ele jurava ser o ápice do romantismo, embora a Thamires discorde aos risos até hoje! A partir de então, embarcamos em uma linda jornada de crescimento. Fomos amadurecendo juntos, fortalecendo a nossa fé lado a lado e construindo uma base inabalável de companheirismo para a família que sempre sonhamos.</p>
+        </div>
+      </section>
+
+      <!-- IMAGEM DE FUNDO 2 -->
       <div class="imagem-fundo-container reveal">
         <img src="Foto_fundo2.jpg?v=2" alt="Nossa Senhora">
       </div>
 
+      <!-- INFORMAÇÕES DA CERIMÓNIA E MAPS -->
       <section class="reveal">
         <h2>Cerimônia</h2>
         <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
@@ -843,10 +885,8 @@
       const ordenacao = document.getElementById('ordenarPreco').value;
       const container = document.getElementById('gridPresentes');
       
-      // Transforma a NodeList de cartões num Array de Javascript para facilitar a ordenação
       const cards = Array.from(container.querySelectorAll('.card'));
 
-      // FILTRAR POR NOME E CATEGORIA
       cards.forEach(card => {
         const nomePresente = card.querySelector('h3').textContent.toLowerCase();
         const categoriaPresente = card.getAttribute('data-categoria');
@@ -855,16 +895,14 @@
         const passouNaCategoria = (categoria === 'todas' || categoria === categoriaPresente);
         
         if (passouNaBusca && passouNaCategoria) {
-          card.style.display = 'flex'; // Mantém o flexbox para os botões alinharem em baixo
+          card.style.display = 'flex'; 
         } else {
           card.style.display = 'none';
         }
       });
 
-      // ORDENAR OS CARTÕES
       cards.sort((a, b) => {
         if (ordenacao === 'padrao') {
-          // Ordena pela ordem original (data-id)
           return parseInt(a.getAttribute('data-id')) - parseInt(b.getAttribute('data-id'));
         }
         
@@ -875,7 +913,6 @@
         if (ordenacao === 'maior') return precoB - precoA;
       });
 
-      // REINSERIR OS CARTÕES NO HTML (Esta ação reordena-os visualmente)
       cards.forEach(card => container.appendChild(card));
     }
 
