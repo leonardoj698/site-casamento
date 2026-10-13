@@ -142,10 +142,8 @@
         <p>A contagem regressiva começou e a emoção de ver este dia chegar é inexplicável. Não poderíamos dar este passo tão importante sem ter ao nosso lado as pessoas que acompanharam o nosso amadurecimento e que sempre torceram pela nossa felicidade. Cada detalhe deste site e do nosso casamento foi pensado com muito amor e carinho. A presença de vocês é, sem dúvida, o nosso maior e melhor presente!</p>
       </section>
 
-      <!-- HISTÓRIA E FÉ (LADO A LADO) -->
+      <!-- HISTÓRIA E FÉ -->
       <section class="reveal historia-fe-container">
-        
-        <!-- Caixa da História AGORA NA ESQUERDA -->
         <div class="box-texto">
           <h3>A Nossa História</h3>
           <p>Tudo começou no dia 27 de outubro de 2019, na volta do DNJ em São João del Rei. Uma simples conversa no ônibus foi o ponto de partida para a nossa aproximação. A partir dali, começamos a nos encontrar nos mesmos ambientes na Igreja, no Grupo de Jovens, e logo passamos a servir juntos como acólitos.</p>
@@ -153,7 +151,6 @@
           <p>O pedido de namoro oficial aconteceu no dia 7 de setembro de 2021, na roça do avô do Leonardo — um cenário que ele jurava ser o ápice do romantismo, embora a Thamires discorde aos risos até hoje! A partir de então, embarcamos em uma linda jornada de crescimento. Fomos amadurecendo juntos, fortalecendo a nossa fé lado a lado e construindo uma base inabalável de companheirismo para a família que sempre sonhamos.</p>
         </div>
 
-        <!-- Caixa de Fé AGORA NA DIREITA -->
         <div class="box-texto">
           <h3>O Nosso Propósito</h3>
           <p>A nossa fé sempre foi o alicerce que nos manteve de pé, e Nossa Senhora de Fátima teceu a nossa história com o mais puro cuidado. Ela esteve presente desde o início da caminhada de conversão da Thamires. Na vida do Leonardo, a intercessão da Virgem foi literal: ao nascer, ele engoliu água no parto e enfrentou um momento muito delicado de saúde, recebendo alta do hospital são e salvo justamente no dia 13 de maio — Dia de Nossa Senhora de Fátima. Curiosamente, ele só descobriu esse fato anos mais tarde, após ter escolhido, por conta própria, fazer a sua consagração a Nossa Senhora nessa mesma data.</p>
@@ -164,15 +161,12 @@
             <span>— Mateus 19:6</span>
           </p>
         </div>
-
       </section>
 
-      <!-- IMAGEM DE FUNDO 2 -->
       <div class="imagem-fundo-container reveal">
         <img src="Foto_fundo2.jpg?v=2" alt="Nossa Senhora">
       </div>
 
-      <!-- INFORMAÇÕES DA CERIMÓNIA E MAPS -->
       <section class="reveal">
         <h2>Cerimônia</h2>
         <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
@@ -181,7 +175,6 @@
         <a href="https://www.google.com/maps/search/?api=1&query=Rua+Silvio+Modesto+de+Souza,+240,+Lavras,+Minas+Gerais" target="_blank" class="btn" style="margin-top: 5px;">📍 Ver no Google Maps</a>
       </section>
 
-      <!-- BOTÃO PARA ABRIR A LISTA COMPLETA -->
       <section class="reveal">
         <h2>Lista de Presentes</h2>
         <p style="margin-bottom: 25px; line-height: 1.6;">
@@ -199,10 +192,8 @@
     <h2 style="margin-top: 20px;">Nossa Lista de Presentes</h2>
     <p style="margin-bottom: 10px;">Escolha a melhor forma de nos presentear:</p>
 
-    <!-- BARRA DE FILTROS E BUSCA -->
     <div class="filtros-container">
       <input type="text" id="buscaPresente" class="filtro-input" placeholder="🔍 Buscar presente pelo nome..." onkeyup="filtrarEOrdenar()">
-      
       <select id="filtroCategoria" class="filtro-select" onchange="filtrarEOrdenar()">
         <option value="todas">✨ Todas as Categorias</option>
         <option value="eletro">🔌 Eletrodomésticos & Eletroportáteis</option>
@@ -212,7 +203,6 @@
         <option value="cama-mesa-banho">🛏️ Cama, Mesa & Banho</option>
         <option value="utilidades">🧹 Limpeza & Utilidades</option>
       </select>
-
       <select id="ordenarPreco" class="filtro-select" onchange="filtrarEOrdenar()">
         <option value="padrao">⭐ Ordenar: Sugestões</option>
         <option value="menor">⬇️ Menor Preço</option>
@@ -220,190 +210,10 @@
       </select>
     </div>
 
-    <!-- GRID DE PRESENTES -->
+    <!-- GRID DE PRESENTES COM NOVA ORDEM OTIMIZADA -->
     <div class="grid-presentes" id="gridPresentes">
       
-      <!-- ITENS -->
-      <div class="card" data-id="52" data-categoria="eletro" data-preco="2200.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_970781-MLA116934025507_082026-F.webp.jpg" alt="Máquina de Lavar Roupas 15kg" class="foto-presente">
-        <h3>Máquina de Lavar Roupas 15kg</h3>
-        <p class="preco">Cota: R$ 2.000,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://link.amazon/B02GopdOi" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Máquina de Lavar Roupas 15kg')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="2" data-categoria="banheiro" data-preco="200.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_840856-MLA107781453167_022026-F.webp.jpg" alt="Cuba Para o Banheiro" class="foto-presente">
-        <h3>Cuba Para o Banheiro</h3>
-        <p class="preco">Cota: R$ 200,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/1ZEg84r" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Cuba Para o Banheiro')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="3" data-categoria="eletro" data-preco="800.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_612974-MLA99520504286_112025-F.webp.jpg" alt="Micro-Ondas de Bancada (27L)" class="foto-presente">
-        <h3>Micro-Ondas de Bancada (27L)</h3>
-        <p class="preco">Cota: R$ 800,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/2Ly4eDo" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Micro-Ondas de Bancada (27L)')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="4" data-categoria="cozinha" data-preco="180.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821832-MLA99571452148_122025-F.webp.jpg" alt="Panela de Pressão 4,5L" class="foto-presente">
-        <h3>Panela de Pressão 4,5L</h3>
-        <p class="preco">Cota: R$ 180,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/2vog7De" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="5" data-categoria="cozinha" data-preco="180.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821832-MLA99571452148_122025-F.webp.jpg" alt="Panela de Pressão 4,5L" class="foto-presente">
-        <h3>Panela de Pressão 4,5L</h3>
-        <p class="preco">Cota: R$ 180,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/2vog7De" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="6" data-categoria="cozinha" data-preco="50.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_757032-MLA113687311946_072026-F.webp.jpg" alt="Porta Temperos" class="foto-presente">
-        <h3>Porta Temperos</h3>
-        <p class="preco">Cota: R$ 50,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/2Gbqozh" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Porta Temperos')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="7" data-categoria="cozinha" data-preco="40.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_719192-MLA95975873955_102025-F.webp.jpg" alt="Torneira Para a Cozinha" class="foto-presente">
-        <h3>Torneira Para a Cozinha</h3>
-        <p class="preco">Cota: R$ 40,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/1KhEMSv" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Cozinha')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="8" data-categoria="eletro" data-preco="400.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://m.media-amazon.com/images/I/41ADsi06juL._AC_SL1000_.jpg" alt="Purificador de Água Colormaq" class="foto-presente">
-        <h3>Purificador de Água Colormaq</h3>
-        <p class="preco">Cota: R$ 400,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://link.amazon/B0094YUrx" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Purificador de Água Colormaq')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="9" data-categoria="cozinha" data-preco="550.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_928703-MLA111907915483_052026-F.webp.jpg" alt="Jogo de Panelas Cerâmica" class="foto-presente">
-        <h3>Jogo de Panelas Cerâmica</h3>
-        <p class="preco">Cota: R$ 550,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/18WmNUg" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Panelas Cerâmica')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="10" data-categoria="eletro" data-preco="190.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_696825-MLA99507479294_112025-F.webp.jpg" alt="Panela de Arroz Elétrica" class="foto-presente">
-        <h3>Panela de Arroz Elétrica</h3>
-        <p class="preco">Cota: R$ 190,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/1u7MCMJ" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Arroz Elétrica')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="11" data-categoria="eletro" data-preco="90.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_890867-MLA99972140577_112025-F.webp.jpg" alt="Sanduicheira e Grill" class="foto-presente">
-        <h3>Sanduicheira e Grill</h3>
-        <p class="preco">Cota: R$ 90,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/2gp2egR" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Sanduicheira e Grill')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="12" data-categoria="eletro" data-preco="120.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Liquidificador Turbo" class="foto-presente">
-        <h3>Liquidificador Turbo</h3>
-        <p class="preco">Cota: R$ 120,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Turbo')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="13" data-categoria="eletro" data-preco="280.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Liquidificador Clássico Jarra de Vidro" class="foto-presente">
-        <h3>Liquidificador Clássico Jarra de Vidro</h3>
-        <p class="preco">Cota: R$ 280,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Jarra Vidro')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="14" data-categoria="eletro" data-preco="75.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Espremedor de Frutas Elétrico" class="foto-presente">
-        <h3>Espremedor de Frutas Elétrico</h3>
-        <p class="preco">Cota: R$ 75,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Espremedor de Frutas')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="15" data-categoria="eletro" data-preco="95.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Mixer de Mão" class="foto-presente">
-        <h3>Mixer de Mão</h3>
-        <p class="preco">Cota: R$ 95,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Mixer de Mão')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
+      <!-- LINHA 1 (Kits Visuais Iniciais e Preços Variados) -->
       <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Aparelho de Jantar e Chá" class="foto-presente">
@@ -413,18 +223,6 @@
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
           <button class="btn btn-reservar" onclick="avisarNoivos('Aparelho de Jantar')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="17" data-categoria="cozinha" data-preco="180.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Prato Giratório de Mesa" class="foto-presente">
-        <h3>Prato Giratório de Mesa</h3>
-        <p class="preco">Cota: R$ 180,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Prato Giratório de Mesa')">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -440,6 +238,423 @@
         </div>
       </div>
 
+      <div class="card" data-id="24" data-categoria="cozinha" data-preco="70.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Taças para Água/Vinho" class="foto-presente">
+        <h3>Jogo de Taças para Água/Vinho</h3>
+        <p class="preco">Cota: R$ 70,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Taças')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="8" data-categoria="eletro" data-preco="400.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://m.media-amazon.com/images/I/41ADsi06juL._AC_SL1000_.jpg" alt="Purificador de Água Colormaq" class="foto-presente">
+        <h3>Purificador de Água Colormaq</h3>
+        <p class="preco">Cota: R$ 400,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://link.amazon/B0094YUrx" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Purificador de Água Colormaq')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 2 (Agrupamento Quarto e Dia a Dia) -->
+      <div class="card" data-id="44" data-categoria="cama-mesa-banho" data-preco="320.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Cama Queen" class="foto-presente">
+        <h3>Jogo de Cama Queen 200 Fios</h3>
+        <p class="preco">Cota: R$ 320,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Cama Queen')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="45" data-categoria="cama-mesa-banho" data-preco="140.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Toalhas de Banho" class="foto-presente">
+        <h3>Jogo de Toalhas de Banho</h3>
+        <p class="preco">Cota: R$ 140,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Toalhas')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="46" data-categoria="cama-mesa-banho" data-preco="80.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Manta de Microfibra" class="foto-presente">
+        <h3>Manta de Microfibra Casal/Queen</h3>
+        <p class="preco">Cota: R$ 80,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Manta de Microfibra')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="11" data-categoria="eletro" data-preco="90.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_890867-MLA99972140577_112025-F.webp.jpg" alt="Sanduicheira e Grill" class="foto-presente">
+        <h3>Sanduicheira e Grill</h3>
+        <p class="preco">Cota: R$ 90,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/2gp2egR" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Sanduicheira e Grill')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 3 (O grande eletro bem acompanhado) -->
+      <div class="card" data-id="1" data-categoria="eletro" data-preco="2200.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_970781-MLA116934025507_082026-F.webp.jpg" alt="Máquina de Lavar Roupas 15kg" class="foto-presente">
+        <h3>Máquina de Lavar Roupas 15kg</h3>
+        <p class="preco">Cota: R$ 2.000,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://link.amazon/B02GopdOi" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Máquina de Lavar Roupas 15kg')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="9" data-categoria="cozinha" data-preco="550.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_928703-MLA111907915483_052026-F.webp.jpg" alt="Jogo de Panelas Cerâmica" class="foto-presente">
+        <h3>Jogo de Panelas Cerâmica</h3>
+        <p class="preco">Cota: R$ 550,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/18WmNUg" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Panelas Cerâmica')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="34" data-categoria="cozinha" data-preco="65.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto Utensílios de Silicone" class="foto-presente">
+        <h3>Conjunto Utensílios de Silicone</h3>
+        <p class="preco">Cota: R$ 65,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Utensílios de Silicone')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="12" data-categoria="eletro" data-preco="120.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Liquidificador Turbo" class="foto-presente">
+        <h3>Liquidificador Turbo</h3>
+        <p class="preco">Cota: R$ 120,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Turbo')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 4 -->
+      <div class="card" data-id="3" data-categoria="eletro" data-preco="800.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_612974-MLA99520504286_112025-F.webp.jpg" alt="Micro-Ondas de Bancada (27L)" class="foto-presente">
+        <h3>Micro-Ondas de Bancada (27L)</h3>
+        <p class="preco">Cota: R$ 800,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/2Ly4eDo" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Micro-Ondas de Bancada (27L)')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="21" data-categoria="cozinha" data-preco="150.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Potes de Vidro Herméticos" class="foto-presente">
+        <h3>Potes de Vidro Herméticos (Bambu)</h3>
+        <p class="preco">Cota: R$ 150,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Vidro Herméticos')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="6" data-categoria="cozinha" data-preco="50.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_757032-MLA113687311946_072026-F.webp.jpg" alt="Porta Temperos" class="foto-presente">
+        <h3>Porta Temperos</h3>
+        <p class="preco">Cota: R$ 50,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/2Gbqozh" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Porta Temperos')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="33" data-categoria="cozinha" data-preco="75.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Garrafa Térmica" class="foto-presente">
+        <h3>Garrafa Térmica (1 Litro)</h3>
+        <p class="preco">Cota: R$ 75,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Garrafa Térmica')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 5 (Organização e Limpeza) -->
+      <div class="card" data-id="36" data-categoria="utilidades" data-preco="420.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Lavadora de Alta Pressão WAP" class="foto-presente">
+        <h3>Lavadora de Alta Pressão WAP</h3>
+        <p class="preco">Cota: R$ 420,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Lavadora de Alta Pressão WAP')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="37" data-categoria="eletro" data-preco="220.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Aspirador de Pó Vertical" class="foto-presente">
+        <h3>Aspirador de Pó Vertical</h3>
+        <p class="preco">Cota: R$ 220,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Aspirador de Pó Vertical')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="38" data-categoria="utilidades" data-preco="90.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Mop Giratório Fit" class="foto-presente">
+        <h3>Mop Giratório Fit</h3>
+        <p class="preco">Cota: R$ 90,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Mop Giratório Fit')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="41" data-categoria="utilidades" data-preco="45.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Kit Baldes Plásticos" class="foto-presente">
+        <h3>Kit Baldes Plásticos Reforçados</h3>
+        <p class="preco">Cota: R$ 45,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Kit Baldes')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 6 -->
+      <div class="card" data-id="22" data-categoria="cozinha" data-preco="120.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Xícaras de Porcelana" class="foto-presente">
+        <h3>Conjunto de Xícaras de Porcelana</h3>
+        <p class="preco">Cota: R$ 120,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Xícaras de Porcelana')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="25" data-categoria="cozinha" data-preco="50.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jarra de Vidro para Suco" class="foto-presente">
+        <h3>Jarra de Vidro para Suco</h3>
+        <p class="preco">Cota: R$ 50,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jarra de Vidro para Suco')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="23" data-categoria="cozinha" data-preco="40.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Copos de Vidro" class="foto-presente">
+        <h3>Conjunto de Copos de Vidro (6 Peças)</h3>
+        <p class="preco">Cota: R$ 40,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Copos de Vidro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="13" data-categoria="eletro" data-preco="280.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Liquidificador Clássico Jarra de Vidro" class="foto-presente">
+        <h3>Liquidificador Clássico Jarra de Vidro</h3>
+        <p class="preco">Cota: R$ 280,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Jarra Vidro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 7 (Kit Banheiro Completo) -->
+      <div class="card" data-id="53" data-categoria="banheiro" data-preco="200.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_695514-MLA115960231012_092026-F.webp.jpg" alt="Chuveiro" class="foto-presente">
+        <h3>Chuveiro</h3>
+        <p class="preco">Cota: R$ 200,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/2EW6Tmf" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Chuveiro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="52" data-categoria="banheiro" data-preco="98.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_600271-MLB95836200945_102025-F-espelho-redondo-60cm-c-led-para-parede-quarto-banheiro-sala.webp.jpg" alt="Espelho Para Banheiro" class="foto-presente">
+        <h3>Espelho Para Banheiro</h3>
+        <p class="preco">Cota: R$ 98,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/1Vbo8ci" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Espelho Para Banheiro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="2" data-categoria="banheiro" data-preco="200.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_840856-MLA107781453167_022026-F.webp.jpg" alt="Cuba Para o Banheiro" class="foto-presente">
+        <h3>Cuba Para o Banheiro</h3>
+        <p class="preco">Cota: R$ 200,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/1ZEg84r" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Cuba Para o Banheiro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="51" data-categoria="banheiro" data-preco="55.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_958442-MLA116222962894_092026-F.webp.jpg" alt="Torneira Para a Pia do Banheiro" class="foto-presente">
+        <h3>Torneira Para a Pia do Banheiro</h3>
+        <p class="preco">Cota: R$ 55,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/2Jjcdvw" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Pia do Banheiro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 8 -->
+      <div class="card" data-id="10" data-categoria="eletro" data-preco="190.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_696825-MLA99507479294_112025-F.webp.jpg" alt="Panela de Arroz Elétrica" class="foto-presente">
+        <h3>Panela de Arroz Elétrica</h3>
+        <p class="preco">Cota: R$ 190,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/1u7MCMJ" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Arroz Elétrica')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="4" data-categoria="cozinha" data-preco="180.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821832-MLA99571452148_122025-F.webp.jpg" alt="Panela de Pressão 4,5L" class="foto-presente">
+        <h3>Panela de Pressão 4,5L</h3>
+        <p class="preco">Cota: R$ 180,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="https://meli.la/2vog7De" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="15" data-categoria="eletro" data-preco="95.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Mixer de Mão" class="foto-presente">
+        <h3>Mixer de Mão</h3>
+        <p class="preco">Cota: R$ 95,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Mixer de Mão')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="14" data-categoria="eletro" data-preco="75.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Espremedor de Frutas Elétrico" class="foto-presente">
+        <h3>Espremedor de Frutas Elétrico</h3>
+        <p class="preco">Cota: R$ 75,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Espremedor de Frutas')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 9 -->
+      <div class="card" data-id="42" data-categoria="eletro" data-preco="85.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Ferro de Passar a Vapor" class="foto-presente">
+        <h3>Ferro de Passar a Vapor</h3>
+        <p class="preco">Cota: R$ 85,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Ferro de Passar a Vapor')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="39" data-categoria="utilidades" data-preco="110.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Varal de Chão com Abas" class="foto-presente">
+        <h3>Varal de Chão com Abas</h3>
+        <p class="preco">Cota: R$ 110,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Varal de Chão')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="40" data-categoria="utilidades" data-preco="60.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Varal Retrátil de Carretel" class="foto-presente">
+        <h3>Varal Retrátil de Carretel</h3>
+        <p class="preco">Cota: R$ 60,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Varal Retrátil')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="43" data-categoria="utilidades" data-preco="65.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Lixeira Inox com Pedal" class="foto-presente">
+        <h3>Lixeira Inox com Pedal (5L)</h3>
+        <p class="preco">Cota: R$ 65,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Lixeira Inox')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 10 -->
       <div class="card" data-id="19" data-categoria="cozinha" data-preco="140.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Kit de Frigideiras Antiaderentes" class="foto-presente">
@@ -464,66 +679,6 @@
         </div>
       </div>
 
-      <div class="card" data-id="21" data-categoria="cozinha" data-preco="150.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Potes de Vidro Herméticos" class="foto-presente">
-        <h3>Potes de Vidro Herméticos (Bambu)</h3>
-        <p class="preco">Cota: R$ 150,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Vidro Herméticos')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="22" data-categoria="cozinha" data-preco="120.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Xícaras de Porcelana" class="foto-presente">
-        <h3>Conjunto de Xícaras de Porcelana</h3>
-        <p class="preco">Cota: R$ 120,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Xícaras de Porcelana')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="23" data-categoria="cozinha" data-preco="40.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto de Copos de Vidro" class="foto-presente">
-        <h3>Conjunto de Copos de Vidro (6 Peças)</h3>
-        <p class="preco">Cota: R$ 40,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Copos de Vidro')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="24" data-categoria="cozinha" data-preco="70.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Taças para Água/Vinho" class="foto-presente">
-        <h3>Jogo de Taças para Água/Vinho</h3>
-        <p class="preco">Cota: R$ 70,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Taças')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="25" data-categoria="cozinha" data-preco="50.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jarra de Vidro para Suco" class="foto-presente">
-        <h3>Jarra de Vidro para Suco</h3>
-        <p class="preco">Cota: R$ 50,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jarra de Vidro para Suco')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
       <div class="card" data-id="26" data-categoria="cozinha" data-preco="90.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto Pratos de Vidro Marinex" class="foto-presente">
@@ -533,6 +688,31 @@
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
           <button class="btn btn-reservar" onclick="avisarNoivos('Pratos de Vidro Marinex')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="32" data-categoria="cozinha" data-preco="45.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Tábua de Corte de Vidro" class="foto-presente">
+        <h3>Tábua de Corte de Vidro</h3>
+        <p class="preco">Cota: R$ 45,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Tábua de Corte de Vidro')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 11 -->
+      <div class="card" data-id="17" data-categoria="cozinha" data-preco="180.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Prato Giratório de Mesa" class="foto-presente">
+        <h3>Prato Giratório de Mesa</h3>
+        <p class="preco">Cota: R$ 180,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Prato Giratório de Mesa')">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -560,6 +740,19 @@
         </div>
       </div>
 
+      <div class="card" data-id="50" data-categoria="utilidades" data-preco="60.00">
+        <div class="selo-presenteado">💝 Já Presenteado</div>
+        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Relógio de Parede Silencioso" class="foto-presente">
+        <h3>Relógio de Parede Silencioso</h3>
+        <p class="preco">Cota: R$ 60,00</p>
+        <div class="botoes-acao">
+          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
+          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Relógio de Parede')">✅ Já comprei / Reservar</button>
+        </div>
+      </div>
+
+      <!-- LINHA 12 -->
       <div class="card" data-id="29" data-categoria="cozinha" data-preco="60.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Potes de Vidro para Biscoitos" class="foto-presente">
@@ -596,42 +789,6 @@
         </div>
       </div>
 
-      <div class="card" data-id="32" data-categoria="cozinha" data-preco="45.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Tábua de Corte de Vidro" class="foto-presente">
-        <h3>Tábua de Corte de Vidro</h3>
-        <p class="preco">Cota: R$ 45,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Tábua de Corte de Vidro')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="33" data-categoria="cozinha" data-preco="75.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Garrafa Térmica" class="foto-presente">
-        <h3>Garrafa Térmica (1 Litro)</h3>
-        <p class="preco">Cota: R$ 75,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Garrafa Térmica')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="34" data-categoria="cozinha" data-preco="65.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Conjunto Utensílios de Silicone" class="foto-presente">
-        <h3>Conjunto Utensílios de Silicone</h3>
-        <p class="preco">Cota: R$ 65,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Utensílios de Silicone')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
       <div class="card" data-id="35" data-categoria="cozinha" data-preco="55.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Forma de Bolo/Pudim" class="foto-presente">
@@ -644,138 +801,7 @@
         </div>
       </div>
 
-      <div class="card" data-id="36" data-categoria="utilidades" data-preco="420.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Lavadora de Alta Pressão WAP" class="foto-presente">
-        <h3>Lavadora de Alta Pressão WAP</h3>
-        <p class="preco">Cota: R$ 420,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Lavadora de Alta Pressão WAP')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="37" data-categoria="eletro" data-preco="220.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Aspirador de Pó Vertical" class="foto-presente">
-        <h3>Aspirador de Pó Vertical</h3>
-        <p class="preco">Cota: R$ 220,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Aspirador de Pó Vertical')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="38" data-categoria="utilidades" data-preco="90.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Mop Giratório Fit" class="foto-presente">
-        <h3>Mop Giratório Fit</h3>
-        <p class="preco">Cota: R$ 90,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Mop Giratório Fit')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="39" data-categoria="utilidades" data-preco="110.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Varal de Chão com Abas" class="foto-presente">
-        <h3>Varal de Chão com Abas</h3>
-        <p class="preco">Cota: R$ 110,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Varal de Chão')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="40" data-categoria="utilidades" data-preco="60.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Varal Retrátil de Carretel" class="foto-presente">
-        <h3>Varal Retrátil de Carretel</h3>
-        <p class="preco">Cota: R$ 60,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Varal Retrátil')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="41" data-categoria="utilidades" data-preco="45.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Kit Baldes Plásticos" class="foto-presente">
-        <h3>Kit Baldes Plásticos Reforçados</h3>
-        <p class="preco">Cota: R$ 45,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Kit Baldes')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="42" data-categoria="eletro" data-preco="85.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Ferro de Passar a Vapor" class="foto-presente">
-        <h3>Ferro de Passar a Vapor</h3>
-        <p class="preco">Cota: R$ 85,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Ferro de Passar a Vapor')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="43" data-categoria="utilidades" data-preco="65.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Lixeira Inox com Pedal" class="foto-presente">
-        <h3>Lixeira Inox com Pedal (5L)</h3>
-        <p class="preco">Cota: R$ 65,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Lixeira Inox')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="44" data-categoria="cama-mesa-banho" data-preco="320.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Cama Queen" class="foto-presente">
-        <h3>Jogo de Cama Queen 200 Fios</h3>
-        <p class="preco">Cota: R$ 320,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Cama Queen')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="45" data-categoria="cama-mesa-banho" data-preco="140.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Toalhas de Banho" class="foto-presente">
-        <h3>Jogo de Toalhas de Banho</h3>
-        <p class="preco">Cota: R$ 140,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Toalhas')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="46" data-categoria="cama-mesa-banho" data-preco="80.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Manta de Microfibra" class="foto-presente">
-        <h3>Manta de Microfibra Casal/Queen</h3>
-        <p class="preco">Cota: R$ 80,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Manta de Microfibra')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
+      <!-- LINHA 13 -->
       <div class="card" data-id="47" data-categoria="cama-mesa-banho" data-preco="70.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Protetor de Colchão Impermeável" class="foto-presente">
@@ -811,52 +837,29 @@
           <button class="btn btn-reservar" onclick="avisarNoivos('Passadeira de Cozinha')">✅ Já comprei / Reservar</button>
         </div>
       </div>
-      
-      <div class="card" data-id="50" data-categoria="utilidades" data-preco="60.00">
+
+      <div class="card" data-id="7" data-categoria="cozinha" data-preco="40.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Relógio de Parede Silencioso" class="foto-presente">
-        <h3>Relógio de Parede Silencioso</h3>
-        <p class="preco">Cota: R$ 60,00</p>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_719192-MLA95975873955_102025-F.webp.jpg" alt="Torneira Para a Cozinha" class="foto-presente">
+        <h3>Torneira Para a Cozinha</h3>
+        <p class="preco">Cota: R$ 40,00</p>
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Relógio de Parede')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-      
-      <div class="card" data-id="51" data-categoria="banheiro" data-preco="55.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_958442-MLA116222962894_092026-F.webp.jpg" alt="Torneira Para a Pia do Banheiro" class="foto-presente">
-        <h3>Torneira Para a Pia do Banheiro</h3>
-        <p class="preco">Cota: R$ 55,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/2Jjcdvw" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Pia do Banheiro')">✅ Já comprei / Reservar</button>
+          <a href="https://meli.la/1KhEMSv" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Cozinha')">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
-      <div class="card" data-id="1" data-categoria="banheiro" data-preco="98.00">
+      <!-- ITEM EXTRA (Havia duas panelas de pressão no seu código original) -->
+      <div class="card" data-id="5" data-categoria="cozinha" data-preco="180.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_600271-MLB95836200945_102025-F-espelho-redondo-60cm-c-led-para-parede-quarto-banheiro-sala.webp.jpg" alt="Espelho Para Banheiro" class="foto-presente">
-        <h3>Espelho Para Banheiro</h3>
-        <p class="preco">Cota: R$ 98,00</p>
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821832-MLA99571452148_122025-F.webp.jpg" alt="Panela de Pressão 4,5L" class="foto-presente">
+        <h3>Panela de Pressão 4,5L</h3>
+        <p class="preco">Cota: R$ 180,00</p>
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/1Vbo8ci" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Espelho Para Banheiro')">✅ Já comprei / Reservar</button>
-        </div>
-      </div>
-
-      <div class="card" data-id="53" data-categoria="banheiro" data-preco="200.00">
-        <div class="selo-presenteado">💝 Já Presenteado</div>
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_695514-MLA115960231012_092026-F.webp.jpg" alt="Chuveiro" class="foto-presente">
-        <h3>Chuveiro</h3>
-        <p class="preco">Cota: R$ 200,00</p>
-        <div class="botoes-acao">
-          <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
-          <a href="https://meli.la/2EW6Tmf" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Chuveiro')">✅ Já comprei / Reservar</button>
+          <a href="https://meli.la/2vog7De" target="_blank" class="btn btn-loja">Comprar na Loja</a>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L')">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -940,9 +943,11 @@
         }
       });
 
+      // Apenas reordena por preço se o usuário mudar a opção. A ordem 'padrao' mantém a ordem visual definida no HTML.
       cards.sort((a, b) => {
         if (ordenacao === 'padrao') {
-          return parseInt(a.getAttribute('data-id')) - parseInt(b.getAttribute('data-id'));
+          // Mantém a ordem original do array de elementos do DOM
+          return 0; 
         }
         
         const precoA = parseFloat(a.getAttribute('data-preco'));
