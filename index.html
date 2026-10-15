@@ -50,13 +50,28 @@
     .versiculo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.35rem; color: #3a5f94; text-align: center; margin: 40px 0 20px; line-height: 1.6; border-top: 1px solid #d0deec; border-bottom: 1px solid #d0deec; padding: 30px 0; }
     .versiculo span { display: block; font-size: 1rem; color: #8c7d6b; margin-top: 15px; font-style: normal; font-family: 'Montserrat', sans-serif; font-weight: 600; }
 
-    /* MURAL DE RECADOS */
+    /* MURAL DE RECADOS COM SCROLLBAR */
     .mural-container { max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
     .mural-form-box { background: #ffffff; padding: 35px 30px; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.04); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
     .mural-form-box h3 { font-family: 'Playfair Display', serif; color: #2a4b7c; font-size: 1.8rem; margin-bottom: 20px; font-weight: normal; }
     .mural-form-box input, .mural-form-box textarea { width: 100%; margin-bottom: 15px; resize: vertical; }
     
-    .mural-mensagens { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+    .mural-mensagens { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+      gap: 20px; 
+      align-items: start;
+      max-height: 500px; /* Limita a altura a cerca de 3 mensagens empilhadas */
+      overflow-y: auto; /* Adiciona a barra de rolagem quando necessário */
+      padding: 10px 15px 10px 10px; /* Espaço para as sombras não cortarem */
+    }
+
+    /* Personalização elegante da barra de rolagem */
+    .mural-mensagens::-webkit-scrollbar { width: 8px; }
+    .mural-mensagens::-webkit-scrollbar-track { background: #f0e9dd; border-radius: 10px; }
+    .mural-mensagens::-webkit-scrollbar-thumb { background: #d0deec; border-radius: 10px; border: 1px solid #f0e9dd; }
+    .mural-mensagens::-webkit-scrollbar-thumb:hover { background: #a1b8c6; }
+
     .mensagem-card { background: #fdfbf7; padding: 25px 25px 20px; border-radius: 12px; border: 1px solid #e8decb; box-shadow: 0 4px 15px rgba(140, 125, 107, 0.08); position: relative; text-align: left; transition: transform 0.3s ease; }
     .mensagem-card:hover { transform: translateY(-3px); }
     .mensagem-card::before { content: '❝'; font-family: 'Playfair Display', serif; font-size: 4rem; color: #e8decb; position: absolute; top: -5px; left: 15px; opacity: 0.5; line-height: 1; }
@@ -865,6 +880,7 @@
         </div>
       </div>
 
+      <!-- ITEM EXTRA -->
       <div class="card" data-id="5" data-categoria="cozinha" data-preco="180.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821832-MLA99571452148_122025-F.webp.jpg" alt="Panela de Pressão 4,5L" class="foto-presente">
