@@ -93,11 +93,19 @@
     .card.presenteado { opacity: 0.55; pointer-events: none; }
     .card.presenteado .selo-presenteado { display: flex; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); justify-content: center; align-items: center; z-index: 10; font-size: 1.4rem; font-weight: bold; color: #2a4b7c; font-family: 'Playfair Display', serif; text-align: center; padding: 20px; border-radius: 12px; }
 
+    /* MODAIS GERAIS */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20, 35, 55, 0.7); justify-content: center; align-items: center; z-index: 100002; }
-    .modal-content { background: #fff; padding: 30px; border-radius: 16px; max-width: 400px; width: 90%; position: relative; }
+    .modal-content { background: #fff; padding: 30px; border-radius: 16px; max-width: 400px; width: 90%; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
     .close-btn { position: absolute; top: 12px; right: 18px; font-size: 1.5rem; cursor: pointer; color: #aaa; }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* MODAL DE AGRADECIMENTO */
+    #obrigadoModal .modal-content { text-align: center; padding: 40px 30px; max-width: 450px; }
+    #obrigadoModal h3 { font-family: 'Playfair Display', serif; color: #2a4b7c; font-size: 2.2rem; margin-bottom: 15px; font-weight: normal; }
+    #obrigadoModal p { color: #5a6f84; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; }
+    #obrigadoModal .heart-icon { font-size: 3.5rem; color: #d0deec; margin-bottom: 10px; }
+    #obrigadoModal .btn { padding: 12px 30px; width: auto; display: inline-block; }
   </style>
 </head>
 <body>
@@ -842,7 +850,7 @@
     </div>
   </div>
 
-  <!-- MODAL PIX -->
+  <!-- MODAIS INVISÍVEIS (PIX E AGRADECIMENTO) -->
   <div id="pixModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModal()">&times;</span>
@@ -853,10 +861,29 @@
     </div>
   </div>
 
+  <!-- NOVO MODAL DE AGRADECIMENTO -->
+  <div id="obrigadoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="document.getElementById('obrigadoModal').style.display='none'">&times;</span>
+      <div class="heart-icon">🤍</div>
+      <h3>Muito Obrigado!</h3>
+      <p id="obrigadoMensagem">A sua reserva foi guardada com sucesso.</p>
+      <button class="btn" onclick="document.getElementById('obrigadoModal').style.display='none'">Fechar Janela</button>
+    </div>
+  </div>
+
   <!-- SCRIPT UNIFICADO BLINDADO (SUPABASE + SITE) -->
   <script>
-    // 1. VARIÁVEIS GLOBAIS
+    // 1. INICIALIZAÇÃO DO SUPABASE
     let supabaseClient = null;
+    try {
+      if (window.supabase) {
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind5cnV1Y290bWljcmRqb3R1a25jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwMjc1ODAsImV4cCI6MjEwNzYwMzU4MH0.X3CvoqyOC3goQE1QNQuYTapIfy_r99pXit7RnwL6x0c"; 
+        supabaseClient = window.supabase.createClient('https://wyruucotmicrdjotuknc.supabase.co', supabaseKey);
+      }
+    } catch (e) {
+      console.error("Erro ao conectar com Supabase:", e);
+    }
 
     // 2. FUNÇÕES DO ENVELOPE E ÁUDIO
     function abrirConvite() {
@@ -872,7 +899,7 @@
         }, 700);
         playAudio();
       } catch (erro) {
-        console.error("Erro na animação do envelope:", erro);
+        console.error("Erro na animação:", erro);
         document.getElementById('envelopeOverlay').style.display = 'none';
       }
     }
@@ -883,13 +910,10 @@
         const musicBtn = document.getElementById('musicToggle');
         if (audio) {
           audio.play().then(() => {
-            if(musicBtn) {
-              musicBtn.classList.add('playing');
-              musicBtn.innerHTML = '🔊';
-            }
-          }).catch(e => console.log("Áudio aguardando interação do usuário."));
+            if(musicBtn) { musicBtn.classList.add('playing'); musicBtn.innerHTML = '🔊'; }
+          }).catch(e => console.log("Áudio aguardando interação."));
         }
-      } catch (e) { console.error("Erro no áudio:", e); }
+      } catch (e) {}
     }
 
     function toggleMusic() {
@@ -900,10 +924,7 @@
           playAudio();
         } else {
           audio.pause();
-          if(musicBtn) {
-            musicBtn.classList.remove('playing');
-            musicBtn.innerHTML = '🎵';
-          }
+          if(musicBtn) { musicBtn.classList.remove('playing'); musicBtn.innerHTML = '🎵'; }
         }
       } catch(e) {}
     }
@@ -934,9 +955,8 @@
           const precoB = parseFloat(b.getAttribute('data-preco'));
           return (ordenacao === 'menor') ? (precoA - precoB) : (precoB - precoA);
         });
-
         cards.forEach(card => container.appendChild(card));
-      } catch(e) { console.error("Erro no filtro:", e); }
+      } catch(e) {}
     }
 
     // 4. FUNÇÕES DO PIX E CONTADOR
@@ -947,8 +967,7 @@
     function fecharModal() { document.getElementById("pixModal").style.display = "none"; }
     function copiarPix() {
       const input = document.getElementById("pixKeyInput");
-      input.select();
-      navigator.clipboard.writeText(input.value);
+      input.select(); navigator.clipboard.writeText(input.value);
       alert("Chave PIX copiada! Obrigado pelo carinho.");
     }
 
@@ -991,7 +1010,7 @@
       } catch (e) { console.error('Erro ao buscar as reservas:', e); }
     }
 
-    // NOVA FUNÇÃO: Sem WhatsApp e Com Agradecimento!
+    // 6. FUNÇÃO DE GRAVAR COM NOVO MODAL DE AGRADECIMENTO
     async function avisarNoivos(nomePresente, botaoClicado) {
       try {
         const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
@@ -1009,8 +1028,8 @@
             ]);
 
             if (error) {
-              console.error('Erro detalhado do Supabase:', error.message, error.details);
-              alert('Ops! Houve um erro ao guardar a reserva. Verifique se a tabela no Supabase está sem o RLS ativo.');
+              console.error('Erro do Supabase:', error.message);
+              alert('Ops! Houve um erro ao guardar a reserva. Pressione F12 para ver o erro no console.');
               botaoClicado.innerText = "✅ Já comprei / Reservar";
               botaoClicado.disabled = false;
               return;
@@ -1021,8 +1040,9 @@
           cartao.classList.add('presenteado');
           botaoClicado.innerText = "💝 Reservado";
           
-          // MENSAGEM ESPECIAL DE AGRADECIMENTO NO ECRÃ
-          alert(`Muito obrigado, ${nome.trim()}! ❤️\nA sua reserva do presente "${nomePresente}" foi guardada com sucesso. Agradecemos de coração pelo carinho!`);
+          // MOSTRA A MENSAGEM ESPECIAL DE AGRADECIMENTO NO MODAL LINDO
+          document.getElementById('obrigadoMensagem').innerHTML = `A sua reserva do presente <strong>${nomePresente}</strong> foi guardada com sucesso.<br><br>Agradecemos de coração pelo carinho, ${nome.trim()}!`;
+          document.getElementById('obrigadoModal').style.display = 'flex';
         }
       } catch(e) {
         console.error("Erro na reserva:", e);
@@ -1032,20 +1052,10 @@
       }
     }
 
-    // 6. INICIALIZADOR PRINCIPAL
+    // 7. INICIALIZADOR PRINCIPAL
     document.addEventListener('DOMContentLoaded', () => {
-      try {
-        if (window.supabase) {
-          supabaseClient = window.supabase.createClient('https://wyruucotmicrdjotuknc.supabase.co', 'sb_publishable_g-cb8rXdSlM1pOFrZMy1mw_JY2MNU0c');
-          carregarReservasDoBanco();
-        } else {
-          console.warn("Script do Supabase não foi carregado a tempo.");
-        }
-      } catch (e) {
-        console.error("Erro na inicialização do Supabase:", e);
-      }
-      
       revealOnScroll();
+      carregarReservasDoBanco();
     });
   </script>
 </body>
