@@ -50,6 +50,19 @@
     .versiculo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.35rem; color: #3a5f94; text-align: center; margin: 40px 0 20px; line-height: 1.6; border-top: 1px solid #d0deec; border-bottom: 1px solid #d0deec; padding: 30px 0; }
     .versiculo span { display: block; font-size: 1rem; color: #8c7d6b; margin-top: 15px; font-style: normal; font-family: 'Montserrat', sans-serif; font-weight: 600; }
 
+    /* MURAL DE RECADOS */
+    .mural-container { max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
+    .mural-form-box { background: #ffffff; padding: 35px 30px; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.04); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .mural-form-box h3 { font-family: 'Playfair Display', serif; color: #2a4b7c; font-size: 1.8rem; margin-bottom: 20px; font-weight: normal; }
+    .mural-form-box input, .mural-form-box textarea { width: 100%; margin-bottom: 15px; resize: vertical; }
+    
+    .mural-mensagens { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+    .mensagem-card { background: #fdfbf7; padding: 25px 25px 20px; border-radius: 12px; border: 1px solid #e8decb; box-shadow: 0 4px 15px rgba(140, 125, 107, 0.08); position: relative; text-align: left; transition: transform 0.3s ease; }
+    .mensagem-card:hover { transform: translateY(-3px); }
+    .mensagem-card::before { content: '❝'; font-family: 'Playfair Display', serif; font-size: 4rem; color: #e8decb; position: absolute; top: -5px; left: 15px; opacity: 0.5; line-height: 1; }
+    .mensagem-card p.texto { font-size: 1.05rem; line-height: 1.6; color: #5a6f84; font-style: italic; margin-bottom: 15px; position: relative; z-index: 1; }
+    .mensagem-card p.autor { font-size: 1rem; color: #2a4b7c; font-weight: 600; text-align: right; margin: 0; border-top: 1px solid #f0e9dd; padding-top: 10px; }
+
     .imagem-fundo-container { margin: 40px auto; max-width: 1200px; width: 100%; }
     .imagem-fundo-container img { width: 100%; height: auto; display: block; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); }
     
@@ -59,6 +72,7 @@
     .btn { background-color: #4b779a; color: #fff; border: none; padding: 12px 22px; border-radius: 25px; cursor: pointer; font-size: 0.95rem; transition: background 0.2s; text-decoration: none; display: inline-block; font-family: 'Montserrat', sans-serif; }
     .btn:hover { background-color: #325573; }
     .btn-large { padding: 18px 40px; font-size: 1.2rem; font-weight: 600; box-shadow: 0 4px 15px rgba(42, 75, 124, 0.2); }
+    .btn:disabled { background-color: #a1b8c6; cursor: not-allowed; }
     
     .music-btn { position: fixed; bottom: 25px; right: 25px; width: 52px; height: 52px; background-color: #2a4b7c; color: #ffffff; border: none; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.25); cursor: pointer; z-index: 999; display: flex; justify-content: center; align-items: center; font-size: 1.3rem; transition: transform 0.2s, background-color 0.2s; }
     .music-btn:hover { transform: scale(1.1); background-color: #3a5f94; }
@@ -164,6 +178,22 @@
         <img src="Foto_fundo2.jpg?v=2" alt="Nossa Senhora">
       </div>
 
+      <!-- NOVO MURAL DE RECADOS -->
+      <section class="reveal mural-container">
+        <h2>Mural de Recados</h2>
+        
+        <div class="mural-form-box">
+          <h3>Deixe uma mensagem ao casal</h3>
+          <input type="text" id="nomeRecado" class="filtro-input" placeholder="O seu nome..." required>
+          <textarea id="textoRecado" class="filtro-input" placeholder="Escreva a sua mensagem aqui..." rows="4" required></textarea>
+          <button class="btn btn-large" style="width: 100%; margin-top: 10px;" onclick="enviarMensagem(this)">Enviar</button>
+        </div>
+
+        <div class="mural-mensagens" id="muralMensagens">
+          <p style="color: #8c7d6b; width: 100%; text-align: center;">Carregando mensagens cheias de amor...</p>
+        </div>
+      </section>
+
       <section class="reveal">
         <h2>Cerimônia</h2>
         <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
@@ -209,6 +239,7 @@
 
     <!-- GRID DE PRESENTES -->
     <div class="grid-presentes" id="gridPresentes">
+      <!-- (O SEU GRID DE 50 PRESENTES PERMANECE INTACTO AQUI) -->
       
       <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
@@ -834,7 +865,6 @@
         </div>
       </div>
 
-      <!-- ITEM EXTRA -->
       <div class="card" data-id="5" data-categoria="cozinha" data-preco="180.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821832-MLA99571452148_122025-F.webp.jpg" alt="Panela de Pressão 4,5L" class="foto-presente">
@@ -850,7 +880,7 @@
     </div>
   </div>
 
-  <!-- MODAIS INVISÍVEIS (PIX E AGRADECIMENTO) -->
+  <!-- MODAIS INVISÍVEIS -->
   <div id="pixModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="fecharModal()">&times;</span>
@@ -861,7 +891,6 @@
     </div>
   </div>
 
-  <!-- NOVO MODAL DE AGRADECIMENTO -->
   <div id="obrigadoModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="document.getElementById('obrigadoModal').style.display='none'">&times;</span>
@@ -872,7 +901,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT UNIFICADO BLINDADO (SUPABASE + SITE) -->
+  <!-- SCRIPT UNIFICADO (SUPABASE + SITE) -->
   <script>
     // 1. INICIALIZAÇÃO DO SUPABASE
     let supabaseClient = null;
@@ -899,7 +928,6 @@
         }, 700);
         playAudio();
       } catch (erro) {
-        console.error("Erro na animação:", erro);
         document.getElementById('envelopeOverlay').style.display = 'none';
       }
     }
@@ -929,7 +957,7 @@
       } catch(e) {}
     }
 
-    // 3. OVERLAY E FILTROS DA LISTA
+    // 3. OVERLAY E FILTROS DA LISTA DE PRESENTES
     function abrirListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'block'; }
     function fecharListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'none'; }
 
@@ -996,7 +1024,7 @@
       } catch(e) {}
     }, 1000);
 
-    // 5. BANCO DE DADOS E RESERVAS
+    // 5. BANCO DE DADOS: LISTA DE PRESENTES
     async function carregarReservasDoBanco() {
       if (!supabaseClient) return;
       try {
@@ -1007,10 +1035,9 @@
             if (card) card.classList.add('presenteado');
           });
         }
-      } catch (e) { console.error('Erro ao buscar as reservas:', e); }
+      } catch (e) { console.error('Erro ao buscar reservas:', e); }
     }
 
-    // 6. FUNÇÃO DE GRAVAR COM NOVO MODAL DE AGRADECIMENTO
     async function avisarNoivos(nomePresente, botaoClicado) {
       try {
         const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
@@ -1018,12 +1045,11 @@
         if (nome && nome.trim() !== "") {
           botaoClicado.innerText = "A guardar...";
           botaoClicado.disabled = true;
-    
+
           const cartao = botaoClicado.closest('.card');
           const idDoPresente = cartao.getAttribute('data-id');
-    
+
           if (supabaseClient) {
-            // AGORA ENVIA O NOME DO PRESENTE TAMBÉM
             const { error } = await supabaseClient.from('presentes_reservados').insert([
               { 
                 id_presente: parseInt(idDoPresente), 
@@ -1031,36 +1057,99 @@
                 nome_presente: nomePresente 
               }
             ]);
-    
+
             if (error) {
-              console.error('Erro detalhado do Supabase:', error.message, error.details);
-              alert('Ops! Houve um erro ao guardar a reserva. Pressione F12 para ver o erro no console.');
+              alert('Ops! Houve um erro ao guardar a reserva. Pressione F12 para ver o erro.');
               botaoClicado.innerText = "✅ Já comprei / Reservar";
               botaoClicado.disabled = false;
               return;
             }
           }
-    
-          // Bloqueia o cartão instantaneamente
+
           cartao.classList.add('presenteado');
           botaoClicado.innerText = "💝 Reservado";
           
-          // MENSAGEM ESPECIAL DE AGRADECIMENTO NO MODAL
           document.getElementById('obrigadoMensagem').innerHTML = `A sua reserva do presente <strong>${nomePresente}</strong> foi guardada com sucesso.<br><br>Agradecemos de coração pelo carinho, ${nome.trim()}!`;
           document.getElementById('obrigadoModal').style.display = 'flex';
         }
       } catch(e) {
-        console.error("Erro na reserva:", e);
         alert("Ocorreu um erro ao processar a reserva. Tente novamente.");
         botaoClicado.innerText = "✅ Já comprei / Reservar";
         botaoClicado.disabled = false;
       }
     }
 
+    // 6. BANCO DE DADOS: MURAL DE RECADOS
+    async function carregarMensagens() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('mensagens_convidados')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        const container = document.getElementById('muralMensagens');
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          container.innerHTML = '';
+          data.forEach(msg => {
+            const card = `
+              <div class="mensagem-card reveal active">
+                <p class="texto">"${msg.mensagem}"</p>
+                <p class="autor">— ${msg.nome}</p>
+              </div>
+            `;
+            container.innerHTML += card;
+          });
+        } else {
+          container.innerHTML = '<p style="color: #8c7d6b; width: 100%; text-align: center;">Seja o primeiro a deixar uma mensagem!</p>';
+        }
+      } catch (e) {
+        console.error('Erro ao buscar mensagens:', e);
+      }
+    }
+
+    async function enviarMensagem(btn) {
+      const nomeInput = document.getElementById('nomeRecado');
+      const textoInput = document.getElementById('textoRecado');
+      const nome = nomeInput.value.trim();
+      const texto = textoInput.value.trim();
+
+      if (!nome || !texto) {
+        alert("Por favor, preencha o seu nome e a mensagem.");
+        return;
+      }
+
+      btn.innerText = "A enviar...";
+      btn.disabled = true;
+
+      if (supabaseClient) {
+        try {
+          const { error } = await supabaseClient.from('mensagens_convidados').insert([
+            { nome: nome, mensagem: texto }
+          ]);
+
+          if (error) throw error;
+
+          alert("Mensagem enviada com sucesso! Muito obrigado pelo carinho.");
+          nomeInput.value = '';
+          textoInput.value = '';
+          carregarMensagens(); 
+        } catch(e) {
+          console.error("Erro ao enviar mensagem:", e);
+          alert("Ops! Ocorreu um erro ao enviar a mensagem. Verifique se criou a tabela no Supabase.");
+        }
+      }
+      btn.innerText = "Enviar";
+      btn.disabled = false;
+    }
+
     // 7. INICIALIZADOR PRINCIPAL
     document.addEventListener('DOMContentLoaded', () => {
       revealOnScroll();
       carregarReservasDoBanco();
+      carregarMensagens();
     });
   </script>
 </body>
