@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   
+  <!-- SCRIPT DO SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <title>Casamento de Thamires & Leonardo</title>
   <style>
     /* RESET BASE */
@@ -39,7 +42,7 @@
     .timer-container { margin: 40px 0 50px; padding: 30px; background: #ffffff; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.05); }
     #contador { font-size: 2.2rem; font-weight: bold; color: #3a5f94; margin-top: 10px; font-family: 'Playfair Display', serif; }
     
-    /* NOVO DESIGN DA HISTÓRIA (FLUIDO E ROMÂNTICO) */
+    /* DESIGN DA HISTÓRIA (FLUIDO E ROMÂNTICO) */
     .mensagem-convidados { max-width: 800px; margin: 0 auto 60px; font-size: 1.15rem; line-height: 1.8; color: #4a627a; }
     
     .historia-unica-container { max-width: 750px; margin: 0 auto 60px; text-align: center; padding: 0 20px; }
@@ -85,8 +88,9 @@
     .botoes-acao { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
     .btn-loja { background-color: #f7f3e8; color: #8c7d6b; border: 1px solid #e8decb; text-align: center; }
     .btn-loja:hover { background-color: #e8decb; color: #5a4f41; }
-    .btn-reservar { background-color: #eaf0f6; color: #3a5f94; border: 1px solid #c0d1e0; font-weight: 600; }
+    .btn-reservar { background-color: #eaf0f6; color: #3a5f94; border: 1px solid #c0d1e0; font-weight: 600; cursor: pointer; transition: 0.2s; }
     .btn-reservar:hover { background-color: #d0deec; }
+    .btn-reservar:disabled { background-color: #dbe4ed; color: #a1b8c6; cursor: not-allowed; }
 
     .selo-presenteado { display: none; }
     .card.presenteado { opacity: 0.55; pointer-events: none; }
@@ -142,7 +146,7 @@
         <p>A contagem regressiva começou e a emoção de ver este dia chegar é inexplicável. Não poderíamos dar este passo tão importante sem ter ao nosso lado as pessoas que acompanharam o nosso amadurecimento e que sempre torceram pela nossa felicidade. Cada detalhe deste site e do nosso casamento foi pensado com muito amor e carinho. A presença de vocês é, sem dúvida, o nosso maior e melhor presente!</p>
       </section>
 
-      <!-- HISTÓRIA E FÉ MERGULHADAS NUM SÓ TEXTO ELEGANTE -->
+      <!-- HISTÓRIA E FÉ -->
       <section class="reveal historia-unica-container">
         <h3>A Nossa História</h3>
         
@@ -223,7 +227,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Aparelho de Jantar')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Aparelho de Jantar', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -235,7 +239,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/1QgqSXe" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Faqueiro Inox')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Faqueiro Inox', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -247,7 +251,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Taças')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Taças', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -259,7 +263,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://link.amazon/B0094YUrx" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Purificador de Água Colormaq')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Purificador de Água Colormaq', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -272,7 +276,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Cama Queen')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Cama Queen', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -284,7 +288,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Toalhas')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Toalhas', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -296,7 +300,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Manta de Microfibra')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Manta de Microfibra', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -308,11 +312,11 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/2gp2egR" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Sanduicheira e Grill')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Sanduicheira e Grill', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
-      <!-- LINHA 3 (O grande eletro bem acompanhado) -->
+      <!-- LINHA 3 -->
       <div class="card" data-id="1" data-categoria="eletro" data-preco="2200.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_970781-MLA116934025507_082026-F.webp.jpg" alt="Máquina de Lavar Roupas 15kg" class="foto-presente">
@@ -321,7 +325,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://link.amazon/B02GopdOi" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Máquina de Lavar Roupas 15kg')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Máquina de Lavar Roupas 15kg', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -333,7 +337,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/18WmNUg" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Panelas Cerâmica')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo de Panelas Cerâmica', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -345,7 +349,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Utensílios de Silicone')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Utensílios de Silicone', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -357,7 +361,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Turbo')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Turbo', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -370,7 +374,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/2Ly4eDo" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Micro-Ondas de Bancada (27L)')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Micro-Ondas de Bancada (27L)', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -382,7 +386,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Vidro Herméticos')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Vidro Herméticos', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -394,7 +398,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/2Gbqozh" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Porta Temperos')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Porta Temperos', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -406,11 +410,11 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Garrafa Térmica')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Garrafa Térmica', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
-      <!-- LINHA 5 (Organização e Limpeza) -->
+      <!-- LINHA 5 -->
       <div class="card" data-id="36" data-categoria="utilidades" data-preco="420.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Lavadora de Alta Pressão WAP" class="foto-presente">
@@ -419,7 +423,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Lavadora de Alta Pressão WAP')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Lavadora de Alta Pressão WAP', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -431,7 +435,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Aspirador de Pó Vertical')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Aspirador de Pó Vertical', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -443,7 +447,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Mop Giratório Fit')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Mop Giratório Fit', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -455,7 +459,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Kit Baldes')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Kit Baldes', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -468,7 +472,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Xícaras de Porcelana')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Xícaras de Porcelana', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -480,7 +484,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jarra de Vidro para Suco')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jarra de Vidro para Suco', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -492,7 +496,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Copos de Vidro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Copos de Vidro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -504,11 +508,11 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Jarra Vidro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Liquidificador Jarra Vidro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
-      <!-- LINHA 7 (Kit Banheiro Completo) -->
+      <!-- LINHA 7 -->
       <div class="card" data-id="53" data-categoria="banheiro" data-preco="200.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_695514-MLA115960231012_092026-F.webp.jpg" alt="Chuveiro" class="foto-presente">
@@ -517,7 +521,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/2EW6Tmf" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Chuveiro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Chuveiro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -529,7 +533,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/1Vbo8ci" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Espelho Para Banheiro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Espelho Para Banheiro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -541,7 +545,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/1ZEg84r" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Cuba Para o Banheiro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Cuba Para o Banheiro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -553,7 +557,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/2Jjcdvw" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Pia do Banheiro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Pia do Banheiro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -566,7 +570,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/1u7MCMJ" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Arroz Elétrica')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Arroz Elétrica', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -578,7 +582,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/2vog7De" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -590,7 +594,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Mixer de Mão')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Mixer de Mão', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -602,7 +606,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Espremedor de Frutas')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Espremedor de Frutas', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -615,7 +619,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Ferro de Passar a Vapor')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Ferro de Passar a Vapor', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -627,7 +631,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Varal de Chão')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Varal de Chão', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -639,7 +643,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Varal Retrátil')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Varal Retrátil', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -651,7 +655,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Lixeira Inox')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Lixeira Inox', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -664,7 +668,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Kit de Frigideiras')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Kit de Frigideiras', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -676,7 +680,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Assadeiras de Vidro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Assadeiras de Vidro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -688,7 +692,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Pratos de Vidro Marinex')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Pratos de Vidro Marinex', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -700,7 +704,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Tábua de Corte de Vidro')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Tábua de Corte de Vidro', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -713,7 +717,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Prato Giratório de Mesa')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Prato Giratório de Mesa', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -725,7 +729,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo Americano')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Jogo Americano', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -737,7 +741,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Toalha de Mesa')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Toalha de Mesa', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -749,7 +753,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Relógio de Parede')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Relógio de Parede', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -762,7 +766,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Potes para Biscoitos')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Potes para Biscoitos', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -774,7 +778,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Sobremesa')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Potes de Sobremesa', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -786,7 +790,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Leiteiras')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Conjunto de Leiteiras', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -798,7 +802,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Forma de Bolo')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Forma de Bolo', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -811,7 +815,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Protetor de Colchão')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Protetor de Colchão', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -823,7 +827,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Tapete de Banho')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Tapete de Banho', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -835,7 +839,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Passadeira de Cozinha')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Passadeira de Cozinha', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -847,7 +851,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/1KhEMSv" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Cozinha')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Torneira Para a Cozinha', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -860,7 +864,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="https://meli.la/2vog7De" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L')">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Panela de Pressão 4,5L', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -878,8 +882,78 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT -->
+  <!-- JAVASCRIPT GERAL E SUPABASE -->
   <script>
+    // === CONFIGURAÇÃO DO SUPABASE ===
+    const supabaseUrl = 'https://wyruucotmicrdjotuknc.supabase.co';
+    const supabaseKey = 'sb_publishable_g-cb8rXdSlM1pOFrZMy1mw_JY2MNU0c';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Função que roda ao abrir o site para ler as reservas
+    async function carregarReservasDoBanco() {
+      const { data, error } = await supabase
+        .from('presentes_reservados')
+        .select('id_presente');
+
+      if (error) {
+        console.error('Erro ao buscar as reservas:', error);
+        return;
+      }
+
+      if (data) {
+        // Se encontrou reservas, bloqueia os cartões na tela
+        data.forEach(reserva => {
+          const card = document.querySelector(`.card[data-id="${reserva.id_presente}"]`);
+          if (card) {
+            card.classList.add('presenteado');
+          }
+        });
+      }
+    }
+
+    // AVISAR NOIVOS NO WHATSAPP E SALVAR NO BANCO
+    async function avisarNoivos(nomePresente, botaoClicado) {
+      const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
+      
+      if (nome && nome.trim() !== "") {
+        
+        // Desativa o botão temporariamente para não clicarem duas vezes
+        botaoClicado.innerText = "Reservando...";
+        botaoClicado.disabled = true;
+
+        const cartao = botaoClicado.closest('.card');
+        const idDoPresente = cartao.getAttribute('data-id');
+
+        // 1. Tenta salvar no Supabase
+        const { error } = await supabase
+          .from('presentes_reservados')
+          .insert([
+            { id_presente: parseInt(idDoPresente), nome_convidado: nome }
+          ]);
+
+        if (error) {
+          console.error('Erro ao salvar no banco:', error);
+          alert('Ops! Houve um erro de comunicação. Por favor, tente novamente.');
+          botaoClicado.innerText = "✅ Já comprei / Reservar";
+          botaoClicado.disabled = false;
+          return;
+        }
+
+        // 2. Se salvou com sucesso, bloqueia o cartão na hora
+        cartao.classList.add('presenteado');
+        
+        // 3. Abre o WhatsApp com a mensagem
+        const telefone = "5535988715369"; 
+        const texto = `Olá! O meu nome é *${nome}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
+        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+      }
+    }
+
+    // ============================================
+    // RESTANTE DO CÓDIGO DO SITE (Apenas visual)
+    // ============================================
+
     const audio = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicToggle');
 
@@ -945,9 +1019,7 @@
       });
 
       cards.sort((a, b) => {
-        if (ordenacao === 'padrao') {
-          return 0; 
-        }
+        if (ordenacao === 'padrao') { return 0; }
         
         const precoA = parseFloat(a.getAttribute('data-preco'));
         const precoB = parseFloat(b.getAttribute('data-preco'));
@@ -957,17 +1029,6 @@
       });
 
       cards.forEach(card => container.appendChild(card));
-    }
-
-    // AVISAR NOIVOS NO WHATSAPP
-    function avisarNoivos(nomePresente) {
-      const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
-      if (nome) {
-        const telefone = "5535988715369"; 
-        const texto = `Olá! O meu nome é *${nome}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
-        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
-        window.open(url, '_blank');
-      }
     }
 
     const dataCasamento = new Date("2027-01-16T10:30:00").getTime();
@@ -1009,7 +1070,11 @@
     }
 
     window.addEventListener('scroll', revealOnScroll);
-    document.addEventListener('DOMContentLoaded', revealOnScroll);
+    document.addEventListener('DOMContentLoaded', () => {
+      revealOnScroll();
+      // O site agora chama as reservas invisíveis assim que carrega!
+      carregarReservasDoBanco();
+    });
   </script>
 </body>
 </html>
