@@ -42,14 +42,11 @@
     .timer-container { margin: 40px 0 50px; padding: 30px; background: #ffffff; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.05); }
     #contador { font-size: 2.2rem; font-weight: bold; color: #3a5f94; margin-top: 10px; font-family: 'Playfair Display', serif; }
     
-    /* DESIGN DA HISTÓRIA (FLUIDO E ROMÂNTICO) */
+    /* DESIGN DA HISTÓRIA */
     .mensagem-convidados { max-width: 800px; margin: 0 auto 60px; font-size: 1.15rem; line-height: 1.8; color: #4a627a; }
-    
     .historia-unica-container { max-width: 750px; margin: 0 auto 60px; text-align: center; padding: 0 20px; }
     .historia-unica-container h3 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #2a4b7c; margin-bottom: 30px; font-weight: normal; }
-    
     .texto-romantico { font-size: 1.15rem; line-height: 2.0; color: #4a627a; margin-bottom: 20px; text-align: center; }
-    
     .versiculo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.35rem; color: #3a5f94; text-align: center; margin: 40px 0 20px; line-height: 1.6; border-top: 1px solid #d0deec; border-bottom: 1px solid #d0deec; padding: 30px 0; }
     .versiculo span { display: block; font-size: 1rem; color: #8c7d6b; margin-top: 15px; font-style: normal; font-family: 'Montserrat', sans-serif; font-weight: 600; }
 
@@ -134,34 +131,21 @@
 
     <div class="container">
       
-      <!-- CONTADOR DE DIAS -->
       <div class="timer-container reveal">
         <h3>Faltam poucos dias:</h3>
         <div id="contador">Carregando...</div>
       </div>
 
-      <!-- MENSAGEM AOS CONVIDADOS -->
       <section class="reveal mensagem-convidados">
         <h2>Bem-vindos ao nosso sonho!</h2>
         <p>A contagem regressiva começou e a emoção de ver este dia chegar é inexplicável. Não poderíamos dar este passo tão importante sem ter ao nosso lado as pessoas que acompanharam o nosso amadurecimento e que sempre torceram pela nossa felicidade. Cada detalhe deste site e do nosso casamento foi pensado com muito amor e carinho. A presença de vocês é, sem dúvida, o nosso maior e melhor presente!</p>
       </section>
 
-      <!-- HISTÓRIA E FÉ -->
       <section class="reveal historia-unica-container">
         <h3>A Nossa História</h3>
-        
-        <p class="texto-romantico">
-          Deus já havia escrito o nosso encontro muito antes de nossos caminhos se cruzarem. Tudo começou em 2019 e, entre orações compartilhadas e conversas intermináveis, a amizade deu lugar ao amor mais bonito e verdadeiro de nossas vidas.
-        </p>
-
-        <p class="texto-romantico">
-          A fé sempre foi o nosso maior alicerce. Sob o cuidado de Nossa Senhora de Fátima, nossa história foi sendo tecida. Com o céu a guiar cada passo, o pedido de casamento realizou o maior desejo dos nossos corações: aconteceu diante de Jesus Eucarístico, na capela de Nossa Senhora de Fátima, em São Lourenço.
-        </p>
-
-        <p class="texto-romantico">
-          Ali, com a emoção transbordando e a certeza de que fomos feitos um para o outro, dissemos o "Sim" que agora nos levará até o altar.
-        </p>
-
+        <p class="texto-romantico">Deus já havia escrito o nosso encontro muito antes de nossos caminhos se cruzarem. Tudo começou em 2019 e, entre orações compartilhadas e conversas intermináveis, a amizade deu lugar ao amor mais bonito e verdadeiro de nossas vidas.</p>
+        <p class="texto-romantico">A fé sempre foi o nosso maior alicerce. Sob o cuidado de Nossa Senhora de Fátima, nossa história foi sendo tecida. Com o céu a guiar cada passo, o pedido de casamento realizou o maior desejo dos nossos corações: aconteceu diante de Jesus Eucarístico, na capela de Nossa Senhora de Fátima, em São Lourenço.</p>
+        <p class="texto-romantico">Ali, com a emoção transbordando e a certeza de que fomos feitos um para o outro, dissemos o "Sim" que agora nos levará até o altar.</p>
         <div class="versiculo">
           "Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe."
           <span>— Mateus 19:6</span>
@@ -215,10 +199,10 @@
       </select>
     </div>
 
-    <!-- GRID DE PRESENTES COM NOVA ORDEM OTIMIZADA -->
+    <!-- GRID DE PRESENTES -->
     <div class="grid-presentes" id="gridPresentes">
       
-      <!-- LINHA 1 (Kits Visuais Iniciais e Preços Variados) -->
+      <!-- LINHA 1 -->
       <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Aparelho de Jantar e Chá" class="foto-presente">
@@ -267,7 +251,7 @@
         </div>
       </div>
 
-      <!-- LINHA 2 (Agrupamento Quarto e Dia a Dia) -->
+      <!-- LINHA 2 -->
       <div class="card" data-id="44" data-categoria="cama-mesa-banho" data-preco="320.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="COLE_O_LINK_DA_FOTO_AQUI.jpg" alt="Jogo de Cama Queen" class="foto-presente">
@@ -882,78 +866,8 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT GERAL E SUPABASE -->
+  <!-- SCRIPT DO SITE (UI, Animações, Envelope, etc) -->
   <script>
-    // === CONFIGURAÇÃO DO SUPABASE ===
-    const supabaseUrl = 'https://wyruucotmicrdjotuknc.supabase.co';
-    const supabaseKey = 'sb_publishable_g-cb8rXdSlM1pOFrZMy1mw_JY2MNU0c';
-    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-    // Função que roda ao abrir o site para ler as reservas
-    async function carregarReservasDoBanco() {
-      const { data, error } = await supabase
-        .from('presentes_reservados')
-        .select('id_presente');
-
-      if (error) {
-        console.error('Erro ao buscar as reservas:', error);
-        return;
-      }
-
-      if (data) {
-        // Se encontrou reservas, bloqueia os cartões na tela
-        data.forEach(reserva => {
-          const card = document.querySelector(`.card[data-id="${reserva.id_presente}"]`);
-          if (card) {
-            card.classList.add('presenteado');
-          }
-        });
-      }
-    }
-
-    // AVISAR NOIVOS NO WHATSAPP E SALVAR NO BANCO
-    async function avisarNoivos(nomePresente, botaoClicado) {
-      const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
-      
-      if (nome && nome.trim() !== "") {
-        
-        // Desativa o botão temporariamente para não clicarem duas vezes
-        botaoClicado.innerText = "Reservando...";
-        botaoClicado.disabled = true;
-
-        const cartao = botaoClicado.closest('.card');
-        const idDoPresente = cartao.getAttribute('data-id');
-
-        // 1. Tenta salvar no Supabase
-        const { error } = await supabase
-          .from('presentes_reservados')
-          .insert([
-            { id_presente: parseInt(idDoPresente), nome_convidado: nome }
-          ]);
-
-        if (error) {
-          console.error('Erro ao salvar no banco:', error);
-          alert('Ops! Houve um erro de comunicação. Por favor, tente novamente.');
-          botaoClicado.innerText = "✅ Já comprei / Reservar";
-          botaoClicado.disabled = false;
-          return;
-        }
-
-        // 2. Se salvou com sucesso, bloqueia o cartão na hora
-        cartao.classList.add('presenteado');
-        
-        // 3. Abre o WhatsApp com a mensagem
-        const telefone = "5535988715369"; 
-        const texto = `Olá! O meu nome é *${nome}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
-        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
-        window.open(url, '_blank');
-      }
-    }
-
-    // ============================================
-    // RESTANTE DO CÓDIGO DO SITE (Apenas visual)
-    // ============================================
-
     const audio = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicToggle');
 
@@ -962,7 +876,7 @@
         musicBtn.classList.add('playing');
         musicBtn.innerHTML = '🔊';
       }).catch(err => {
-        console.log("Aguardando interação...", err);
+        console.log("Aguardando interação...");
       });
     }
 
@@ -995,13 +909,11 @@
       document.getElementById('listaCompletaOverlay').style.display = 'none';
     }
 
-    // FUNÇÃO DE BUSCA E FILTRO
     function filtrarEOrdenar() {
       const termoBusca = document.getElementById('buscaPresente').value.toLowerCase();
       const categoria = document.getElementById('filtroCategoria').value;
       const ordenacao = document.getElementById('ordenarPreco').value;
       const container = document.getElementById('gridPresentes');
-      
       const cards = Array.from(container.querySelectorAll('.card'));
 
       cards.forEach(card => {
@@ -1020,7 +932,6 @@
 
       cards.sort((a, b) => {
         if (ordenacao === 'padrao') { return 0; }
-        
         const precoA = parseFloat(a.getAttribute('data-preco'));
         const precoB = parseFloat(b.getAttribute('data-preco'));
         
@@ -1070,9 +981,95 @@
     }
 
     window.addEventListener('scroll', revealOnScroll);
+  </script>
+
+  <!-- SCRIPT DO BANCO DE DADOS (Supabase e Reservas) -->
+  <script>
+    let supabase = null;
+    
+    // Tenta carregar o Supabase com segurança
+    try {
+      if (window.supabase) {
+        const supabaseUrl = 'https://wyruucotmicrdjotuknc.supabase.co';
+        const supabaseKey = 'sb_publishable_g-cb8rXdSlM1pOFrZMy1mw_JY2MNU0c';
+        supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+      } else {
+        console.warn("Supabase não foi carregado pelo navegador. As reservas funcionarão apenas no WhatsApp.");
+      }
+    } catch(e) {
+      console.error("Erro ao configurar Supabase:", e);
+    }
+
+    // Carrega presentes já reservados assim que o site abre
+    async function carregarReservasDoBanco() {
+      if (!supabase) return; // Se não carregou, ignora e o site continua normal
+
+      try {
+        const { data, error } = await supabase
+          .from('presentes_reservados')
+          .select('id_presente');
+
+        if (data && !error) {
+          data.forEach(reserva => {
+            const card = document.querySelector(`.card[data-id="${reserva.id_presente}"]`);
+            if (card) {
+              card.classList.add('presenteado');
+            }
+          });
+        }
+      } catch(e) {
+        console.error('Erro ao buscar as reservas:', e);
+      }
+    }
+
+    // Função que é ativada quando o convidado clica para comprar
+    async function avisarNoivos(nomePresente, botaoClicado) {
+      const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
+      
+      if (nome && nome.trim() !== "") {
+        
+        // Bloqueia o botão instantaneamente
+        botaoClicado.innerText = "Reservando...";
+        botaoClicado.disabled = true;
+
+        const cartao = botaoClicado.closest('.card');
+        const idDoPresente = cartao.getAttribute('data-id');
+
+        // Se o banco de dados estiver conectado, salva lá
+        if (supabase) {
+          try {
+            const { error } = await supabase
+              .from('presentes_reservados')
+              .insert([
+                { id_presente: parseInt(idDoPresente), nome_convidado: nome }
+              ]);
+
+            if (error) {
+              console.error('Erro ao salvar no banco:', error);
+              alert('Ops! Houve um erro de comunicação. Por favor, tente novamente.');
+              botaoClicado.innerText = "✅ Já comprei / Reservar";
+              botaoClicado.disabled = false;
+              return;
+            }
+          } catch(e) {
+            console.error('Erro na conexão:', e);
+          }
+        }
+
+        // Bloqueia visualmente na tela da pessoa
+        cartao.classList.add('presenteado');
+        
+        // Abre o WhatsApp
+        const telefone = "5535988715369"; 
+        const texto = `Olá! O meu nome é *${nome}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
+        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+      }
+    }
+
+    // Carrega o banco assim que a página estiver pronta
     document.addEventListener('DOMContentLoaded', () => {
       revealOnScroll();
-      // O site agora chama as reservas invisíveis assim que carrega!
       carregarReservasDoBanco();
     });
   </script>
