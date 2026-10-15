@@ -42,7 +42,7 @@
     .timer-container { margin: 40px 0 50px; padding: 30px; background: #ffffff; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.05); }
     #contador { font-size: 2.2rem; font-weight: bold; color: #3a5f94; margin-top: 10px; font-family: 'Playfair Display', serif; }
     
-    /* DESIGN DA HISTÓRIA (FLUIDO E ROMÂNTICO) */
+    /* DESIGN DA HISTÓRIA */
     .mensagem-convidados { max-width: 800px; margin: 0 auto 60px; font-size: 1.15rem; line-height: 1.8; color: #4a627a; }
     .historia-unica-container { max-width: 750px; margin: 0 auto 60px; text-align: center; padding: 0 20px; }
     .historia-unica-container h3 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #2a4b7c; margin-bottom: 30px; font-weight: normal; }
@@ -210,7 +210,7 @@
         <div class="botoes-acao">
           <button class="btn" onclick="abrirModal('leonardoj698@gmail.com')">Contribuir com PIX</button>
           <a href="SEU_LINK_AQUI" target="_blank" class="btn btn-loja">Comprar na Loja</a>
-          <button class="btn btn-reservar" onclick="avisarNoivos('Aparelho de Jantar', this)">✅ Já comprei / Reservar</button>
+          <button class="btn btn-reservar" onclick="avisarNoivos('Aparelho de Jantar e Chá', this)">✅ Já comprei / Reservar</button>
         </div>
       </div>
 
@@ -858,21 +858,18 @@
     // 1. VARIÁVEIS GLOBAIS
     let supabaseClient = null;
 
-    // 2. FUNÇÕES DO ENVELOPE E ÁUDIO (TOTALMENTE BLINDADAS)
+    // 2. FUNÇÕES DO ENVELOPE E ÁUDIO
     function abrirConvite() {
       try {
-        // Garante que o envelope abre mesmo se qualquer outra coisa der erro
         document.getElementById('envelopeBox').classList.add('open');
         setTimeout(() => {
           const overlay = document.getElementById('envelopeOverlay');
           if(overlay) {
             overlay.classList.add('opened');
-            overlay.style.pointerEvents = 'none'; // Libera o clique no site abaixo
+            overlay.style.pointerEvents = 'none';
           }
           revealOnScroll();
         }, 700);
-        
-        // Tenta tocar a música por último
         playAudio();
       } catch (erro) {
         console.error("Erro na animação do envelope:", erro);
@@ -911,7 +908,7 @@
       } catch(e) {}
     }
 
-    // 3. FUNÇÕES DA LISTA DE PRESENTES
+    // 3. OVERLAY E FILTROS DA LISTA
     function abrirListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'block'; }
     function fecharListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'none'; }
 
@@ -942,7 +939,7 @@
       } catch(e) { console.error("Erro no filtro:", e); }
     }
 
-    // 4. FUNÇÕES DO PIX, CONTADOR E SCROLL
+    // 4. FUNÇÕES DO PIX E CONTADOR
     function abrirModal(chavePix) {
       document.getElementById("pixKeyInput").value = chavePix;
       document.getElementById("pixModal").style.display = "flex";
@@ -994,12 +991,13 @@
       } catch (e) { console.error('Erro ao buscar as reservas:', e); }
     }
 
+    // NOVA FUNÇÃO: Sem WhatsApp e Com Agradecimento!
     async function avisarNoivos(nomePresente, botaoClicado) {
       try {
         const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
         
         if (nome && nome.trim() !== "") {
-          botaoClicado.innerText = "Reservando...";
+          botaoClicado.innerText = "A guardar...";
           botaoClicado.disabled = true;
 
           const cartao = botaoClicado.closest('.card');
@@ -1011,19 +1009,20 @@
             ]);
 
             if (error) {
-              console.error('Erro ao salvar no banco:', error);
-              alert('Ops! Houve um erro de comunicação. Por favor, tente novamente.');
+              console.error('Erro detalhado do Supabase:', error.message, error.details);
+              alert('Ops! Houve um erro ao guardar a reserva. Verifique se a tabela no Supabase está sem o RLS ativo.');
               botaoClicado.innerText = "✅ Já comprei / Reservar";
               botaoClicado.disabled = false;
               return;
             }
           }
 
+          // Bloqueia o cartão instantaneamente
           cartao.classList.add('presenteado');
+          botaoClicado.innerText = "💝 Reservado";
           
-          const telefone = "5535988715369"; 
-          const texto = `Olá! O meu nome é *${nome.trim()}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
-          window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`, '_blank');
+          // MENSAGEM ESPECIAL DE AGRADECIMENTO NO ECRÃ
+          alert(`Muito obrigado, ${nome.trim()}! ❤️\nA sua reserva do presente "${nomePresente}" foi guardada com sucesso. Agradecemos de coração pelo carinho!`);
         }
       } catch(e) {
         console.error("Erro na reserva:", e);
@@ -1035,7 +1034,6 @@
 
     // 6. INICIALIZADOR PRINCIPAL
     document.addEventListener('DOMContentLoaded', () => {
-      // Tenta iniciar o Supabase
       try {
         if (window.supabase) {
           supabaseClient = window.supabase.createClient('https://wyruucotmicrdjotuknc.supabase.co', 'sb_publishable_g-cb8rXdSlM1pOFrZMy1mw_JY2MNU0c');
