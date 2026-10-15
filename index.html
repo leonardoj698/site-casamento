@@ -199,7 +199,7 @@
       </select>
     </div>
 
-    <!-- GRID DE PRESENTES COM NOVA ORDEM OTIMIZADA -->
+    <!-- GRID DE PRESENTES -->
     <div class="grid-presentes" id="gridPresentes">
       
       <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
@@ -853,167 +853,101 @@
     </div>
   </div>
 
-  <!-- SCRIPT UNIFICADO (SUPABASE + SITE) -->
+  <!-- SCRIPT UNIFICADO BLINDADO (SUPABASE + SITE) -->
   <script>
-    // 1. INICIALIZAÇÃO DO SUPABASE
-    let supabase = null;
-    try {
-      if (window.supabase) {
-        supabase = window.supabase.createClient('https://wyruucotmicrdjotuknc.supabase.co', 'sb_publishable_g-cb8rXdSlM1pOFrZMy1mw_JY2MNU0c');
-      }
-    } catch (e) {
-      console.error("Erro ao conectar com Supabase:", e);
-    }
+    // 1. VARIÁVEIS GLOBAIS
+    let supabaseClient = null;
 
-    // 2. FUNÇÕES DE ÁUDIO E ENVELOPE
-    const audio = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicToggle');
+    // 2. FUNÇÕES DO ENVELOPE E ÁUDIO (TOTALMENTE BLINDADAS)
+    function abrirConvite() {
+      try {
+        // Garante que o envelope abre mesmo se qualquer outra coisa der erro
+        document.getElementById('envelopeBox').classList.add('open');
+        setTimeout(() => {
+          const overlay = document.getElementById('envelopeOverlay');
+          if(overlay) {
+            overlay.classList.add('opened');
+            overlay.style.pointerEvents = 'none'; // Libera o clique no site abaixo
+          }
+          revealOnScroll();
+        }, 700);
+        
+        // Tenta tocar a música por último
+        playAudio();
+      } catch (erro) {
+        console.error("Erro na animação do envelope:", erro);
+        document.getElementById('envelopeOverlay').style.display = 'none';
+      }
+    }
 
     function playAudio() {
-      audio.play().then(() => {
-        musicBtn.classList.add('playing');
-        musicBtn.innerHTML = '🔊';
-      }).catch(err => {
-        console.log("Aguardando interação...");
-      });
-    }
-
-    function abrirConvite() {
-      document.getElementById('envelopeBox').classList.add('open');
-      playAudio();
-      setTimeout(() => {
-        document.getElementById('envelopeOverlay').classList.add('opened');
-        revealOnScroll();
-      }, 700);
+      try {
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+        if (audio) {
+          audio.play().then(() => {
+            if(musicBtn) {
+              musicBtn.classList.add('playing');
+              musicBtn.innerHTML = '🔊';
+            }
+          }).catch(e => console.log("Áudio aguardando interação do usuário."));
+        }
+      } catch (e) { console.error("Erro no áudio:", e); }
     }
 
     function toggleMusic() {
-      if (audio.paused) {
-        playAudio();
-      } else {
-        audio.pause();
-        musicBtn.classList.remove('playing');
-        musicBtn.innerHTML = '🎵';
-      }
-    }
-
-    // 3. OVERLAY E FILTROS DA LISTA
-    function abrirListaCompleta() {
-      document.getElementById('listaCompletaOverlay').style.display = 'block';
-    }
-    
-    function fecharListaCompleta() {
-      document.getElementById('listaCompletaOverlay').style.display = 'none';
-    }
-
-    function filtrarEOrdenar() {
-      const termoBusca = document.getElementById('buscaPresente').value.toLowerCase();
-      const categoria = document.getElementById('filtroCategoria').value;
-      const ordenacao = document.getElementById('ordenarPreco').value;
-      const container = document.getElementById('gridPresentes');
-      const cards = Array.from(container.querySelectorAll('.card'));
-
-      cards.forEach(card => {
-        const nomePresente = card.querySelector('h3').textContent.toLowerCase();
-        const categoriaPresente = card.getAttribute('data-categoria');
-        
-        const passouNaBusca = nomePresente.includes(termoBusca);
-        const passouNaCategoria = (categoria === 'todas' || categoria === categoriaPresente);
-        
-        if (passouNaBusca && passouNaCategoria) {
-          card.style.display = 'flex'; 
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      cards.sort((a, b) => {
-        if (ordenacao === 'padrao') { return 0; }
-        const precoA = parseFloat(a.getAttribute('data-preco'));
-        const precoB = parseFloat(b.getAttribute('data-preco'));
-        
-        if (ordenacao === 'menor') return precoA - precoB;
-        if (ordenacao === 'maior') return precoB - precoA;
-      });
-
-      cards.forEach(card => container.appendChild(card));
-    }
-
-    // 4. SISTEMA DE RESERVAS (SUPABASE + WHATSAPP)
-    async function carregarReservasDoBanco() {
-      if (!supabase) return;
       try {
-        const { data, error } = await supabase.from('presentes_reservados').select('id_presente');
-        if (data && !error) {
-          data.forEach(reserva => {
-            const card = document.querySelector(`.card[data-id="${reserva.id_presente}"]`);
-            if (card) {
-              card.classList.add('presenteado');
-            }
-          });
-        }
-      } catch (e) {
-        console.error('Erro ao buscar as reservas:', e);
-      }
-    }
-
-    async function avisarNoivos(nomePresente, botaoClicado) {
-      const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
-      
-      if (nome && nome.trim() !== "") {
-        botaoClicado.innerText = "Reservando...";
-        botaoClicado.disabled = true;
-
-        const cartao = botaoClicado.closest('.card');
-        const idDoPresente = cartao.getAttribute('data-id');
-
-        if (supabase) {
-          try {
-            const { error } = await supabase.from('presentes_reservados').insert([
-              { id_presente: parseInt(idDoPresente), nome_convidado: nome.trim() }
-            ]);
-
-            if (error) {
-              console.error('Erro ao salvar no banco:', error);
-              alert('Ops! Houve um erro de comunicação. Por favor, tente novamente.');
-              botaoClicado.innerText = "✅ Já comprei / Reservar";
-              botaoClicado.disabled = false;
-              return;
-            }
-          } catch (e) {
-            console.error('Erro na conexão:', e);
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+        if (audio.paused) {
+          playAudio();
+        } else {
+          audio.pause();
+          if(musicBtn) {
+            musicBtn.classList.remove('playing');
+            musicBtn.innerHTML = '🎵';
           }
         }
-
-        cartao.classList.add('presenteado');
-        
-        const telefone = "5535988715369"; 
-        const texto = `Olá! O meu nome é *${nome.trim()}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
-        window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`, '_blank');
-      }
+      } catch(e) {}
     }
 
-    // 5. CONTADOR, MODAL PIX E ANIMAÇÕES
-    const dataCasamento = new Date("2027-01-16T10:30:00").getTime();
-    setInterval(() => {
-      const agora = new Date().getTime();
-      const diferenca = dataCasamento - agora;
-      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-      document.getElementById("contador").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-    }, 1000);
+    // 3. FUNÇÕES DA LISTA DE PRESENTES
+    function abrirListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'block'; }
+    function fecharListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'none'; }
 
+    function filtrarEOrdenar() {
+      try {
+        const termoBusca = document.getElementById('buscaPresente').value.toLowerCase();
+        const categoria = document.getElementById('filtroCategoria').value;
+        const ordenacao = document.getElementById('ordenarPreco').value;
+        const container = document.getElementById('gridPresentes');
+        const cards = Array.from(container.querySelectorAll('.card'));
+
+        cards.forEach(card => {
+          const nomePresente = card.querySelector('h3').textContent.toLowerCase();
+          const categoriaPresente = card.getAttribute('data-categoria');
+          const passouNaBusca = nomePresente.includes(termoBusca);
+          const passouNaCategoria = (categoria === 'todas' || categoria === categoriaPresente);
+          card.style.display = (passouNaBusca && passouNaCategoria) ? 'flex' : 'none';
+        });
+
+        cards.sort((a, b) => {
+          if (ordenacao === 'padrao') return 0; 
+          const precoA = parseFloat(a.getAttribute('data-preco'));
+          const precoB = parseFloat(b.getAttribute('data-preco'));
+          return (ordenacao === 'menor') ? (precoA - precoB) : (precoB - precoA);
+        });
+
+        cards.forEach(card => container.appendChild(card));
+      } catch(e) { console.error("Erro no filtro:", e); }
+    }
+
+    // 4. FUNÇÕES DO PIX, CONTADOR E SCROLL
     function abrirModal(chavePix) {
       document.getElementById("pixKeyInput").value = chavePix;
       document.getElementById("pixModal").style.display = "flex";
     }
-
-    function fecharModal() {
-      document.getElementById("pixModal").style.display = "none";
-    }
-
+    function fecharModal() { document.getElementById("pixModal").style.display = "none"; }
     function copiarPix() {
       const input = document.getElementById("pixKeyInput");
       input.select();
@@ -1025,18 +959,95 @@
       const reveals = document.querySelectorAll('.reveal');
       const windowHeight = window.innerHeight;
       reveals.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 50) {
+        if (element.getBoundingClientRect().top < windowHeight - 50) {
           element.classList.add('active');
         }
       });
     }
-
-    // CARREGA TUDO AO ABRIR A PÁGINA
     window.addEventListener('scroll', revealOnScroll);
+
+    setInterval(() => {
+      try {
+        const dataCasamento = new Date("2027-01-16T10:30:00").getTime();
+        const agora = new Date().getTime();
+        const diferenca = dataCasamento - agora;
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+        const contadorEl = document.getElementById("contador");
+        if(contadorEl) contadorEl.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+      } catch(e) {}
+    }, 1000);
+
+    // 5. BANCO DE DADOS E RESERVAS
+    async function carregarReservasDoBanco() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient.from('presentes_reservados').select('id_presente');
+        if (data && !error) {
+          data.forEach(reserva => {
+            const card = document.querySelector(`.card[data-id="${reserva.id_presente}"]`);
+            if (card) card.classList.add('presenteado');
+          });
+        }
+      } catch (e) { console.error('Erro ao buscar as reservas:', e); }
+    }
+
+    async function avisarNoivos(nomePresente, botaoClicado) {
+      try {
+        const nome = prompt("Que alegria! Por favor, digite o seu nome para sabermos quem nos está a presentear:");
+        
+        if (nome && nome.trim() !== "") {
+          botaoClicado.innerText = "Reservando...";
+          botaoClicado.disabled = true;
+
+          const cartao = botaoClicado.closest('.card');
+          const idDoPresente = cartao.getAttribute('data-id');
+
+          if (supabaseClient) {
+            const { error } = await supabaseClient.from('presentes_reservados').insert([
+              { id_presente: parseInt(idDoPresente), nome_convidado: nome.trim() }
+            ]);
+
+            if (error) {
+              console.error('Erro ao salvar no banco:', error);
+              alert('Ops! Houve um erro de comunicação. Por favor, tente novamente.');
+              botaoClicado.innerText = "✅ Já comprei / Reservar";
+              botaoClicado.disabled = false;
+              return;
+            }
+          }
+
+          cartao.classList.add('presenteado');
+          
+          const telefone = "5535988715369"; 
+          const texto = `Olá! O meu nome é *${nome.trim()}* e acabei de escolher o presente: *${nomePresente}* no site do casamento! 🎁`;
+          window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(texto)}`, '_blank');
+        }
+      } catch(e) {
+        console.error("Erro na reserva:", e);
+        alert("Ocorreu um erro ao processar a reserva. Tente novamente.");
+        botaoClicado.innerText = "✅ Já comprei / Reservar";
+        botaoClicado.disabled = false;
+      }
+    }
+
+    // 6. INICIALIZADOR PRINCIPAL
     document.addEventListener('DOMContentLoaded', () => {
+      // Tenta iniciar o Supabase
+      try {
+        if (window.supabase) {
+          supabaseClient = window.supabase.createClient('https://wyruucotmicrdjotuknc.supabase.co', 'sb_publishable_g-cb8rXdSlM1pOFrZMy1mw_JY2MNU0c');
+          carregarReservasDoBanco();
+        } else {
+          console.warn("Script do Supabase não foi carregado a tempo.");
+        }
+      } catch (e) {
+        console.error("Erro na inicialização do Supabase:", e);
+      }
+      
       revealOnScroll();
-      carregarReservasDoBanco();
     });
   </script>
 </body>
