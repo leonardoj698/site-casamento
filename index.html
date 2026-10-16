@@ -62,8 +62,8 @@
       overflow-x: auto; 
       overflow-y: hidden;
       gap: 20px; 
-      align-items: stretch; /* Faz os cartões ficarem da mesma altura na linha */
-      padding: 15px 5px 25px 5px; /* Espaço inferior para a barra de rolagem */
+      align-items: stretch;
+      padding: 15px 5px 25px 5px; 
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
@@ -75,7 +75,7 @@
     .mural-mensagens::-webkit-scrollbar-thumb:hover { background: #a1b8c6; }
 
     .mensagem-card { 
-      flex: 0 0 320px; /* Define a largura fixa de 320px para rolar de lado */
+      flex: 0 0 320px; 
       scroll-snap-align: start;
       background: #fdfbf7; padding: 25px 25px 20px; border-radius: 12px; border: 1px solid #e8decb; box-shadow: 0 4px 15px rgba(140, 125, 107, 0.08); position: relative; text-align: left; transition: transform 0.3s ease; 
       display: flex; flex-direction: column; justify-content: space-between;
@@ -200,7 +200,23 @@
         <img src="Foto_fundo2.jpg?v=2" alt="Nossa Senhora">
       </div>
 
-      <!-- NOVO MURAL DE RECADOS COM ROLAGEM HORIZONTAL -->
+      <section class="reveal">
+        <h2>Cerimônia</h2>
+        <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
+        <p style="margin-bottom: 8px;"><strong>Horário:</strong> 10:30h</p>
+        <p style="margin-bottom: 15px;"><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Silvio+Modesto+de+Souza,+240,+Lavras,+Minas+Gerais" target="_blank" class="btn" style="margin-top: 5px;">📍 Ver no Google Maps</a>
+      </section>
+
+      <section class="reveal">
+        <h2>Lista de Presentes</h2>
+        <p style="margin-bottom: 25px; line-height: 1.6;">
+          Montamos nossa casa com muito carinho. Você pode nos abençoar contribuindo com uma cota via PIX, comprando o presente nos nossos links ou marcando o item que já escolheu.
+        </p>
+        <button class="btn btn-large" onclick="abrirListaCompleta()">🎁 Ver Lista Completa de Presentes</button>
+      </section>
+
+      <!-- NOVO MURAL DE RECADOS MOVIDO PARA O FINAL -->
       <section class="reveal mural-container">
         <h2>Mural de Recados</h2>
         
@@ -217,21 +233,6 @@
         </div>
       </section>
 
-      <section class="reveal">
-        <h2>Cerimônia</h2>
-        <p style="margin-bottom: 8px;"><strong>Data:</strong> 16 de Janeiro de 2027</p>
-        <p style="margin-bottom: 8px;"><strong>Horário:</strong> 10:30h</p>
-        <p style="margin-bottom: 15px;"><strong>Local:</strong> Rua Silvio Modesto de Souza, 240, Lavras, Minas Gerais</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Silvio+Modesto+de+Souza,+240,+Lavras,+Minas+Gerais" target="_blank" class="btn" style="margin-top: 5px;">📍 Ver no Google Maps</a>
-      </section>
-
-      <section class="reveal">
-        <h2>Lista de Presentes</h2>
-        <p style="margin-bottom: 25px; line-height: 1.6;">
-          Montamos nossa casa com muito carinho. Você pode nos abençoar contribuindo com uma cota via PIX, comprando o presente nos nossos links ou marcando o item que já escolheu.
-        </p>
-        <button class="btn btn-large" onclick="abrirListaCompleta()">🎁 Ver Lista Completa de Presentes</button>
-      </section>
     </div>
   </div>
 
@@ -262,7 +263,7 @@
 
     <!-- GRID DE PRESENTES -->
     <div class="grid-presentes" id="gridPresentes">
-      <!-- MANTENHO OS SEUS 50 PRESENTES AQUI -->
+      <!-- (O SEU GRID DE 50 PRESENTES PERMANECE INTACTO AQUI) -->
       
       <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
@@ -926,7 +927,6 @@
 
   <!-- SCRIPT UNIFICADO (SUPABASE + SITE) -->
   <script>
-    // 1. INICIALIZAÇÃO DO SUPABASE
     let supabaseClient = null;
     try {
       if (window.supabase) {
@@ -937,7 +937,6 @@
       console.error("Erro ao conectar com Supabase:", e);
     }
 
-    // 2. FUNÇÕES DO ENVELOPE E ÁUDIO
     function abrirConvite() {
       try {
         document.getElementById('envelopeBox').classList.add('open');
@@ -980,7 +979,6 @@
       } catch(e) {}
     }
 
-    // 3. OVERLAY E FILTROS DA LISTA DE PRESENTES
     function abrirListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'block'; }
     function fecharListaCompleta() { document.getElementById('listaCompletaOverlay').style.display = 'none'; }
 
@@ -1010,7 +1008,6 @@
       } catch(e) {}
     }
 
-    // 4. FUNÇÕES DO PIX E CONTADOR
     function abrirModal(chavePix) {
       document.getElementById("pixKeyInput").value = chavePix;
       document.getElementById("pixModal").style.display = "flex";
@@ -1047,7 +1044,6 @@
       } catch(e) {}
     }, 1000);
 
-    // 5. BANCO DE DADOS: LISTA DE PRESENTES
     async function carregarReservasDoBanco() {
       if (!supabaseClient) return;
       try {
@@ -1102,7 +1098,6 @@
       }
     }
 
-    // 6. BANCO DE DADOS: MURAL DE RECADOS
     async function carregarMensagens() {
       if (!supabaseClient) return;
       try {
@@ -1168,7 +1163,6 @@
       btn.disabled = false;
     }
 
-    // 7. INICIALIZADOR PRINCIPAL
     document.addEventListener('DOMContentLoaded', () => {
       revealOnScroll();
       carregarReservasDoBanco();
