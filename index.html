@@ -50,32 +50,39 @@
     .versiculo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.35rem; color: #3a5f94; text-align: center; margin: 40px 0 20px; line-height: 1.6; border-top: 1px solid #d0deec; border-bottom: 1px solid #d0deec; padding: 30px 0; }
     .versiculo span { display: block; font-size: 1rem; color: #8c7d6b; margin-top: 15px; font-style: normal; font-family: 'Montserrat', sans-serif; font-weight: 600; }
 
-    /* MURAL DE RECADOS COM SCROLLBAR */
+    /* MURAL DE RECADOS - ROLAGEM HORIZONTAL */
     .mural-container { max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
     .mural-form-box { background: #ffffff; padding: 35px 30px; border-radius: 16px; border: 1px solid #dbe4ed; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.04); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
     .mural-form-box h3 { font-family: 'Playfair Display', serif; color: #2a4b7c; font-size: 1.8rem; margin-bottom: 20px; font-weight: normal; }
     .mural-form-box input, .mural-form-box textarea { width: 100%; margin-bottom: 15px; resize: vertical; }
     
     .mural-mensagens { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+      display: flex; 
+      flex-wrap: nowrap; 
+      overflow-x: auto; 
+      overflow-y: hidden;
       gap: 20px; 
-      align-items: start;
-      max-height: 500px; /* Limita a altura a cerca de 3 mensagens empilhadas */
-      overflow-y: auto; /* Adiciona a barra de rolagem quando necessário */
-      padding: 10px 15px 10px 10px; /* Espaço para as sombras não cortarem */
+      align-items: stretch; /* Faz os cartões ficarem da mesma altura na linha */
+      padding: 15px 5px 25px 5px; /* Espaço inferior para a barra de rolagem */
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Personalização elegante da barra de rolagem */
-    .mural-mensagens::-webkit-scrollbar { width: 8px; }
+    /* Personalização da barra de rolagem horizontal */
+    .mural-mensagens::-webkit-scrollbar { height: 10px; width: auto; }
     .mural-mensagens::-webkit-scrollbar-track { background: #f0e9dd; border-radius: 10px; }
     .mural-mensagens::-webkit-scrollbar-thumb { background: #d0deec; border-radius: 10px; border: 1px solid #f0e9dd; }
     .mural-mensagens::-webkit-scrollbar-thumb:hover { background: #a1b8c6; }
 
-    .mensagem-card { background: #fdfbf7; padding: 25px 25px 20px; border-radius: 12px; border: 1px solid #e8decb; box-shadow: 0 4px 15px rgba(140, 125, 107, 0.08); position: relative; text-align: left; transition: transform 0.3s ease; }
+    .mensagem-card { 
+      flex: 0 0 320px; /* Define a largura fixa de 320px para rolar de lado */
+      scroll-snap-align: start;
+      background: #fdfbf7; padding: 25px 25px 20px; border-radius: 12px; border: 1px solid #e8decb; box-shadow: 0 4px 15px rgba(140, 125, 107, 0.08); position: relative; text-align: left; transition: transform 0.3s ease; 
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
     .mensagem-card:hover { transform: translateY(-3px); }
     .mensagem-card::before { content: '❝'; font-family: 'Playfair Display', serif; font-size: 4rem; color: #e8decb; position: absolute; top: -5px; left: 15px; opacity: 0.5; line-height: 1; }
-    .mensagem-card p.texto { font-size: 1.05rem; line-height: 1.6; color: #5a6f84; font-style: italic; margin-bottom: 15px; position: relative; z-index: 1; }
+    .mensagem-card p.texto { font-size: 1.05rem; line-height: 1.6; color: #5a6f84; font-style: italic; margin-bottom: 20px; position: relative; z-index: 1; }
     .mensagem-card p.autor { font-size: 1rem; color: #2a4b7c; font-weight: 600; text-align: right; margin: 0; border-top: 1px solid #f0e9dd; padding-top: 10px; }
 
     .imagem-fundo-container { margin: 40px auto; max-width: 1200px; width: 100%; }
@@ -193,7 +200,7 @@
         <img src="Foto_fundo2.jpg?v=2" alt="Nossa Senhora">
       </div>
 
-      <!-- NOVO MURAL DE RECADOS -->
+      <!-- NOVO MURAL DE RECADOS COM ROLAGEM HORIZONTAL -->
       <section class="reveal mural-container">
         <h2>Mural de Recados</h2>
         
@@ -204,8 +211,9 @@
           <button class="btn btn-large" style="width: 100%; margin-top: 10px;" onclick="enviarMensagem(this)">Enviar</button>
         </div>
 
+        <!-- AQUI FICA O CARROSSEL HORIZONTAL -->
         <div class="mural-mensagens" id="muralMensagens">
-          <p style="color: #8c7d6b; width: 100%; text-align: center;">Carregando mensagens cheias de amor...</p>
+          <p style="color: #8c7d6b; width: 100%; text-align: center; font-style: italic;">Carregando mensagens cheias de amor...</p>
         </div>
       </section>
 
@@ -254,7 +262,7 @@
 
     <!-- GRID DE PRESENTES -->
     <div class="grid-presentes" id="gridPresentes">
-      <!-- (O SEU GRID DE 50 PRESENTES PERMANECE INTACTO AQUI) -->
+      <!-- MANTENHO OS SEUS 50 PRESENTES AQUI -->
       
       <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
@@ -880,7 +888,6 @@
         </div>
       </div>
 
-      <!-- ITEM EXTRA -->
       <div class="card" data-id="5" data-categoria="cozinha" data-preco="180.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
         <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821832-MLA99571452148_122025-F.webp.jpg" alt="Panela de Pressão 4,5L" class="foto-presente">
@@ -1119,7 +1126,7 @@
             container.innerHTML += card;
           });
         } else {
-          container.innerHTML = '<p style="color: #8c7d6b; width: 100%; text-align: center;">Seja o primeiro a deixar uma mensagem!</p>';
+          container.innerHTML = '<p style="color: #8c7d6b; width: 100%; text-align: center; font-style: italic;">Seja o primeiro a deixar uma mensagem!</p>';
         }
       } catch (e) {
         console.error('Erro ao buscar mensagens:', e);
