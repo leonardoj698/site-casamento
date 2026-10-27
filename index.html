@@ -216,7 +216,7 @@
         <button class="btn btn-large" onclick="abrirListaCompleta()">🎁 Ver Lista Completa de Presentes</button>
       </section>
 
-      <!-- NOVO MURAL DE RECADOS MOVIDO PARA O FINAL -->
+      <!-- MURAL DE RECADOS MOVIDO PARA O FINAL -->
       <section class="reveal mural-container">
         <h2>Mural de Recados</h2>
         
@@ -227,7 +227,7 @@
           <button class="btn btn-large" style="width: 100%; margin-top: 10px;" onclick="enviarMensagem(this)">Enviar</button>
         </div>
 
-        <!-- AQUI FICA O CARROSSEL HORIZONTAL -->
+        <!-- CARROSSEL HORIZONTAL -->
         <div class="mural-mensagens" id="muralMensagens">
           <p style="color: #8c7d6b; width: 100%; text-align: center; font-style: italic;">Carregando mensagens cheias de amor...</p>
         </div>
@@ -263,7 +263,6 @@
 
     <!-- GRID DE PRESENTES -->
     <div class="grid-presentes" id="gridPresentes">
-      <!-- (O SEU GRID DE 50 PRESENTES PERMANECE INTACTO AQUI) -->
       
       <div class="card" data-id="16" data-categoria="cozinha" data-preco="350.00">
         <div class="selo-presenteado">💝 Já Presenteado</div>
@@ -1297,7 +1296,19 @@
         </div>
       </div>
       
+    </div> <!-- Fim da grid -->
+
+    <!-- CONTRIBUIÇÃO LIVRE -->
+    <div style="text-align: center; margin: 60px auto 20px; max-width: 600px; padding: 40px 20px; background: #ffffff; border-radius: 16px; border: 1px dashed #a1b8c6; box-shadow: 0 10px 30px rgba(42, 75, 124, 0.05);">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #2a4b7c; margin-bottom: 15px; font-weight: normal;">Contribuir com outro valor</h3>
+      <p style="color: #5a6f84; margin-bottom: 25px; line-height: 1.6; font-size: 1.05rem;">
+        Deseja nos presentear com uma quantia diferente? Sinta-se à vontade para contribuir com o valor que desejar através do nosso PIX.
+      </p>
+      <button class="btn btn-large" onclick="abrirModal('leonardoj698@gmail.com')" style="background-color: #2a4b7c; color: white; width: 100%; max-width: 300px;">
+        💝 Contribuir com PIX
+      </button>
     </div>
+    
   </div>
 
   <!-- MODAIS INVISÍVEIS -->
